@@ -29,9 +29,19 @@ bool EntityEditorApp::startup() {
 	}
 
 	//Create shared memory to store how many objects there are
-
+	HANDLE fileHandle = CreateFileMapping(
+		INVALID_HANDLE_VALUE,
+		nullptr,
+		PAGE_READWRITE,
+		0, sizeof(ENTITY_COUNT),
+		L"EntityCount");
 	//Create shared memory to store the array of objects.
-	
+	HANDLE fileHandle = CreateFileMapping(
+		INVALID_HANDLE_VALUE,
+		nullptr,
+		PAGE_READWRITE,
+		0, sizeof(),
+		L"ArrayObjects");
 
 	return true;
 }

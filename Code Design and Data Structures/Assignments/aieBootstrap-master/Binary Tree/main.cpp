@@ -1,4 +1,5 @@
 #include "Binary_TreeApp.h"
+#include "TreeNode.h"
 
 int main() {
 	
