@@ -19,9 +19,9 @@ bool EntityDisplayApp::startup() {
 	setBackgroundColour(1, 1, 1);
 
 	//Open shared memory to read object count
-	HANDLE fileHandle = OpenFileMapping(FILE_MAP_ALL_ACCESS, FALSE, L"EntityCount");
+	fileHandle = OpenFileMapping(FILE_MAP_ALL_ACCESS, FALSE, L"EntityCount");
 	//Open shared memory to read array of objects
-	HANDLE sizeHandle = OpenFileMapping(FILE_MAP_ALL_ACCESS, FALSE, L"ArrayObjects");
+	sizeHandle = OpenFileMapping(FILE_MAP_ALL_ACCESS, FALSE, L"ArrayObjects");
 	
 	return true;
 }
@@ -42,18 +42,24 @@ void EntityDisplayApp::update(float deltaTime) {
 		quit();
 
 	//Map memory for object count
-	Entity* ENTITY_COUNT = (Entity*)MapViewOfFile(fileHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(ENTITY_COUNT));
+	int* ENTITY_COUNT = (int*)MapViewOfFile(fileHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(int));
 	//Read object count
+	int count = *ENTITY_COUNT;
 
 	//Unmap memory for object count
-	UnmapViewOfFile(fileHandle);
+	UnmapViewOfFile(ENTITY_COUNT);
 
 	//Map memory for object array
-	Entity* m_entities = (Entity*)MapViewOfFile(sizeHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(m_entities));
+	Entity* OBJECT_ARRAY = (Entity*)MapViewOfFile(sizeHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(Entity)* count);
+	m_entities.clear();
+	for (int i = 0; i < count; i++)
+	{
+		m_entities.push_back(OBJECT_ARRAY[i]);
+	}
 	//Read object array
 
 	//Unmap memory for object array
-	UnmapViewOfFile(sizeHandle);
+	UnmapViewOfFile(OBJECT_ARRAY);
 }
 
 void EntityDisplayApp::draw() {

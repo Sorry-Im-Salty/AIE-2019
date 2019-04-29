@@ -29,14 +29,14 @@ bool EntityEditorApp::startup() {
 	}
 
 	//Create shared memory to store how many objects there are
-	HANDLE fileHandle = CreateFileMapping(
+		fileHandle = CreateFileMapping(
 		INVALID_HANDLE_VALUE,
 		nullptr,
 		PAGE_READWRITE,
 		0, sizeof(ENTITY_COUNT),
 		L"EntityCount");
 	//Create shared memory to store the array of objects.
-	HANDLE sizeHandle = CreateFileMapping(
+		sizeHandle = CreateFileMapping(
 		INVALID_HANDLE_VALUE,
 		nullptr,
 		PAGE_READWRITE,
@@ -91,13 +91,17 @@ void EntityEditorApp::update(float deltaTime) {
 	}
 
 	//Map pointer to memory to store object count
-	Entity* ENTITY_COUNT = (Entity*)MapViewOfFile(fileHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(ENTITY_COUNT));
+	int* OBJECT_COUNT  = (int*)MapViewOfFile(fileHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(int));
+
 	//Set object count
-	*ENTITY_COUNT;
+	*OBJECT_COUNT = ENTITY_COUNT;
+	UnmapViewOfFile(OBJECT_COUNT);
 	//Map pointer to memory to store array of objects
-	Entity* m_entities = (Entity*)MapViewOfFile(sizeHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(m_entities));
+	Entity* OBJECT_ARRAY = (Entity*)MapViewOfFile(sizeHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(Entity)* ENTITY_COUNT);
+	memcpy(OBJECT_ARRAY, m_entities, sizeof(Entity)* ENTITY_COUNT);
+	UnmapViewOfFile(OBJECT_ARRAY);
 	//Set array of objects
-	*m_entities;
+	
 }
 
 void EntityEditorApp::draw() {
