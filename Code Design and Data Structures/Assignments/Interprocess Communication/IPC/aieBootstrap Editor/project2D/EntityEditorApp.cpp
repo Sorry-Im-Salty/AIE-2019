@@ -36,11 +36,11 @@ bool EntityEditorApp::startup() {
 		0, sizeof(ENTITY_COUNT),
 		L"EntityCount");
 	//Create shared memory to store the array of objects.
-	HANDLE fileHandle = CreateFileMapping(
+	HANDLE sizeHandle = CreateFileMapping(
 		INVALID_HANDLE_VALUE,
 		nullptr,
 		PAGE_READWRITE,
-		0, sizeof(),
+		0, sizeof(m_entities),
 		L"ArrayObjects");
 
 	return true;
@@ -48,6 +48,8 @@ bool EntityEditorApp::startup() {
 
 void EntityEditorApp::shutdown() {
 
+	UnmapViewOfFile(fileHandle);
+	UnmapViewOfFile(sizeHandle);
 	CloseHandle(fileHandle);
 	CloseHandle(sizeHandle);
 	delete m_font;
@@ -89,13 +91,13 @@ void EntityEditorApp::update(float deltaTime) {
 	}
 
 	//Map pointer to memory to store object count
-
+	Entity* ENTITY_COUNT = (Entity*)MapViewOfFile(fileHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(ENTITY_COUNT));
 	//Set object count
-
+	*ENTITY_COUNT;
 	//Map pointer to memory to store array of objects
-
+	Entity* m_entities = (Entity*)MapViewOfFile(sizeHandle, FILE_MAP_ALL_ACCESS, 0, 0, sizeof(m_entities));
 	//Set array of objects
-	
+	*m_entities;
 }
 
 void EntityEditorApp::draw() {
