@@ -6,7 +6,7 @@ int main() {
 	auto app = new Simon_SaysApp();
 
 	// initialise and loop
-	app->run("AIE", 1280, 720, false);
+	app->run("Simon Says - Thomas Maltezos", 1280, 720, false);
 
 	// deallocation
 	delete app;

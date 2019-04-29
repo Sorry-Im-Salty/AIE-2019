@@ -18,5 +18,9 @@ public:
 protected:
 
 	aie::Renderer2D*	m_2dRenderer;
+	aie::Texture*		m_arrowRight;
+	aie::Texture*		m_arrowLeft;
+	aie::Texture*		m_arrowUp;
 	aie::Font*			m_font;
+	aie::Font*			m_fontBold;
 };
