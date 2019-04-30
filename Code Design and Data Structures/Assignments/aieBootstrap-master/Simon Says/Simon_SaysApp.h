@@ -2,6 +2,7 @@
 
 #include "Application.h"
 #include "Renderer2D.h"
+#include "MenuButton.h"
 
 class Simon_SaysApp : public aie::Application {
 public:
@@ -21,6 +22,12 @@ protected:
 	aie::Texture*		m_arrowRight;
 	aie::Texture*		m_arrowLeft;
 	aie::Texture*		m_arrowUp;
+	aie::Texture*		m_arrowDown;
 	aie::Font*			m_font;
 	aie::Font*			m_fontBold;
+	MenuButton*			m_playButton;
+	MenuButton*			m_quitButton;
+
+	float m_timer;
+	int m_score;
 };
