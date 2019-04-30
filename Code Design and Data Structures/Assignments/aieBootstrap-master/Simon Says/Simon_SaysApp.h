@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include "MenuButton.h"
+#include "Menu.h"
 
 class Simon_SaysApp : public aie::Application {
 public:
@@ -27,6 +28,7 @@ protected:
 	aie::Font*			m_fontBold;
 	MenuButton*			m_playButton;
 	MenuButton*			m_quitButton;
+	Menu*				m_menu;
 
 	float m_timer;
 	int m_score;

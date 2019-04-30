@@ -1,14 +1,17 @@
 #pragma once
 #include "Renderer2D.h"
 #include "Font.h"
+#include "Application.h"
+#include "Input.h"
 
 class MenuButton
 {
 public:
-	MenuButton(const char* buttonText, float x, float y, float width, float height);
+	MenuButton(const char* buttonText, float x, float y, float width, float height, int r, int g, int b);
 	~MenuButton();
 
-	void Draw(aie::Renderer2D* renderer);
+	void Draw(aie::Renderer2D* renderer, float width, float height);
+	bool Update();
 private:
 	// font and text
 	aie::Font* m_font;
@@ -19,4 +22,7 @@ private:
 	float m_posY;
 	float m_width;
 	float m_height;
+	int m_colourRed;
+	int m_colourGreen;
+	int m_colourBlue;
 };
