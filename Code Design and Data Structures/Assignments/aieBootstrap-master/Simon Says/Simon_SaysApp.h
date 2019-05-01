@@ -17,6 +17,14 @@ public:
 	virtual void update(float deltaTime);
 	virtual void draw();
 
+	enum class eState { MENU, GAME };
+
+	void updateMenu(float deltaTime);
+	void updateGame(float deltaTime);
+
+private:
+	eState m_state = eState::MENU;
+
 protected:
 
 	aie::Renderer2D*	m_2dRenderer;

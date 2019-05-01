@@ -2,6 +2,7 @@
 #include "Texture.h"
 #include "Font.h"
 #include "Input.h"
+#include <assert.h>
 
 Simon_SaysApp::Simon_SaysApp() {
 
@@ -52,9 +53,26 @@ void Simon_SaysApp::update(float deltaTime) {
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
-	// exit the application
-	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
+	// quit button
+	if (m_quitButton->Update())
 		quit();
+
+	switch (m_state)
+	{
+	case eState::MENU:		updateMenu(deltaTime); break;
+	case eState::GAME:		updateGame(deltaTime); break;
+	default:				assert(false && "m_state is invalid");
+	}
+}
+
+void updateMenu(float deltaTime)
+{
+
+}
+
+void updateGame(float deltaTime)
+{
+
 }
 
 void Simon_SaysApp::draw() {
@@ -64,24 +82,25 @@ void Simon_SaysApp::draw() {
 
 	// begin drawing sprites
 	m_2dRenderer->begin();
-
-	// draw your stuff here!
 	
-	/* Start Menu ===================================================================================================================*/
-	m_menu->Draw(m_2dRenderer, getWindowWidth(), getWindowHeight());
-	// play and exit buttons - drawBox(float xPos, float yPos, float width, float height, float rotation = 0.0f, float depth = 0.0f);
+	// start menu
+	m_menu->Draw(m_2dRenderer, getWindowWidth() / 2, getWindowHeight() / 2);
+	// play and exit buttons
 	m_playButton->Draw(m_2dRenderer, getWindowWidth(), getWindowHeight());
 	m_quitButton->Draw(m_2dRenderer, getWindowWidth(), getWindowHeight());
 
-	/*==============================================================================================================================*/
+	if (m_playButton->Update())
+	{
+		m_2dRenderer->setRenderColour(0, 0, 1);
+		m_2dRenderer->drawBox(getWindowWidth() / 2, getWindowHeight() / 2, 100, 100 );
+	}
 
-	// fps counter and quit
+
+	// fps counter
 	char fps[32];
 	m_2dRenderer->setRenderColour(1, 0, 0);
 	sprintf_s(fps, 32, "FPS: %i", getFPS());
 	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
-
-	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
 
 	// done drawing sprites
 	m_2dRenderer->end();

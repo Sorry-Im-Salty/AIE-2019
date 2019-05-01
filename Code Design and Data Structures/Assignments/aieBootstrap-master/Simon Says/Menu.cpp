@@ -32,6 +32,11 @@ void Menu::Draw(aie::Renderer2D* renderer, float width, float height)
 	renderer->setRenderColour(0.9f, 0.2f, 0.2f);
 	renderer->drawText(m_fontBold, "Simon Says!", m_width / 3.1f, m_height / 1.2f);
 	
+	// button background
+	renderer->setRenderColour(0, 0, 0);
+	renderer->drawBox(m_width / 3, m_height / 3, 350, 100);
+	renderer->drawBox(m_width / 1.5f, m_height / 3, 350, 100);
+
 	// logo
 	renderer->setRenderColour(1, 1, 1);
 	renderer->drawSprite(m_arrowRight, m_width / 1.8f, m_height / 1.7f, 100, 100);

@@ -25,10 +25,6 @@ MenuButton::~MenuButton()
 
 void MenuButton::Draw(aie::Renderer2D* renderer, float width, float height)
 {
-	// black border
-	renderer->setRenderColour(0, 0, 0);
-	renderer->drawBox(m_width / 3, m_height / 3, 350, 100);
-	renderer->drawBox(m_width / 1.5f, m_height / 3, 350, 100);
 	// grey interior
 	renderer->setRenderColour(0.9f, 0.9f, 0.9f);
 	renderer->drawBox(m_posX, m_posY, m_width, m_height);
