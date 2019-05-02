@@ -1,6 +1,6 @@
 #include "MenuButton.h"
 #include <string.h>
-MenuButton::MenuButton(const char* buttonText, float x, float y, float width, float height, int r, int g, int b)
+MenuButton::MenuButton(const char* buttonText, float x, float y, float width, float height, float r, float g, float b)
 {
 	// stores copy of the text
 	strcpy_s(m_buttonText, 64, buttonText);

@@ -14,6 +14,8 @@ Simon_SaysApp::~Simon_SaysApp() {
 
 bool Simon_SaysApp::startup() {
 	
+	setVSync(true);
+
 	m_2dRenderer = new aie::Renderer2D();
 
 	m_arrowRight = new aie::Texture("./textures/arrow_right.png");
