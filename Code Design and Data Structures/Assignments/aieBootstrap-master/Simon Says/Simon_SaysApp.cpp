@@ -22,9 +22,9 @@ bool Simon_SaysApp::startup() {
 	m_arrowDown = new aie::Texture("./textures/arrow_down.png");
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 	m_fontBold = new aie::Font("./font/consolas_bold.ttf", 72);
-	m_playButton = new MenuButton("Play", getWindowWidth() / 3, getWindowHeight() / 3, 335, 85, 0, 1, 0);
-	m_quitButton = new MenuButton("Quit", getWindowWidth() / 1.5f, getWindowHeight() / 3, 335, 85, 1, 0, 0);
-	m_menu = new Menu(getWindowWidth() / 2, getWindowHeight() / 2, getWindowWidth(), getWindowHeight());
+	m_playButton = new MenuButton("Play", 1280 / 3, 720 / 3, 335, 85, 0, 1, 0);
+	m_quitButton = new MenuButton("Quit", 1280 / 1.5f, 720 / 3, 335, 85, 1, 0, 0);
+	m_menu = new Menu(1280 / 2, 720 / 2, 1280, 720);
 
 	m_score = 0;
 	m_timer = 0;
@@ -68,15 +68,15 @@ void Simon_SaysApp::draw() {
 	m_2dRenderer->begin();
 	
 	// start menu
-	m_menu->Draw(m_2dRenderer, getWindowWidth() / 2, getWindowHeight() / 2);
+	m_menu->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 	// play and exit buttons
-	m_playButton->Draw(m_2dRenderer, getWindowWidth(), getWindowHeight());
-	m_quitButton->Draw(m_2dRenderer, getWindowWidth(), getWindowHeight());
+	m_playButton->Draw(m_2dRenderer, 1280, 720);
+	m_quitButton->Draw(m_2dRenderer, 1280, 720);
 
 	if (m_playButton->Update())
 	{
 		m_2dRenderer->setRenderColour(0, 0, 1);
-		m_2dRenderer->drawBox(getWindowWidth() / 2, getWindowHeight() / 2, 100, 100 );
+		m_2dRenderer->drawBox(1280 / 2, 720 / 2, 100, 100 );
 	}
 
 

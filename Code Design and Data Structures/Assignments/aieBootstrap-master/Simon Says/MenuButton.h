@@ -1,7 +1,6 @@
 #pragma once
 #include "Renderer2D.h"
 #include "Font.h"
-#include "Application.h"
 #include "Input.h"
 
 class MenuButton
