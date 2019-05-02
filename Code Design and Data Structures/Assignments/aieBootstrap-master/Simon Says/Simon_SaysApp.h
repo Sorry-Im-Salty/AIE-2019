@@ -17,17 +17,17 @@ public:
 
 protected:
 
-	aie::Renderer2D*	m_2dRenderer;
-	aie::Texture*		m_arrowRight;
-	aie::Texture*		m_arrowLeft;
-	aie::Texture*		m_arrowUp;
-	aie::Texture*		m_arrowDown;
-	aie::Font*			m_font;
-	aie::Font*			m_fontBold;
-	MenuButton*			m_playButton;
-	MenuButton*			m_quitButton;
-	Menu*				m_menu;
+	aie::Renderer2D*	m_2dRenderer = nullptr;
+	aie::Texture*		m_arrowRight = nullptr;
+	aie::Texture*		m_arrowLeft = nullptr;
+	aie::Texture*		m_arrowUp = nullptr;
+	aie::Texture*		m_arrowDown = nullptr;
+	aie::Font*			m_font = nullptr;
+	aie::Font*			m_fontBold = nullptr;
+	MenuButton*			m_playButton = nullptr;
+	MenuButton*			m_quitButton = nullptr;
+	Menu*				m_menu = nullptr;
 
-	float m_timer;
-	int m_score;
+	float m_timer = 0;
+	int m_score = 0;
 };
