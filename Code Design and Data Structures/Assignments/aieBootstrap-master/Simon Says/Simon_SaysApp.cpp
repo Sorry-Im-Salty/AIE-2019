@@ -57,22 +57,6 @@ void Simon_SaysApp::update(float deltaTime) {
 	if (m_quitButton->Update())
 		quit();
 
-	switch (m_state)
-	{
-	case eState::MENU:		updateMenu(deltaTime); break;
-	case eState::GAME:		updateGame(deltaTime); break;
-	default:				assert(false && "m_state is invalid");
-	}
-}
-
-void updateMenu(float deltaTime)
-{
-
-}
-
-void updateGame(float deltaTime)
-{
-
 }
 
 void Simon_SaysApp::draw() {
