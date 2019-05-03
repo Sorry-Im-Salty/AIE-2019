@@ -27,6 +27,7 @@ bool Simon_SaysApp::startup() {
 	m_playButton = new MenuButton("Play", 1280 / 3, 720 / 3, 335, 85, 0, 1, 0);
 	m_quitButton = new MenuButton("Quit", 1280 / 1.5f, 720 / 3, 335, 85, 1, 0, 0);
 	m_menu = new Menu(1280 / 2, 720 / 2, 1280, 720);
+	m_game = new Game(1280 / 2, 720 / 2, 1280, 720);
 
 	m_score;
 	m_timer;
@@ -46,6 +47,7 @@ void Simon_SaysApp::shutdown() {
 	delete m_playButton;
 	delete m_quitButton;
 	delete m_menu;
+	delete m_game;
 	delete m_2dRenderer;
 }
 
@@ -58,7 +60,7 @@ void Simon_SaysApp::update(float deltaTime) {
 
 	// quit button
 	if (m_quitButton->Update())
-		quit();
+		m_gameOver = true;
 
 }
 
@@ -87,8 +89,7 @@ void Simon_SaysApp::draw() {
 	}
 	else if (m_menuState == false)
 	{
-		m_2dRenderer->setRenderColour(0, 0, 1);
-		m_2dRenderer->drawBox(1280 / 2, 720 / 2, 100, 100);
+		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 	}
 	
 	

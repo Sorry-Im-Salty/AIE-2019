@@ -2,6 +2,7 @@
 #include "Renderer2D.h"
 #include "MenuButton.h"
 #include "Menu.h"
+#include "Game.h"
 
 class Simon_SaysApp : public aie::Application {
 public:
@@ -27,6 +28,7 @@ protected:
 	MenuButton*			m_playButton = nullptr;
 	MenuButton*			m_quitButton = nullptr;
 	Menu*				m_menu = nullptr;
+	Game*				m_game = nullptr;
 
 	float m_timer = 0;
 	int m_score = 0;

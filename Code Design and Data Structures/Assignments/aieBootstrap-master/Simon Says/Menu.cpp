@@ -22,6 +22,10 @@ Menu::Menu(float x, float y, float width, float height)
 Menu::~Menu()
 {
 	delete m_fontBold;
+	delete m_arrowRight;
+	delete m_arrowLeft;
+	delete m_arrowUp;
+	delete m_arrowDown;
 }
 
 void Menu::Draw(aie::Renderer2D* renderer, float width, float height)
