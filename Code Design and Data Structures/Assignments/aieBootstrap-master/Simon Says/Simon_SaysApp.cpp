@@ -28,8 +28,9 @@ bool Simon_SaysApp::startup() {
 	m_quitButton = new MenuButton("Quit", 1280 / 1.5f, 720 / 3, 335, 85, 1, 0, 0);
 	m_menu = new Menu(1280 / 2, 720 / 2, 1280, 720);
 
-	m_score = 0;
-	m_timer = 0;
+	m_score;
+	m_timer;
+	m_menuState;
 
 	return true;
 }
@@ -70,17 +71,29 @@ void Simon_SaysApp::draw() {
 	m_2dRenderer->begin();
 	
 	// start menu
-	m_menu->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
-	// play and exit buttons
-	m_playButton->Draw(m_2dRenderer, 1280, 720);
-	m_quitButton->Draw(m_2dRenderer, 1280, 720);
+	if (m_menuState == true)
+	{
+		m_menu->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 
-	if (m_playButton->Update())
+		// play and exit buttons
+		m_playButton->Draw(m_2dRenderer, 1280, 720);
+		m_quitButton->Draw(m_2dRenderer, 1280, 720);
+
+		if (m_playButton->Update())
+		{
+			m_menuState = false;
+		}
+
+	}
+	else if (m_menuState == false)
 	{
 		m_2dRenderer->setRenderColour(0, 0, 1);
-		m_2dRenderer->drawBox(1280 / 2, 720 / 2, 100, 100 );
+		m_2dRenderer->drawBox(1280 / 2, 720 / 2, 100, 100);
 	}
+	
+	
 
+	
 
 	// fps counter
 	char fps[32];

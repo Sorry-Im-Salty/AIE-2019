@@ -30,4 +30,6 @@ protected:
 
 	float m_timer = 0;
 	int m_score = 0;
+	bool m_menuState = true;
+
 };
