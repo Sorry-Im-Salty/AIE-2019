@@ -3,7 +3,7 @@
 Game::Game(float x, float y, float width, float height)
 {
 	// loads the font
-	m_fontBold = new aie::Font("./font/consolas_bold.ttf", 72);
+	m_font = new aie::Font("./font/consolas.ttf", 32);
 
 	// loads the testures
 	m_arrowRight = new aie::Texture("./textures/arrow_right.png");
@@ -21,7 +21,7 @@ Game::Game(float x, float y, float width, float height)
 
 Game::~Game()
 {
-	delete m_fontBold;
+	delete m_font;
 	delete m_arrowRight;
 	delete m_arrowLeft;
 	delete m_arrowUp;
@@ -33,4 +33,8 @@ void Game::Draw(aie::Renderer2D* renderer, float width, float height)
 	// background
 	renderer->setRenderColour(1, 1, 1);
 	renderer->drawBox(m_posX, m_posY, m_width, m_height);
+	
+	// exit message
+	renderer->setRenderColour(1, 0, 0);
+	renderer->drawText(m_font, "Press 'Escape' to return to Main Menu", 0, 5);
 }

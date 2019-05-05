@@ -3,9 +3,6 @@
 #include "Font.h"
 #include "Texture.h"
 
-
-
-
 class Game
 {
 public:
@@ -15,7 +12,7 @@ public:
 	void Draw(aie::Renderer2D* renderer, float width, float height);
 private:
 	// font
-	aie::Font* m_fontBold;
+	aie::Font* m_font;
 
 	// textures
 	aie::Texture* m_arrowRight;

@@ -62,6 +62,11 @@ void Simon_SaysApp::update(float deltaTime) {
 	if (m_quitButton->Update())
 		m_gameOver = true;
 
+	// return to menu
+	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
+	{
+		m_menuState = true;
+	}
 }
 
 void Simon_SaysApp::draw() {

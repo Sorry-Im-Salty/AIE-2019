@@ -8,7 +8,7 @@ MenuButton::MenuButton(const char* buttonText, float x, float y, float width, fl
 	// loads the font
 	m_font = new aie::Font("./font/consolas.ttf", 24);
 
-	// stores position, width and height
+	// stores position, width, height and colour
 	m_posX = x;
 	m_posY = y;
 	m_width = width;
