@@ -5,7 +5,7 @@ Menu::Menu(float x, float y, float width, float height)
 	// loads the font
 	m_fontBold = new aie::Font("./font/consolas_bold.ttf", 72);
 
-	// loads the testures
+	// loads the textures
 	m_arrowRight = new aie::Texture("./textures/arrow_right.png");
 	m_arrowLeft = new aie::Texture("./textures/arrow_left.png");
 	m_arrowUp = new aie::Texture("./textures/arrow_up.png");

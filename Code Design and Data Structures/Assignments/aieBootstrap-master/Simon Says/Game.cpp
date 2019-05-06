@@ -5,13 +5,6 @@ Game::Game(float x, float y, float width, float height)
 	// loads the font
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 
-	// loads the testures
-	m_arrowRight = new aie::Texture("./textures/arrow_right.png");
-	m_arrowLeft = new aie::Texture("./textures/arrow_left.png");
-	m_arrowUp = new aie::Texture("./textures/arrow_up.png");
-	m_arrowDown = new aie::Texture("./textures/arrow_down.png");
-
-
 	// stores location, width and height
 	m_posX = x;
 	m_posY = y;

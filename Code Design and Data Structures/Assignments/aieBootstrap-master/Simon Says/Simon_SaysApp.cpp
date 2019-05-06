@@ -18,16 +18,21 @@ bool Simon_SaysApp::startup() {
 
 	m_2dRenderer = new aie::Renderer2D();
 
-	m_arrowRight = new aie::Texture("./textures/arrow_right.png");
-	m_arrowLeft = new aie::Texture("./textures/arrow_left.png");
-	m_arrowUp = new aie::Texture("./textures/arrow_up.png");
-	m_arrowDown = new aie::Texture("./textures/arrow_down.png");
+	m_tArrowRight = new aie::Texture("./textures/arrow_right.png");
+	m_tArrowLeft = new aie::Texture("./textures/arrow_left.png");
+	m_tArrowUp = new aie::Texture("./textures/arrow_up.png");
+	m_tArrowDown = new aie::Texture("./textures/arrow_down.png");
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 	m_fontBold = new aie::Font("./font/consolas_bold.ttf", 72);
 	m_playButton = new MenuButton("Play", 1280 / 3, 720 / 3, 335, 85, 0, 1, 0);
 	m_quitButton = new MenuButton("Quit", 1280 / 1.5f, 720 / 3, 335, 85, 1, 0, 0);
 	m_menu = new Menu(1280 / 2, 720 / 2, 1280, 720);
 	m_game = new Game(1280 / 2, 720 / 2, 1280, 720);
+	m_arrowRight = new Arrow(m_tArrowRight, 1280 / 2, 720 / 2, 200, 200, 0);
+	m_arrowLeft = new Arrow(m_tArrowLeft, 1280 / 2, 720 / 2, 200, 200, 3.15f);
+	m_arrowUp = new Arrow(m_tArrowUp, 1280 / 2, 720 / 2, 200, 200, 1.6f);
+	m_arrowDown = new Arrow(m_tArrowDown, 1280 / 2, 720 / 2, 200, 200, 4.7f);
+
 
 	m_score;
 	m_timer;
@@ -40,14 +45,18 @@ void Simon_SaysApp::shutdown() {
 
 	delete m_font;
 	delete m_fontBold;
-	delete m_arrowRight;
-	delete m_arrowLeft;
-	delete m_arrowUp;
-	delete m_arrowDown;
+	delete m_tArrowRight;
+	delete m_tArrowLeft;
+	delete m_tArrowUp;
+	delete m_tArrowDown;
 	delete m_playButton;
 	delete m_quitButton;
 	delete m_menu;
 	delete m_game;
+	delete m_arrowRight;
+	delete m_arrowLeft;
+	delete m_arrowUp;
+	delete m_arrowDown;
 	delete m_2dRenderer;
 }
 
@@ -60,12 +69,18 @@ void Simon_SaysApp::update(float deltaTime) {
 
 	// quit button
 	if (m_quitButton->Update())
-		m_gameOver = true;
+		quit();
 
 	// return to menu
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
-	{
 		m_menuState = true;
+
+	if (m_menuState == false)
+	{
+		if (input->isKeyDown(aie::INPUT_KEY_UP))
+		{
+			
+		}
 	}
 }
 
@@ -87,14 +102,12 @@ void Simon_SaysApp::draw() {
 		m_quitButton->Draw(m_2dRenderer, 1280, 720);
 
 		if (m_playButton->Update())
-		{
 			m_menuState = false;
-		}
-
 	}
-	else if (m_menuState == false)
+	if (m_menuState == false)
 	{
 		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
+		m_arrowUp->Draw(m_2dRenderer, 1280, 720);
 	}
 	
 	

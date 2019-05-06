@@ -3,6 +3,7 @@
 #include "MenuButton.h"
 #include "Menu.h"
 #include "Game.h"
+#include "Arrow.h"
 
 class Simon_SaysApp : public aie::Application {
 public:
@@ -19,19 +20,22 @@ public:
 protected:
 
 	aie::Renderer2D*	m_2dRenderer = nullptr;
-	aie::Texture*		m_arrowRight = nullptr;
-	aie::Texture*		m_arrowLeft = nullptr;
-	aie::Texture*		m_arrowUp = nullptr;
-	aie::Texture*		m_arrowDown = nullptr;
+	aie::Texture*		m_tArrowRight = nullptr;
+	aie::Texture*		m_tArrowLeft = nullptr;
+	aie::Texture*		m_tArrowUp = nullptr;
+	aie::Texture*		m_tArrowDown = nullptr;
 	aie::Font*			m_font = nullptr;
 	aie::Font*			m_fontBold = nullptr;
 	MenuButton*			m_playButton = nullptr;
 	MenuButton*			m_quitButton = nullptr;
 	Menu*				m_menu = nullptr;
 	Game*				m_game = nullptr;
+	Arrow*				m_arrowRight = nullptr;
+	Arrow*				m_arrowLeft = nullptr;
+	Arrow*				m_arrowUp = nullptr;
+	Arrow*				m_arrowDown = nullptr;
 
 	float m_timer = 0;
 	int m_score = 0;
 	bool m_menuState = true;
-
 };
