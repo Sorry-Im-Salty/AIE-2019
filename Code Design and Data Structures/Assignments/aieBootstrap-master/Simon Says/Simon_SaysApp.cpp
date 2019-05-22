@@ -37,6 +37,11 @@ bool Simon_SaysApp::startup() {
 	m_score;
 	m_timer;
 	m_menuState;
+	m_arrowUpState;
+	m_arrowDownState;
+	m_arrowLeftState;
+	m_arrowRightState;
+	m_gameOverState;
 
 	return true;
 }
@@ -73,13 +78,29 @@ void Simon_SaysApp::update(float deltaTime) {
 
 	// return to menu
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
+	{
 		m_menuState = true;
+		m_arrowUpState = false;
+		m_arrowDownState = false;
+		m_arrowRightState = false;
+		m_arrowLeftState = false;
+	}
 
-	if (m_menuState == false)
+	if (m_arrowUpState == true)
 	{
 		if (input->isKeyDown(aie::INPUT_KEY_UP))
 		{
-			
+			m_score++;
+			m_arrowRightState = true;
+			m_arrowUpState = false;
+		}
+		else if (input->isKeyDown(aie::INPUT_KEY_DOWN) || input->isKeyDown(aie::INPUT_KEY_RIGHT) || input->isKeyDown(aie::INPUT_KEY_LEFT))
+		{
+			m_gameOverState = true;
+			m_arrowUpState = false;
+			m_arrowDownState = false;
+			m_arrowRightState = false;
+			m_arrowLeftState = false;
 		}
 	}
 }
@@ -102,14 +123,27 @@ void Simon_SaysApp::draw() {
 		m_quitButton->Draw(m_2dRenderer, 1280, 720);
 
 		if (m_playButton->Update())
+		{
+			m_arrowUpState = true;
 			m_menuState = false;
+		}
 	}
-	if (m_menuState == false)
+
+	if (m_gameOverState == true)
+	{
+		m_game->GameOver(m_2dRenderer);
+	}
+
+	if (m_arrowUpState == true)
 	{
 		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 		m_arrowUp->Draw(m_2dRenderer, 1280, 720);
 	}
-	
+	if (m_arrowRightState == true)
+	{
+		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
+		m_arrowRight->Draw(m_2dRenderer, 1280, 720);
+	}
 	
 
 	

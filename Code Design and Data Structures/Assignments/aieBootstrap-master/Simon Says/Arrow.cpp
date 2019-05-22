@@ -22,7 +22,7 @@ void Arrow::Draw(aie::Renderer2D* renderer, float width, float height)
 	renderer->drawSprite(m_texture, m_posX, m_posY, m_width, m_height, m_rotation);
 }
 
-int Arrow::arrowSelect()
+bool Arrow::arrowSelect()
 {
 	return true;
 }

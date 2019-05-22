@@ -9,9 +9,11 @@ public:
 	~Game();
 
 	void Draw(aie::Renderer2D* renderer, float width, float height);
+	void GameOver(aie::Renderer2D* renderer);
 private:
 	// font
 	aie::Font* m_font;
+	aie::Font* m_fontBig;
 
 	// position, width and height
 	float m_posX;
