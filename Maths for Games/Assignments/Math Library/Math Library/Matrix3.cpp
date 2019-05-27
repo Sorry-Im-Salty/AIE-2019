@@ -4,3 +4,8 @@ Matrix3::Matrix3()
 {
 
 }
+
+Matrix3::Matrix3(float x, float y, float z)
+{
+
+}
