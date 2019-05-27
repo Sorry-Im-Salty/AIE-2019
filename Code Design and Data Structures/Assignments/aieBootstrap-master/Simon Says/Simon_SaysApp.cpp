@@ -84,8 +84,10 @@ void Simon_SaysApp::update(float deltaTime) {
 		m_arrowDownState = false;
 		m_arrowRightState = false;
 		m_arrowLeftState = false;
+		m_gameOverState = false;
 	}
 
+	// up arrow state
 	if (m_arrowUpState == true)
 	{
 		if (input->isKeyDown(aie::INPUT_KEY_UP))
@@ -95,6 +97,63 @@ void Simon_SaysApp::update(float deltaTime) {
 			m_arrowUpState = false;
 		}
 		else if (input->isKeyDown(aie::INPUT_KEY_DOWN) || input->isKeyDown(aie::INPUT_KEY_RIGHT) || input->isKeyDown(aie::INPUT_KEY_LEFT))
+		{
+			m_gameOverState = true;
+			m_arrowUpState = false;
+			m_arrowDownState = false;
+			m_arrowRightState = false;
+			m_arrowLeftState = false;
+		}
+	}
+
+	// right arrow state
+	if (m_arrowRightState == true)
+	{
+		if (input->wasKeyPressed(aie::INPUT_KEY_RIGHT))
+		{
+			m_score++;
+			m_arrowLeftState = true;
+			m_arrowRightState = false;
+		}
+		else if (input->wasKeyPressed(aie::INPUT_KEY_DOWN) || input->wasKeyPressed(aie::INPUT_KEY_UP) || input->wasKeyPressed(aie::INPUT_KEY_LEFT))
+		{
+			m_gameOverState = true;
+			m_arrowUpState = false;
+			m_arrowDownState = false;
+			m_arrowRightState = false;
+			m_arrowLeftState = false;
+		}
+	}
+
+	// left arrow state
+	if (m_arrowLeftState == true)
+	{
+		if (input->isKeyDown(aie::INPUT_KEY_LEFT))
+		{
+			m_score++;
+			m_arrowDownState = true;
+			m_arrowLeftState = false;
+		}
+		else if (input->isKeyDown(aie::INPUT_KEY_DOWN) && input->isKeyDown(aie::INPUT_KEY_UP) && input->isKeyDown(aie::INPUT_KEY_RIGHT))
+		{
+			m_gameOverState = true;
+			m_arrowUpState = false;
+			m_arrowDownState = false;
+			m_arrowRightState = false;
+			m_arrowLeftState = false;
+		}
+	}
+
+	// down arrow state
+	if (m_arrowDownState == true)
+	{
+		if (input->isKeyDown(aie::INPUT_KEY_DOWN))
+		{
+			m_score++;
+			m_arrowUpState = true;
+			m_arrowDownState = false;
+		}
+		else if (input->isKeyDown(aie::INPUT_KEY_LEFT) && input->isKeyDown(aie::INPUT_KEY_UP) && input->isKeyDown(aie::INPUT_KEY_RIGHT))
 		{
 			m_gameOverState = true;
 			m_arrowUpState = false;
@@ -144,9 +203,16 @@ void Simon_SaysApp::draw() {
 		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 		m_arrowRight->Draw(m_2dRenderer, 1280, 720);
 	}
-	
-
-	
+	if (m_arrowLeftState == true)
+	{
+		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
+		m_arrowLeft->Draw(m_2dRenderer, 1280, 720);
+	}
+	if (m_arrowDownState == true)
+	{
+		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
+		m_arrowDown->Draw(m_2dRenderer, 1280, 720);
+	}
 
 	// fps counter
 	char fps[32];
