@@ -6,11 +6,19 @@ public:
 	Vector2(float x, float y);
 	float operator[](int index) const;
 	float& operator[](int index);
-	Vector2 operator + (const Vector2& other) const;
-	Vector2& operator -= (const Vector2& other);
-	Vector2 operator * (float scalar) const;
-	Vector2& operator = (const Vector2& other);
 
+	float magnitude() const;
+	float magnitudeSqr() const;
+	float distance(const Vector2& other) const;
+
+
+	Vector2 operator + (const Vector2& other) const;
+	
+	Vector2 operator * (float scalar) const;
+	Vector2 operator / (float scalar) const;
+	Vector2& operator = (const Vector2& other);
+	Vector2& operator -= (const Vector2& other);
+	Vector2& operator += (const Vector2& other);
 
 
 	union
