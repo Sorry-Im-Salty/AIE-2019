@@ -1,7 +1,0 @@
-﻿  Vector2.cpp
-c:\users\s191076\desktop\aie 2019\trunk\maths for games\assignments\math library\math library\vector2.cpp(12): error C2440: 'return': cannot convert from 'initializer list' to 'Vector2'
-  c:\users\s191076\desktop\aie 2019\trunk\maths for games\assignments\math library\math library\vector2.cpp(12): note: No constructor could take the source type, or constructor overload resolution was ambiguous
-c:\users\s191076\desktop\aie 2019\trunk\maths for games\assignments\math library\math library\vector2.cpp(23): error C2440: 'return': cannot convert from 'initializer list' to 'Vector2'
-  c:\users\s191076\desktop\aie 2019\trunk\maths for games\assignments\math library\math library\vector2.cpp(23): note: No constructor could take the source type, or constructor overload resolution was ambiguous
-  Vector3.cpp
-  Generating Code...
