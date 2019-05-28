@@ -54,7 +54,22 @@ void DynamArray<T>::add(int nVal)
 }
 
 template<class T>
+void DynamArray<T>::remove(int nVal) {
+	pArray[nNextIndex--] = nVal;
+}
+
+template<class T>
 int DynamArray<T>::size()
 {
 	return nLength;
+}
+
+template<class T>
+int DynamArray<T>::LinearSearch(int arr[], int n, int x) {
+	for (i = 0; i < n; ++i) {
+		if (arr[i] == x) {
+			return i;
+		}
+		return -1;
+	}
 }
