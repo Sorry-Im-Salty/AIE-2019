@@ -9,6 +9,9 @@ public:
 	Vector3& operator [](int index);
 	const Vector3& operator [](int index) const;
 
+	Matrix3 operator * (const Matrix3& other) const;
+	Vector3 operator * (const Vector3& v) const;
+
 	union {
 		struct {
 			Vector3 xAxis;
@@ -16,6 +19,7 @@ public:
 			Vector3 zAxis;
 		};
 		Vector3 axis[3];
+		float data[3][3];
 	};
 
 };
