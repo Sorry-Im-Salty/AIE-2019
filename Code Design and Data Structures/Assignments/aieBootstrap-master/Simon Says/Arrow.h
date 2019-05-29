@@ -11,8 +11,6 @@ public:
 	~Arrow();
 
 	void Draw(aie::Renderer2D* renderer, float width, float height);
-	bool arrowSelect();
-
 private:
 	// position, width and height
 	float m_posX;

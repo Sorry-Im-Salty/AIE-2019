@@ -93,54 +93,48 @@ void Simon_SaysApp::update(float deltaTime) {
 		if (input->isKeyDown(aie::INPUT_KEY_UP))
 		{
 			m_score++;
-			m_arrowRightState = true;
 			m_arrowUpState = false;
+			m_arrowRightState = true;
 		}
 		else if (input->isKeyDown(aie::INPUT_KEY_DOWN) || input->isKeyDown(aie::INPUT_KEY_RIGHT) || input->isKeyDown(aie::INPUT_KEY_LEFT))
 		{
 			m_gameOverState = true;
 			m_arrowUpState = false;
-			m_arrowDownState = false;
-			m_arrowRightState = false;
-			m_arrowLeftState = false;
 		}
 	}
 
 	// right arrow state
 	if (m_arrowRightState == true)
 	{
-		if (input->wasKeyPressed(aie::INPUT_KEY_RIGHT))
+		if (input->isKeyDown(aie::INPUT_KEY_RIGHT) )
 		{
 			m_score++;
-			m_arrowLeftState = true;
 			m_arrowRightState = false;
+			m_arrowLeftState = true;	
 		}
-		else if (input->wasKeyPressed(aie::INPUT_KEY_DOWN) || input->wasKeyPressed(aie::INPUT_KEY_UP) || input->wasKeyPressed(aie::INPUT_KEY_LEFT))
+		else if (input->isKeyDown(aie::INPUT_KEY_DOWN) || input->isKeyDown(aie::INPUT_KEY_UP) || input->isKeyDown(aie::INPUT_KEY_LEFT))
 		{
 			m_gameOverState = true;
-			m_arrowUpState = false;
-			m_arrowDownState = false;
 			m_arrowRightState = false;
-			m_arrowLeftState = false;
 		}
 	}
 
 	// left arrow state
 	if (m_arrowLeftState == true)
 	{
-		if (input->isKeyDown(aie::INPUT_KEY_LEFT))
+		if (input->isKeyUp(aie::INPUT_KEY_RIGHT))
 		{
-			m_score++;
-			m_arrowDownState = true;
-			m_arrowLeftState = false;
-		}
-		else if (input->isKeyDown(aie::INPUT_KEY_DOWN) && input->isKeyDown(aie::INPUT_KEY_UP) && input->isKeyDown(aie::INPUT_KEY_RIGHT))
-		{
-			m_gameOverState = true;
-			m_arrowUpState = false;
-			m_arrowDownState = false;
-			m_arrowRightState = false;
-			m_arrowLeftState = false;
+			if (input->isKeyDown(aie::INPUT_KEY_LEFT))
+			{
+				m_score++;
+				m_arrowDownState = true;
+				m_arrowLeftState = false;
+			}
+			else if (input->isKeyDown(aie::INPUT_KEY_DOWN) && input->isKeyDown(aie::INPUT_KEY_UP) && input->isKeyDown(aie::INPUT_KEY_RIGHT))
+			{
+				m_gameOverState = true;
+				m_arrowLeftState = false;
+			}
 		}
 	}
 

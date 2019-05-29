@@ -16,6 +16,7 @@ Game::Game(float x, float y, float width, float height)
 Game::~Game()
 {
 	delete m_font;
+	delete m_fontBig;
 }
 
 void Game::Draw(aie::Renderer2D* renderer, float width, float height)
@@ -35,5 +36,5 @@ void Game::GameOver(aie::Renderer2D* renderer)
 	renderer->drawBox(m_posX, m_posY, m_width, m_height);
 
 	renderer->setRenderColour(1, 0, 0);
-	renderer->drawText(m_fontBig, "Game Over!", 1280 / 2, 720 / 2);
+	renderer->drawText(m_fontBig, "Game Over!", 1280 / 2 - 150, 720 / 2);
 }

@@ -13,16 +13,10 @@ Arrow::Arrow(aie::Texture* texture, float x, float y, float width, float height,
 
 Arrow::~Arrow()
 {
-
 }
 
 void Arrow::Draw(aie::Renderer2D* renderer, float width, float height)
 {
 	renderer->setRenderColour(1, 1, 1);
 	renderer->drawSprite(m_texture, m_posX, m_posY, m_width, m_height, m_rotation);
-}
-
-bool Arrow::arrowSelect()
-{
-	return true;
 }

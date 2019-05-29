@@ -1,6 +1,7 @@
 #pragma once
 #include "Renderer2D.h"
 #include "Font.h"
+#include "Texture.h"
 
 class Game
 {
