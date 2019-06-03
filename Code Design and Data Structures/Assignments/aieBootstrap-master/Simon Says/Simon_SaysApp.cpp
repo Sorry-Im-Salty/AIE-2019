@@ -38,9 +38,13 @@ bool Simon_SaysApp::startup() {
 	m_timer;
 	m_menuState;
 	m_arrowUpState;
+	m_arrowUpBuffer;
 	m_arrowDownState;
+	m_arrowDownBuffer;
 	m_arrowLeftState;
+	m_arrowLeftBuffer;
 	m_arrowRightState;
+	m_arrowRightBuffer;
 	m_gameOverState;
 
 	return true;
@@ -81,10 +85,15 @@ void Simon_SaysApp::update(float deltaTime) {
 	{
 		m_menuState = true;
 		m_arrowUpState = false;
+		m_arrowUpBuffer = false;
 		m_arrowDownState = false;
+		m_arrowDownBuffer = false;
 		m_arrowRightState = false;
+		m_arrowRightBuffer = false;
 		m_arrowLeftState = false;
+		m_arrowLeftBuffer = false;
 		m_gameOverState = false;
+		m_score = 0;
 	}
 
 	// up arrow state
@@ -94,12 +103,22 @@ void Simon_SaysApp::update(float deltaTime) {
 		{
 			m_score++;
 			m_arrowUpState = false;
-			m_arrowRightState = true;
+			m_arrowUpBuffer = true;
 		}
 		else if (input->isKeyDown(aie::INPUT_KEY_DOWN) || input->isKeyDown(aie::INPUT_KEY_RIGHT) || input->isKeyDown(aie::INPUT_KEY_LEFT))
 		{
 			m_gameOverState = true;
 			m_arrowUpState = false;
+		}
+	}
+	
+	// up arrow buffer
+	if (m_arrowUpBuffer == true)
+	{
+		if (input->isKeyDown(aie::INPUT_KEY_SPACE))
+		{
+			m_arrowUpBuffer = false;
+			m_arrowRightState = true;
 		}
 	}
 
@@ -110,12 +129,22 @@ void Simon_SaysApp::update(float deltaTime) {
 		{
 			m_score++;
 			m_arrowRightState = false;
-			m_arrowLeftState = true;	
+			m_arrowRightBuffer = true;
 		}
 		else if (input->isKeyDown(aie::INPUT_KEY_DOWN) || input->isKeyDown(aie::INPUT_KEY_UP) || input->isKeyDown(aie::INPUT_KEY_LEFT))
 		{
 			m_gameOverState = true;
 			m_arrowRightState = false;
+		}
+	}
+
+	// right arrow buffer
+	if (m_arrowRightBuffer == true)
+	{
+		if (input->isKeyDown(aie::INPUT_KEY_SPACE))
+		{
+			m_arrowRightBuffer = false;
+			m_arrowLeftState = true;
 		}
 	}
 
@@ -127,14 +156,24 @@ void Simon_SaysApp::update(float deltaTime) {
 			if (input->isKeyDown(aie::INPUT_KEY_LEFT))
 			{
 				m_score++;
-				m_arrowDownState = true;
 				m_arrowLeftState = false;
+				m_arrowLeftBuffer = true;
 			}
-			else if (input->isKeyDown(aie::INPUT_KEY_DOWN) && input->isKeyDown(aie::INPUT_KEY_UP) && input->isKeyDown(aie::INPUT_KEY_RIGHT))
+			else if (input->isKeyDown(aie::INPUT_KEY_DOWN) || input->isKeyDown(aie::INPUT_KEY_UP) || input->isKeyDown(aie::INPUT_KEY_RIGHT))
 			{
 				m_gameOverState = true;
 				m_arrowLeftState = false;
 			}
+		}
+	}
+
+	// left arrow buffer
+	if (m_arrowLeftBuffer == true)
+	{
+		if (input->isKeyDown(aie::INPUT_KEY_SPACE))
+		{
+			m_arrowLeftBuffer = false;
+			m_arrowDownState = true;
 		}
 	}
 
@@ -144,16 +183,24 @@ void Simon_SaysApp::update(float deltaTime) {
 		if (input->isKeyDown(aie::INPUT_KEY_DOWN))
 		{
 			m_score++;
-			m_arrowUpState = true;
 			m_arrowDownState = false;
+			m_arrowDownBuffer = true;
+
 		}
-		else if (input->isKeyDown(aie::INPUT_KEY_LEFT) && input->isKeyDown(aie::INPUT_KEY_UP) && input->isKeyDown(aie::INPUT_KEY_RIGHT))
+		else if (input->isKeyDown(aie::INPUT_KEY_LEFT) || input->isKeyDown(aie::INPUT_KEY_UP) || input->isKeyDown(aie::INPUT_KEY_RIGHT))
 		{
 			m_gameOverState = true;
-			m_arrowUpState = false;
 			m_arrowDownState = false;
-			m_arrowRightState = false;
-			m_arrowLeftState = false;
+		}
+	}
+
+	// down arrow buffer
+	if (m_arrowDownBuffer == true)
+	{
+		if (input->isKeyDown(aie::INPUT_KEY_SPACE))
+		{
+			m_arrowDownBuffer = false;
+			m_arrowUpState = true;
 		}
 	}
 }
@@ -192,20 +239,51 @@ void Simon_SaysApp::draw() {
 		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 		m_arrowUp->Draw(m_2dRenderer, 1280, 720);
 	}
+	if (m_arrowUpBuffer == true)
+	{
+		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
+		m_arrowUp->Draw(m_2dRenderer, 1280, 720);
+		m_2dRenderer->setRenderColour(1, 0, 0);
+		m_2dRenderer->drawText(m_font, "Press 'Space' To Continue", 1280 / 2 - 180, 200);
+	}
+
 	if (m_arrowRightState == true)
 	{
 		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 		m_arrowRight->Draw(m_2dRenderer, 1280, 720);
 	}
+	if (m_arrowRightBuffer == true)
+	{
+		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
+		m_arrowRight->Draw(m_2dRenderer, 1280, 720);
+		m_2dRenderer->setRenderColour(1, 0, 0);
+		m_2dRenderer->drawText(m_font, "Press 'Space' To Continue", 1280 / 2 - 180, 200);
+	}
+
 	if (m_arrowLeftState == true)
 	{
 		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 		m_arrowLeft->Draw(m_2dRenderer, 1280, 720);
 	}
+	if (m_arrowLeftBuffer == true)
+	{
+		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
+		m_arrowLeft->Draw(m_2dRenderer, 1280, 720);
+		m_2dRenderer->setRenderColour(1, 0, 0);
+		m_2dRenderer->drawText(m_font, "Press 'Space' To Continue", 1280 / 2 - 180, 200);
+	}
+
 	if (m_arrowDownState == true)
 	{
 		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
 		m_arrowDown->Draw(m_2dRenderer, 1280, 720);
+	}
+	if (m_arrowDownBuffer == true)
+	{
+		m_game->Draw(m_2dRenderer, 1280 / 2, 720 / 2);
+		m_arrowDown->Draw(m_2dRenderer, 1280, 720);
+		m_2dRenderer->setRenderColour(1, 0, 0);
+		m_2dRenderer->drawText(m_font, "Press 'Space' To Continue", 1280 / 2 - 180, 200);
 	}
 
 	// fps counter
@@ -213,6 +291,12 @@ void Simon_SaysApp::draw() {
 	m_2dRenderer->setRenderColour(1, 0, 0);
 	sprintf_s(fps, 32, "FPS: %i", getFPS());
 	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
+
+	// score
+	char score[32];
+	m_2dRenderer->setRenderColour(1, 0, 0);
+	sprintf_s(score, 32, "Score: %i", m_score);
+	m_2dRenderer->drawText(m_font, score, 1280 - 200, 720 - 32);
 
 	// done drawing sprites
 	m_2dRenderer->end();

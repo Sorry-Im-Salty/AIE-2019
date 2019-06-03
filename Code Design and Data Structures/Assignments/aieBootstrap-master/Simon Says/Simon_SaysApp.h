@@ -39,8 +39,12 @@ protected:
 	int m_score = 0;
 	bool m_menuState = true;
 	bool m_arrowUpState = false;
+	bool m_arrowUpBuffer = false;
 	bool m_arrowDownState = false;
+	bool m_arrowDownBuffer = false;
 	bool m_arrowLeftState = false;
+	bool m_arrowLeftBuffer = false;
 	bool m_arrowRightState = false;
+	bool m_arrowRightBuffer = false;
 	bool m_gameOverState = false;
 };
