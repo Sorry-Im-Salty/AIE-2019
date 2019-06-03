@@ -17,6 +17,10 @@ float& Vector3::operator [] (int index) {
 	return data[index];
 }
 
+Vector3::operator float* () {
+	return data;
+}
+
 // f = v3.magnitude()
 float Vector3::magnitude() const {
 	return sqrt(x * x + y * y + z * z);

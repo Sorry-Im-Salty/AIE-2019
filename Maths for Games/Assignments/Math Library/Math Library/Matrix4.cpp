@@ -16,6 +16,10 @@ const Vector4& Matrix4::operator [] (int index) const {
 	return axis[index];
 }
 
+Matrix4::operator float* () {
+	return axis;
+}
+
 // Matrix * Matrix
 Matrix4 Matrix4::operator * (const Matrix4& other) const {
 	Matrix4 result;

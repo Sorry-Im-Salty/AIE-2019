@@ -16,6 +16,10 @@ const Vector3& Matrix3::operator [] (int index) const {
 	return axis[index];
 }
 
+Matrix3::operator float* () {
+	return axis;
+}
+
 // Matrix * Matrix
 Matrix3 Matrix3::operator * (const Matrix3& other) const {
 	Matrix3 result;

@@ -17,6 +17,10 @@ float& Vector4::operator [] (int index) {
 	return data[index];
 }
 
+Vector4::operator float* () {
+	return data;
+}
+
 // f = v4.magnitude()
 float Vector4::magnitude() const {
 	return sqrt(x * x + y * y + z * z + w * w);

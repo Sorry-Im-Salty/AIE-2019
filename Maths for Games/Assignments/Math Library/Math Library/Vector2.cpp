@@ -17,6 +17,10 @@ float& Vector2::operator [] (int index) {
 	return data[index]; 
 }
 
+Vector2::operator float* () {
+	return data;
+}
+
 // f = v2.magnitude()
 float Vector2::magnitude() const { 
 	return sqrt(x*x + y * y);

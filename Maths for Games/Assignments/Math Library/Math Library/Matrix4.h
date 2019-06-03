@@ -8,6 +8,7 @@ public:
 	Matrix4(float xAxis, float yAxis, float zAxis, float wAxis);
 	Vector4& operator [](int index);
 	const Vector4& operator [](int index) const;
+	operator float*();
 
 	Matrix4 operator * (const Matrix4& other) const;
 	Vector4 operator * (const Vector4& v) const;

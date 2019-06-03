@@ -6,6 +6,7 @@ public:
 	Vector4(float x, float y, float z, float w);
 	float operator [](int index) const;
 	float& operator [](int index);
+	operator float*();
 
 	float magnitude() const;
 	void normalise();
