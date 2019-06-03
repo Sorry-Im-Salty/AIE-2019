@@ -5,7 +5,7 @@ class Matrix3
 {
 public:
 	Matrix3();
-	Matrix3(float xAxis, float yAxis, float zAxis);
+	Matrix3(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9);
 	Vector3& operator [](int index);
 	const Vector3& operator [](int index) const;
 	operator float*();
