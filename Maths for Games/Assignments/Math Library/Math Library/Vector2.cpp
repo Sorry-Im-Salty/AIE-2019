@@ -2,11 +2,11 @@
 #include <cmath>
 
 Vector2::Vector2() {
-
+	data[0] = 0; 0;
 }
 
 Vector2::Vector2(float x, float y) {
-
+	data[0] = x; y;
 }
 
 float Vector2::operator [] (int index) const { 

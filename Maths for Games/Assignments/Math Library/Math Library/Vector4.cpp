@@ -2,11 +2,11 @@
 #include <cmath>
 
 Vector4::Vector4() {
-
+	data[0] = 0; 0; 0; 0;
 }
 
 Vector4::Vector4(float x, float y, float z, float w) {
-
+	data[0] = x; y; z; w;
 }
 
 float Vector4::operator [] (int index) const {
