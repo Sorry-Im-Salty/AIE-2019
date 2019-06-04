@@ -26,6 +26,30 @@ Matrix4::operator float* () {
 	return &data[0][0];
 }
 
+// Rotate X
+Matrix4 Matrix4::setRotateX(float x) {
+	data[1][1] = cos(x);
+	data[1][2] = -sin(x);
+	data[2][1] = sin(x);
+	data[2][2] = cos(x);
+}
+
+// Rotate Y
+Matrix4 Matrix4::setRotateY(float y) {
+	data[0][0] = cos(y);
+	data[0][2] = sin(y);
+	data[2][0] = -sin(y);
+	data[2][2] = cos(y);
+}
+
+// Rotate Z
+Matrix4 Matrix4::setRotateZ(float z) {
+	data[0][0] = cos(z);
+	data[0][1] = -sin(z);
+	data[1][0] = sin(z);
+	data[1][1] = cos(z);
+}
+
 // Matrix * Matrix
 Matrix4 Matrix4::operator * (const Matrix4& other) const {
 	Matrix4 result;

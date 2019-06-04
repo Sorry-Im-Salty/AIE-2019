@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector4.h"
+#include <math.h>
 
 class Matrix4
 {
@@ -12,6 +13,10 @@ public:
 	Vector4& operator [](int index);
 	const Vector4& operator [](int index) const;
 	operator float*();
+
+	Matrix4 setRotateX(float x);
+	Matrix4 setRotateY(float y);
+	Matrix4 setRotateZ(float z);
 
 	Matrix4 operator * (const Matrix4& other) const;
 	Vector4 operator * (const Vector4& v) const;
