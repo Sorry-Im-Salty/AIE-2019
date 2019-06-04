@@ -2,11 +2,15 @@
 #include <cmath>
 
 Vector3::Vector3() {
-	data[0] = 0; 0; 0;
+	data[0] = 0; 
+	data[1] = 0; 
+	data[2] = 0;
 }
 
 Vector3::Vector3(float x, float y, float z) {
-	data[0] = x; y; z;
+	data[0] = x; 
+	data[1] = y; 
+	data[2] = z;
 }
 
 float Vector3::operator [] (int index) const {

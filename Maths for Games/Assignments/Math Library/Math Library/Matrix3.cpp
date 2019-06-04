@@ -1,15 +1,15 @@
 #include "Matrix3.h"
 
 Matrix3::Matrix3() {
-	data[0][0] =	1; 0; 0;
-					0; 1; 0;
-					0; 0; 1;
+	data[0][0] = 1; data[0][1] = 0; data[0][2] = 0;
+	data[1][0] = 0; data[1][1] = 1; data[1][2] = 0;
+	data[2][0] = 0; data[2][1] = 0; data[2][2] = 1;
 }
 
 Matrix3::Matrix3(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9) {
-	data[0][0] =	m1; m2; m3;
-					m4; m5; m6;
-					m7; m8; m9;
+	data[0][0] = m1; data[0][1] = m2; data[0][2] = m3;
+	data[1][0] = m4; data[1][1] = m5; data[1][2] = m6;
+	data[2][0] = m7; data[2][1] = m8; data[2][2] = m9;
 }
 
 Vector3& Matrix3::operator [] (int index) {
