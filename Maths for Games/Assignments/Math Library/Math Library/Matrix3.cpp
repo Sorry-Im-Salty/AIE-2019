@@ -1,11 +1,15 @@
 #include "Matrix3.h"
 
 Matrix3::Matrix3() {
-
+	data[0][0] =	1; 0; 0;
+					0; 1; 0;
+					0; 0; 1;
 }
 
 Matrix3::Matrix3(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9) {
-
+	data[0][0] =	m1; m2; m3;
+					m4; m5; m6;
+					m7; m8; m9;
 }
 
 Vector3& Matrix3::operator [] (int index) {
@@ -18,6 +22,27 @@ const Vector3& Matrix3::operator [] (int index) const {
 
 Matrix3::operator float* () {
 	return &data[0][0];
+}
+
+// Rotate X
+Matrix3 Matrix3::setRotateX(float x) {
+	data[0][0] =	1; 0; 0;
+					0; cos(x); -sin(x);
+					0; sin(x); cos(x);
+}
+
+// Rotate Y
+Matrix3 Matrix3::setRotateY(float y) {
+	data[0][0] =	cos(y); 0; sin(y);
+					0; 1; 0;
+					-sin(y); 0; cos(y);
+}
+
+// Rotate Z
+Matrix3 Matrix3::setRotateZ(float z) {
+	data[0][0] =	cos(z); -sin(z); 0;
+					sin(z); cos(z); 0;
+					0; 0; 1;
 }
 
 // Matrix * Matrix
