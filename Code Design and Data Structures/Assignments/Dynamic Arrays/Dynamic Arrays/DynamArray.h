@@ -10,7 +10,8 @@ public:
 	void remove(int nVal);
 	int size();
 
-	int LinearSearch(int arr[], int n, int x);
+	int LinearSearch(DynamArray* pArray[], int n, int x);
+	void BubbleSort(DynamArray* pArray[], int n);
 
 private:
 	T *pArray;

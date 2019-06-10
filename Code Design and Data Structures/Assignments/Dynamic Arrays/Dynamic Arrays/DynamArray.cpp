@@ -65,11 +65,29 @@ int DynamArray<T>::size()
 }
 
 template<class T>
-int DynamArray<T>::LinearSearch(int arr[], int n, int x) {
+int DynamArray<T>::LinearSearch(DynamArray* pArray[], int n, int x) {
 	for (i = 0; i < n; ++i) {
-		if (arr[i] == x) {
+		if (pArray[i] == x) {
 			return i;
 		}
 		return -1;
+	}
+}
+
+template<class T>
+void DynamArray<T>::BubbleSort(DynamArray* pArray[], int n) // Sorts enemies by their health.
+{
+	int i, j;
+	for (i = 0; i < n - 1; i++)
+	{
+		for (j = 0; j < n - i - 1; j++)
+		{
+			if (pArray[j] > pArray[j + 1])
+			{
+				DynamArray* temp = pArray[j];
+				pArray[j] = pArray[j + 1];
+				pArray[j + 1] = temp;
+			}
+		}
 	}
 }
