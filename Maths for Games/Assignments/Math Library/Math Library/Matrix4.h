@@ -14,9 +14,9 @@ public:
 	const Vector4& operator [](int index) const;
 	operator float*();
 
-	Matrix4 setRotateX(float x);
-	Matrix4 setRotateY(float y);
-	Matrix4 setRotateZ(float z);
+	void setRotateX(float x);
+	void setRotateY(float y);
+	void setRotateZ(float z);
 
 	Matrix4 operator * (const Matrix4& other) const;
 	Vector4 operator * (const Vector4& v) const;

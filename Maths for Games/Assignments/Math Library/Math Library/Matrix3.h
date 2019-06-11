@@ -13,9 +13,9 @@ public:
 	const Vector3& operator [](int index) const;
 	operator float*();
 
-	Matrix3 setRotateX(float x);
-	Matrix3 setRotateY(float y);
-	Matrix3 setRotateZ(float z);
+	void setRotateX(float x);
+	void setRotateY(float y);
+	void setRotateZ(float z);
 
 	Matrix3 operator * (const Matrix3& other) const;
 	Vector3 operator * (const Vector3& v) const;

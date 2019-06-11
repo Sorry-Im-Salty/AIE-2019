@@ -25,7 +25,7 @@ Matrix3::operator float* () {
 }
 
 // Rotate X
-Matrix3 Matrix3::setRotateX(float x) {
+void Matrix3::setRotateX(float x) {
 	data[1][1] = cos(x);
 	data[1][2] = -sin(x);
 	data[2][1] = sin(x);
@@ -33,7 +33,7 @@ Matrix3 Matrix3::setRotateX(float x) {
 }
 
 // Rotate Y
-Matrix3 Matrix3::setRotateY(float y) {
+void Matrix3::setRotateY(float y) {
 	data[0][0] = cos(y);
 	data[0][2] = sin(y);
 	data[2][0] = -sin(y);
@@ -41,7 +41,7 @@ Matrix3 Matrix3::setRotateY(float y) {
 }
 
 // Rotate Z
-Matrix3 Matrix3::setRotateZ(float z) {
+void Matrix3::setRotateZ(float z) {
 	data[0][0] = cos(z);
 	data[0][1] = -sin(z);
 	data[1][0] = sin(z);
