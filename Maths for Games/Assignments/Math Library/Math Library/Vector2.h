@@ -26,6 +26,6 @@ public:
 };
 
 // Float * Vector
-Vector2 operator * (float a, const Vector2& b) {
+static Vector2 operator * (float a, const Vector2& b) {
 	return Vector2(a * b.x, a * b.y);
 }

@@ -27,6 +27,6 @@ public:
 };
 
 // Float * Vector
-Vector4 operator * (float a, const Vector4& b) {
+static Vector4 operator * (float a, const Vector4& b) {
 	return Vector4(a * b.x, a * b.y, a * b.z, a * b.w);
 }

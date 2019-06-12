@@ -27,7 +27,7 @@ public:
 };
 
 // Float * Vector
-Vector3 operator * (float a, const Vector3& b) {
+static Vector3 operator * (float a, const Vector3& b) {
 	return Vector3(a * b.x, a * b.y, a * b.z);
 }
 
