@@ -1,6 +1,6 @@
 #pragma once
 #include "Vector4.h"
-#include <math.h>
+#include <cmath>
 
 class Matrix4
 {
