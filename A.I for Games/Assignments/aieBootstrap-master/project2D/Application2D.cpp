@@ -85,7 +85,7 @@ void Application2D::draw() {
 	m_pGrid->Draw(m_2dRenderer);
 
 	m_2dRenderer->setRenderColour(0.0f, 1.0f, 1.0f);
-	m_2dRenderer->drawCircle(m_v2StartPos.x, m_v2EndPos.y, 10.0f);
+	m_2dRenderer->drawCircle(m_v2StartPos.x, m_v2StartPos.y, 10.0f);
 	m_2dRenderer->drawCircle(m_v2EndPos.x, m_v2EndPos.y, 10.0f);
 	for (int i = 1; i < m_Path.size(); ++i) {
 		m_2dRenderer->drawLine(m_Path[i - 1].x, m_Path[i - 1].y, m_Path[i].x, m_Path[i].y, 5.0f);

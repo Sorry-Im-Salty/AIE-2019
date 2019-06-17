@@ -42,7 +42,7 @@ Grid::Grid(int nWidth, int nHeight)
 			if (y < m_nHeight - 1)
 				m_pNodeList[x][y]->m_apNeighbours[2] = m_pNodeList[x][y + 1];
 
-			if (x > m_nWidth - 1)
+			if (x < m_nWidth - 1)
 				m_pNodeList[x][y]->m_apNeighbours[3] = m_pNodeList[x + 1][y];
 
 			m_pNodeList[x][y]->m_anCosts[0] = 10;
@@ -108,7 +108,7 @@ Node* Grid::GetNodeByPos(Vector2 v2Pos) {
 }
 
 void Grid::SortOpenList() {
-	for (int i = 0; i < m_OpenList.size(); ++i) {
+	for (int i = 0; i < m_OpenList.size() - 1; ++i) {
 		for (int j = 0; j < m_OpenList.size() - 1 - i; ++j) {
 			if (m_OpenList[j]->m_nGScore < m_OpenList[j + 1]->m_nGScore) {
 				Node* pSwap = m_OpenList[j];
