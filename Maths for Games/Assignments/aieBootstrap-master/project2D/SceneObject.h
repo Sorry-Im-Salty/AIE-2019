@@ -23,6 +23,17 @@ public:
 	virtual void onUpdate(float deltaTime);
 	virtual void onDraw(aie::Renderer2D* renderer);
 
+	const Matrix3& getLocalTransform() const;
+	const Matrix3& getGlobalTransform() const;
+	void updateTransform();
+
+	void setPosition(float x, float y);
+	void setRotate(float radians);
+	void setScale(float width, float height);
+	void translate(float x, float y);
+	void rotate(float radians);
+	void scale(float width, float height);
+
 protected:
 
 	SceneObject* m_parent = nullptr;

@@ -60,3 +60,51 @@ void SceneObject::onUpdate(float deltaTime) {
 void SceneObject::onDraw(aie::Renderer2D* renderer) {
 
 }
+
+const Matrix3& SceneObject::getLocalTransform() const {
+	return m_localTransform;
+}
+
+const Matrix3& SceneObject::getGlobalTransform() const {
+	return m_globalTransform;
+}
+
+void SceneObject::updateTransform() {
+	if (m_parent != nullptr)
+		m_globalTransform = m_parent->m_globalTransform * m_localTransform;
+	else
+		m_globalTransform = m_localTransform;
+
+	for (auto child : m_children)
+		child->updateTransform();
+}
+
+void SceneObject::setPosition(float x, float y) {
+	m_localTransform[2] = { x, y, 1 };
+	updateTransform();
+}
+
+void SceneObject::setRotate(float radians) {
+	m_localTransform.setRotateZ(radians);
+	updateTransform();
+}
+
+void SceneObject::setScale(float width, float height) {
+	m_localTransform.setScaled(width, height, 1);
+	updateTransform();
+}
+
+void SceneObject::translate(float x, float y) {
+	m_localTransform.translate(x, y);
+	updateTransform();
+}
+
+void SceneObject::rotate(float radians) {
+	m_localTransform.setRotateZ(radians);
+	updateTransform();
+}
+
+void SceneObject::scale(float width, float height) {
+	m_localTransform.scale(width, height, 1);
+	updateTransform();
+}
