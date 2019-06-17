@@ -27,24 +27,24 @@ Matrix3::operator float* () {
 // Rotate X
 void Matrix3::setRotateX(float a) {
 	data[1][1] = cos(a);
-	data[1][2] = -sin(a);
-	data[2][1] = sin(a);
+	data[1][2] = sin(a);
+	data[2][1] = -sin(a);
 	data[2][2] = cos(a);
 }
 
 // Rotate Y
 void Matrix3::setRotateY(float a) {
 	data[0][0] = cos(a);
-	data[0][2] = sin(a);
-	data[2][0] = -sin(a);
+	data[0][2] = -sin(a);
+	data[2][0] = sin(a);
 	data[2][2] = cos(a);
 }
 
 // Rotate Z
 void Matrix3::setRotateZ(float a) {
 	data[0][0] = cos(a);
-	data[0][1] = -sin(a);
-	data[1][0] = sin(a);
+	data[0][1] = sin(a);
+	data[1][0] = -sin(a);
 	data[1][1] = cos(a);
 }
 
