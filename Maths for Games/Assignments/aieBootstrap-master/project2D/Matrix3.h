@@ -30,4 +30,5 @@ public:
 		float data[3][3];
 	};
 
+	static const Matrix3 identity;
 };

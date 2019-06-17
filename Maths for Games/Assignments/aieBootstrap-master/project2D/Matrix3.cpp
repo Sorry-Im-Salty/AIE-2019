@@ -73,3 +73,8 @@ Vector3 Matrix3::operator * (const Vector3& v) const {
 	}
 	return result;
 }
+
+// static const identity matrix
+const Matrix3 Matrix3::identity = Matrix3(	1, 0, 0,
+											0, 1, 0,
+											0, 0, 1	);
