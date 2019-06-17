@@ -59,6 +59,16 @@ void Application2D::update(float deltaTime) {
 		if (pMouseMode)
 			pMouseMode->m_bBlocked = false;
 	}
+
+	if (input->wasKeyPressed(aie::INPUT_KEY_S)) {
+		m_v2StartPos = v2MousePos;
+	}
+	if (input->wasKeyPressed(aie::INPUT_KEY_E)) {
+		m_v2EndPos = v2MousePos;
+	}
+
+	m_pGrid->FindPath(m_v2StartPos, m_v2EndPos, m_Path);
+
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
@@ -73,6 +83,15 @@ void Application2D::draw() {
 	m_2dRenderer->begin();
 	
 	m_pGrid->Draw(m_2dRenderer);
+
+	m_2dRenderer->setRenderColour(0.0f, 1.0f, 1.0f);
+	m_2dRenderer->drawCircle(m_v2StartPos.x, m_v2EndPos.y, 10.0f);
+	m_2dRenderer->drawCircle(m_v2EndPos.x, m_v2StartPos.y, 10.0f);
+	for (int i = 1; i < m_Path.size(); ++i) {
+		m_2dRenderer->drawLine(m_Path[i - 1].x, m_Path[i - 1].y, m_Path[i].x, m_Path[i].y, 5.0f);
+	}
+	m_2dRenderer->setRenderColour(1.0f, 1.0f, 1.0f);
+
 	// output some text, uses the last used colour
 	char fps[32];
 	sprintf_s(fps, 32, "FPS: %i", getFPS());

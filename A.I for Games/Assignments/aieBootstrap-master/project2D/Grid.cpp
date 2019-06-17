@@ -20,8 +20,8 @@ Grid::Grid(int nWidth, int nHeight)
 	for (int x = 0; x < m_nWidth; ++x) {
 		for (int y = 0; y < m_nHeight; ++y) {
 			Vector2 pos;
-			pos.x = x * SQUARE_SIZE - 200;
-			pos.y = y * SQUARE_SIZE - 200;
+			pos.x = x * SQUARE_SIZE + GRID_POSX;
+			pos.y = y * SQUARE_SIZE + GRID_POSY;
 
 			m_pNodeList[x][y] = new Node(pos, x, y);
 		}
@@ -52,6 +52,8 @@ Grid::Grid(int nWidth, int nHeight)
 		}
 	}
 
+	// Create the closed list
+	m_bClosedList = new bool[m_nWidth * m_nHeight];
 }
 
 
@@ -103,4 +105,97 @@ Node* Grid::GetNodeByPos(Vector2 v2Pos) {
 		return nullptr;
 
 	return m_pNodeList[x][y];
+}
+
+void Grid::SortOpenList() {
+	for (int i = 0; i < m_OpenList.size(); ++i) {
+		for (int j = 0; j < m_OpenList.size() - 1 - i; ++j) {
+			if (m_OpenList[j]->m_nGScore < m_OpenList[j + 1]->m_nGScore) {
+				Node* pSwap = m_OpenList[j];
+				m_OpenList[j] = m_OpenList[j + 1];
+				m_OpenList[j + 1] = pSwap;
+			}
+		}
+	}
+}
+
+bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) {
+	// Find start and end nodes
+	Node* pStartNode = GetNodeByPos(v2Start);
+	Node* pEndNode = GetNodeByPos(v2End);
+
+	if (!pStartNode || !pEndNode)
+		return false;
+
+	if (pStartNode == pEndNode)
+		return false;
+
+	// Initialisation
+	path.clear();
+	m_OpenList.clear();
+	memset(m_bClosedList, 0, sizeof(bool) * m_nWidth * m_nHeight);
+	bool bFoundPath = false;
+
+	pStartNode->m_pPrev = nullptr;
+	pStartNode->m_nGScore = 0;
+	m_OpenList.push_back(pStartNode);
+
+	// Algorithm
+	while (m_OpenList.size() > 0) {
+		// Sort the open list
+		SortOpenList();
+		
+		// Get lowest cost node off the open list
+		Node* pCurrent = m_OpenList[m_OpenList.size() - 1];
+		m_OpenList.pop_back();
+
+		// Add to closed list
+		int nIndex = pCurrent->m_nIndexY * m_nWidth + pCurrent->m_nIndexX;
+		m_bClosedList[nIndex] = true;
+
+		// Check for completed path
+		if (pCurrent == pEndNode) {
+			bFoundPath = true;
+			break;
+		}
+
+		for (int i = 0; i < NEIGHBOUR_COUNT; ++i) {
+			Node* pNeighbour = pCurrent->m_apNeighbours[i];
+
+			if (!pNeighbour)
+				continue;
+
+			if (pNeighbour->m_bBlocked)
+				continue;
+
+			int nNeighbourIndex = pNeighbour->m_nIndexY * m_nWidth + pNeighbour->m_nIndexX;
+			if (m_bClosedList[nNeighbourIndex])
+				continue;
+
+			if (std::find(m_OpenList.begin(), m_OpenList.end(), pNeighbour) == m_OpenList.end()) {
+				// Not in open list
+				pNeighbour->m_pPrev = pCurrent;
+				pNeighbour->m_nGScore = pCurrent->m_nGScore + pCurrent->m_anCosts[i];
+				m_OpenList.push_back(pNeighbour);
+			}
+			else {
+				// Is in open list, check if better path
+				int nCost = pCurrent->m_nGScore + pCurrent->m_anCosts[i];
+				if (nCost < pNeighbour->m_nGScore) {
+					pNeighbour->m_nGScore = nCost;
+					pNeighbour->m_pPrev = pCurrent;
+				}
+			}
+		}
+	}
+
+	if (bFoundPath) {
+		Node* pCurrent = pEndNode;
+		while (pCurrent) {
+			path.insert(path.begin(), pCurrent->m_v2Position);
+			pCurrent = pCurrent->m_pPrev;
+		}
+		return true;
+	}
+	return false;
 }

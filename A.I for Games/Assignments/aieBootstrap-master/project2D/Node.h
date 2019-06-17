@@ -13,7 +13,7 @@ struct Node
 	int m_nIndexY;
 
 	Node* m_pPrev;
-	int m_nScore;
+	int m_nGScore;
 	Node* m_apNeighbours[NEIGHBOUR_COUNT];
 	int m_anCosts[NEIGHBOUR_COUNT];
 
