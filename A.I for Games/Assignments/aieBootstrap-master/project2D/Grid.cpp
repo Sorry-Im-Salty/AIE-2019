@@ -107,17 +107,17 @@ Node* Grid::GetNodeByPos(Vector2 v2Pos) {
 	return m_pNodeList[x][y];
 }
 
-void Grid::SortOpenList() {
-	for (int i = 0; i < m_OpenList.size() - 1; ++i) {
-		for (int j = 0; j < m_OpenList.size() - 1 - i; ++j) {
-			if (m_OpenList[j]->m_nGScore < m_OpenList[j + 1]->m_nGScore) {
-				Node* pSwap = m_OpenList[j];
-				m_OpenList[j] = m_OpenList[j + 1];
-				m_OpenList[j + 1] = pSwap;
-			}
-		}
-	}
-}
+//void Grid::SortOpenList() {
+//	for (int i = 0; i < m_OpenList.size() - 1; ++i) {
+//		for (int j = 0; j < m_OpenList.size() - 1 - i; ++j) {
+//			if (m_OpenList[j]->m_nGScore < m_OpenList[j + 1]->m_nGScore) {
+//				Node* pSwap = m_OpenList[j];
+//				m_OpenList[j] = m_OpenList[j + 1];
+//				m_OpenList[j + 1] = pSwap;
+//			}
+//		}
+//	}
+//}
 
 bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) {
 	// Find start and end nodes
@@ -130,24 +130,26 @@ bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) 
 	if (pStartNode == pEndNode)
 		return false;
 
+	if (pStartNode->m_bBlocked || pEndNode->m_bBlocked)
+		return false;
+
 	// Initialisation
 	path.clear();
-	m_OpenList.clear();
+	m_OpenList.Clear();
 	memset(m_bClosedList, 0, sizeof(bool) * m_nWidth * m_nHeight);
 	bool bFoundPath = false;
 
 	pStartNode->m_pPrev = nullptr;
 	pStartNode->m_nGScore = 0;
-	m_OpenList.push_back(pStartNode);
+	m_OpenList.Push(pStartNode);
 
 	// Algorithm
-	while (m_OpenList.size() > 0) {
+	while (m_OpenList.GetCount() > 0) {
 		// Sort the open list
-		SortOpenList();
+		//SortOpenList();
 		
 		// Get lowest cost node off the open list
-		Node* pCurrent = m_OpenList[m_OpenList.size() - 1];
-		m_OpenList.pop_back();
+		Node* pCurrent = m_OpenList.Pop();
 
 		// Add to closed list
 		int nIndex = pCurrent->m_nIndexY * m_nWidth + pCurrent->m_nIndexX;
@@ -172,11 +174,11 @@ bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) 
 			if (m_bClosedList[nNeighbourIndex])
 				continue;
 
-			if (std::find(m_OpenList.begin(), m_OpenList.end(), pNeighbour) == m_OpenList.end()) {
+			if (!m_OpenList.Find(pNeighbour)) {
 				// Not in open list
 				pNeighbour->m_pPrev = pCurrent;
 				pNeighbour->m_nGScore = pCurrent->m_nGScore + pCurrent->m_anCosts[i];
-				m_OpenList.push_back(pNeighbour);
+				m_OpenList.Push(pNeighbour);
 			}
 			else {
 				// Is in open list, check if better path

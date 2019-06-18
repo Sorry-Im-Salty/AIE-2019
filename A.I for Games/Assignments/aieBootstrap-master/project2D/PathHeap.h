@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include <algorithm>
+
 struct Node;
 
 class PathHeap {
@@ -10,6 +12,9 @@ public:
 	void Push(Node* pNode);
 	Node* Pop();
 	int GetCount();
+	void Clear();
+
+	bool Find(Node* pNode);
 
 private:
 	int GetParent(int nIndex);
