@@ -19,6 +19,7 @@ public:
 
 	void setScaled(float x, float y, float z);
 	void scale(float x, float y, float z);
+	void translate(float x, float y);
 
 	Matrix3 operator * (const Matrix3& other) const;
 	Vector3 operator * (const Vector3& v) const;

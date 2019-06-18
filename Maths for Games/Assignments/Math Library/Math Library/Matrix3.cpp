@@ -62,6 +62,9 @@ void Matrix3::scale(float x, float y, float z) {
 
 	*this = *this * m;
 }
+void Matrix3::translate(float x, float y) {
+	
+}
 
 // Matrix * Matrix
 Matrix3 Matrix3::operator * (const Matrix3& other) const {
