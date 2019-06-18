@@ -14,7 +14,7 @@ void PathHeap::Push(Node* pNode) {
 	int nCurrent = m_Heap.size() - 1;
 	int nParent = GetParent(nCurrent);
 
-	while (m_Heap[nCurrent]->m_nGScore < m_Heap[nParent]->m_nGScore) {
+	while (m_Heap[nCurrent]->m_nFScore < m_Heap[nParent]->m_nFScore) {
 		Node* pSwap = m_Heap[nCurrent];
 		m_Heap[nCurrent] = m_Heap[nParent];
 		m_Heap[nParent] = pSwap;
@@ -40,10 +40,10 @@ Node* PathHeap::Pop() {
 	if (nCheapestIndex >= m_Heap.size())
 		return pNode;
 
-	if (nChild2Index < m_Heap.size() && m_Heap[nChild2Index]->m_nGScore < m_Heap[nCheapestIndex]->m_nGScore)
+	if (nChild2Index < m_Heap.size() && m_Heap[nChild2Index]->m_nFScore < m_Heap[nCheapestIndex]->m_nFScore)
 		nCheapestIndex = nChild2Index;
 
-	while (m_Heap[nCheapestIndex]->m_nGScore < m_Heap[nCurrent]->m_nGScore) {
+	while (m_Heap[nCheapestIndex]->m_nFScore < m_Heap[nCurrent]->m_nFScore) {
 		Node* pSwap = m_Heap[nCheapestIndex];
 		m_Heap[nCheapestIndex] = m_Heap[nCurrent];
 		m_Heap[nCurrent] = pSwap;
@@ -56,7 +56,7 @@ Node* PathHeap::Pop() {
 		if (nCheapestIndex >= m_Heap.size())
 			return pNode;
 
-		if (nChild2Index < m_Heap.size() && m_Heap[nChild2Index]->m_nGScore < m_Heap[nCheapestIndex]->m_nGScore)
+		if (nChild2Index < m_Heap.size() && m_Heap[nChild2Index]->m_nFScore < m_Heap[nCheapestIndex]->m_nFScore)
 			nCheapestIndex = nChild2Index;
 	}
 	return pNode;

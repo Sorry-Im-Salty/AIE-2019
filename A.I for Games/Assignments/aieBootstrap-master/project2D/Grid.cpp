@@ -1,5 +1,6 @@
 #include "Grid.h"
 #include "Node.h"
+#include <cmath>
 
 #define SQUARE_SIZE 50.0f
 #define GRID_POSX 200
@@ -28,9 +29,9 @@ Grid::Grid(int nWidth, int nHeight)
 	}
 
 	// Connect the nodes to their neighbours
-	// | |2| |
+	// |7|2|6|
 	// |1|C|3|
-	// | |0| |
+	// |4|0|5|
 	for (int x = 0; x < m_nWidth; ++x) {
 		for (int y = 0; y < m_nHeight; ++y) {
 			if (y > 0) 
@@ -45,10 +46,26 @@ Grid::Grid(int nWidth, int nHeight)
 			if (x < m_nWidth - 1)
 				m_pNodeList[x][y]->m_apNeighbours[3] = m_pNodeList[x + 1][y];
 
+			if (y > 0 && x > 0)
+				m_pNodeList[x][y]->m_apNeighbours[4] = m_pNodeList[x - 1][y - 1];
+
+			if (y > 0 && x < m_nWidth - 1)
+				m_pNodeList[x][y]->m_apNeighbours[5] = m_pNodeList[x + 1][y - 1];
+
+			if (y < m_nHeight - 1 && x < m_nWidth - 1)
+				m_pNodeList[x][y]->m_apNeighbours[6] = m_pNodeList[x + 1][y + 1];
+
+			if (y < m_nHeight - 1 && x > 0)
+				m_pNodeList[x][y]->m_apNeighbours[7] = m_pNodeList[x - 1][y + 1];
+
 			m_pNodeList[x][y]->m_anCosts[0] = 10;
 			m_pNodeList[x][y]->m_anCosts[1] = 10;
 			m_pNodeList[x][y]->m_anCosts[2] = 10;
 			m_pNodeList[x][y]->m_anCosts[3] = 10;
+			m_pNodeList[x][y]->m_anCosts[4] = 14;
+			m_pNodeList[x][y]->m_anCosts[5] = 14;
+			m_pNodeList[x][y]->m_anCosts[6] = 14;
+			m_pNodeList[x][y]->m_anCosts[7] = 14;
 		}
 	}
 
@@ -121,6 +138,7 @@ Node* Grid::GetNodeByPos(Vector2 v2Pos) {
 
 bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) {
 	// Find start and end nodes
+	path.clear();
 	Node* pStartNode = GetNodeByPos(v2Start);
 	Node* pEndNode = GetNodeByPos(v2End);
 
@@ -134,13 +152,15 @@ bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) 
 		return false;
 
 	// Initialisation
-	path.clear();
 	m_OpenList.Clear();
 	memset(m_bClosedList, 0, sizeof(bool) * m_nWidth * m_nHeight);
 	bool bFoundPath = false;
 
 	pStartNode->m_pPrev = nullptr;
 	pStartNode->m_nGScore = 0;
+	pStartNode->m_nHScore = CalculateHeuristic(pStartNode, pEndNode);
+	pStartNode->m_nFScore = pStartNode->m_nGScore + pStartNode->m_nHScore;
+
 	m_OpenList.Push(pStartNode);
 
 	// Algorithm
@@ -178,6 +198,8 @@ bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) 
 				// Not in open list
 				pNeighbour->m_pPrev = pCurrent;
 				pNeighbour->m_nGScore = pCurrent->m_nGScore + pCurrent->m_anCosts[i];
+				pNeighbour->m_nHScore = CalculateHeuristic(pNeighbour, pEndNode);
+				pNeighbour->m_nFScore = pNeighbour->m_nGScore + pNeighbour->m_nHScore;
 				m_OpenList.Push(pNeighbour);
 			}
 			else {
@@ -185,6 +207,7 @@ bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) 
 				int nCost = pCurrent->m_nGScore + pCurrent->m_anCosts[i];
 				if (nCost < pNeighbour->m_nGScore) {
 					pNeighbour->m_nGScore = nCost;
+					pNeighbour->m_nFScore = pNeighbour->m_nGScore + pNeighbour->m_nHScore;
 					pNeighbour->m_pPrev = pCurrent;
 				}
 			}
@@ -200,4 +223,14 @@ bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) 
 		return true;
 	}
 	return false;
+}
+
+int Grid::CalculateHeuristic(Node* pNode, Node* pEnd) {
+	int distX = abs(pNode->m_nIndexX - pEnd->m_nIndexX);
+	int distY = abs(pNode->m_nIndexY - pEnd->m_nIndexY);
+
+	if (distX > distY)
+		return (14 * distY) + 10 * (distX - distY);
+	else
+		return (14 * distX) + 10 * (distY - distX);
 }

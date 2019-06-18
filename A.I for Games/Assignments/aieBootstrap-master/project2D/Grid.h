@@ -1,8 +1,8 @@
 #pragma once
 #include "Renderer2D.h"
-#include "Vector2.h"
 #include "PathHeap.h"
 #include <vector>
+#include "Vector2.h"
 
 struct Node;
 
@@ -16,7 +16,8 @@ public:
 
 	Node* GetNodeByPos(Vector2 v2Pos);
 	bool FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path);
-	//void SortOpenList();
+	
+	int CalculateHeuristic(Node* pNode, Node* pEnd);
 
 private:
 	Node*** m_pNodeList;
