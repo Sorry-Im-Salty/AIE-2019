@@ -48,6 +48,21 @@ void Matrix3::setRotateZ(float a) {
 	data[1][1] = cos(a);
 }
 
+// Set Scaled
+void Matrix3::setScaled(float x, float y, float z) {
+	xAxis = { x, 0, 0 };
+	yAxis = { 0, y, 0 };
+	zAxis = { 0, 0, z };
+}
+
+// Scale
+void Matrix3::scale(float x, float y, float z) {
+	Matrix3 m;
+	m.setScaled(x, y, z);
+
+	*this = *this * m;
+}
+
 // Matrix * Matrix
 Matrix3 Matrix3::operator * (const Matrix3& other) const {
 	Matrix3 result;
@@ -73,3 +88,8 @@ Vector3 Matrix3::operator * (const Vector3& v) const {
 	}
 	return result;
 }
+
+// static const identity matrix
+const Matrix3 Matrix3::identity = Matrix3(	1, 0, 0,
+											0, 1, 0,
+											0, 0, 1);

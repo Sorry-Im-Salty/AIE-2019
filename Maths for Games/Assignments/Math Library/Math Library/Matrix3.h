@@ -17,6 +17,9 @@ public:
 	void setRotateY(float y);
 	void setRotateZ(float z);
 
+	void setScaled(float x, float y, float z);
+	void scale(float x, float y, float z);
+
 	Matrix3 operator * (const Matrix3& other) const;
 	Vector3 operator * (const Vector3& v) const;
 
@@ -29,5 +32,5 @@ public:
 		Vector3 axis[3];
 		float data[3][3];
 	};
-
+	static const Matrix3 identity;
 };
