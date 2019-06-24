@@ -21,7 +21,8 @@ bool Application2D::startup() {
 
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 	
-	m_pGrid = new Grid(50, 50);
+	m_pGrid = new Grid(25, 12);
+	m_pAI = new AI(m_pGrid);
 
 	m_timer = 0;
 
@@ -35,6 +36,7 @@ void Application2D::shutdown() {
 	delete m_shipTexture;
 	delete m_2dRenderer;
 	delete m_pGrid;
+	delete m_pAI;
 }
 
 void Application2D::update(float deltaTime) {
@@ -43,31 +45,7 @@ void Application2D::update(float deltaTime) {
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
-	Vector2 v2MousePos;
-	v2MousePos.x = input->getMouseX();
-	v2MousePos.y = input->getMouseY();
-
-	// Pathfinding
-	if (input->isMouseButtonDown(0)) {
-		Node* pMouseMode = m_pGrid->GetNodeByPos(v2MousePos);
-		if (pMouseMode)
-			pMouseMode->m_bBlocked = true;
-	}
-
-	if (input->isMouseButtonDown(1)) {
-		Node* pMouseMode = m_pGrid->GetNodeByPos(v2MousePos);
-		if (pMouseMode)
-			pMouseMode->m_bBlocked = false;
-	}
-
-	if (input->wasKeyPressed(aie::INPUT_KEY_S)) {
-		m_v2StartPos = v2MousePos;
-	}
-	if (input->wasKeyPressed(aie::INPUT_KEY_E)) {
-		m_v2EndPos = v2MousePos;
-	}
-
-	m_pGrid->FindPath(m_v2StartPos, m_v2EndPos, m_Path);
+	m_pAI->Update(deltaTime);
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
@@ -83,18 +61,12 @@ void Application2D::draw() {
 	m_2dRenderer->begin();
 	
 	m_pGrid->Draw(m_2dRenderer);
-
-	m_2dRenderer->setRenderColour(0.0f, 1.0f, 1.0f);
-	m_2dRenderer->drawCircle(m_v2StartPos.x, m_v2StartPos.y, 10.0f);
-	m_2dRenderer->drawCircle(m_v2EndPos.x, m_v2EndPos.y, 10.0f);
-	for (int i = 1; i < m_Path.size(); ++i) {
-		m_2dRenderer->drawLine(m_Path[i - 1].x, m_Path[i - 1].y, m_Path[i].x, m_Path[i].y, 5.0f);
-	}
-	m_2dRenderer->setRenderColour(1.0f, 1.0f, 1.0f);
+	m_pAI->Draw(m_2dRenderer);
 
 	// output some text, uses the last used colour
 	char fps[32];
 	sprintf_s(fps, 32, "FPS: %i", getFPS());
+	m_2dRenderer->setRenderColour(0.0f, 0.0f, 1.0f);
 	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
 	m_2dRenderer->drawText(m_font, "Press ESC to quit!", 0, 720 - 64);
 

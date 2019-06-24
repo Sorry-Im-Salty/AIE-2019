@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include "Grid.h"
+#include "AI.h"
 #include "Vector2.h"
 #include <vector>
 
@@ -25,9 +26,7 @@ protected:
 	aie::Texture*		m_shipTexture;
 	aie::Font*			m_font;
 	Grid*				m_pGrid;
-	Vector2				m_v2StartPos;
-	Vector2				m_v2EndPos;
-	std::vector<Vector2> m_Path;
+	AI*					m_pAI;
 
 	float m_timer;
 };

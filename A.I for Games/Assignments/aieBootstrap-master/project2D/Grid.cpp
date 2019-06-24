@@ -3,8 +3,8 @@
 #include <cmath>
 
 #define SQUARE_SIZE 50.0f
-#define GRID_POSX 200
-#define GRID_POSY 200
+#define GRID_POSX 45
+#define GRID_POSY 35
 
 Grid::Grid(int nWidth, int nHeight)
 {
@@ -103,13 +103,13 @@ void Grid::Draw(aie::Renderer2D* pRenderer) {
 
 			pRenderer->drawBox(v2Pos.x, v2Pos.y, SQUARE_SIZE - 5.0f, SQUARE_SIZE - 5.0f);
 
-			for (int n = 0; n < NEIGHBOUR_COUNT; ++n) {
+			/*for (int n = 0; n < NEIGHBOUR_COUNT; ++n) {
 				if (m_pNodeList[x][y]->m_apNeighbours[n]) {
 					Vector2 v2NeighbourPos = m_pNodeList[x][y]->m_apNeighbours[n]->m_v2Position;
 					pRenderer->setRenderColour(1.0f, 0.0f, 0.0f);
 					pRenderer->drawLine(v2Pos.x, v2Pos.y, v2NeighbourPos.x, v2NeighbourPos.y);
 				}
-			}
+			}*/
 		}
 	}
 }
@@ -204,9 +204,9 @@ bool Grid::FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path) 
 			}
 			else {
 				// Is in open list, check if better path
-				int nCost = pCurrent->m_nGScore + pCurrent->m_anCosts[i];
-				if (nCost < pNeighbour->m_nGScore) {
-					pNeighbour->m_nGScore = nCost;
+				int nCost = pCurrent->m_nFScore + pCurrent->m_anCosts[i];
+				if (nCost < pNeighbour->m_nFScore) {
+					pNeighbour->m_nGScore = pCurrent->m_nGScore + pCurrent->m_anCosts[i];
 					pNeighbour->m_nFScore = pNeighbour->m_nGScore + pNeighbour->m_nHScore;
 					pNeighbour->m_pPrev = pCurrent;
 				}
