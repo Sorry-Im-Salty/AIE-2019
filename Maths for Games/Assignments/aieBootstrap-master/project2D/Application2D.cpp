@@ -16,8 +16,8 @@ bool Application2D::startup() {
 	m_2dRenderer = new aie::Renderer2D();
 	m_font = new aie::Font("./font/consolas.ttf", 32);
 
-	m_tank.Load("./textures/tankBlue.png");
-	m_turret.Load("./textures/barrelBlue.png");
+	m_tank.Load("./textures/tank.png");
+	m_turret.Load("./textures/gunTurret.png");
 	
 	m_tank.addChild(&m_turret);
 
@@ -34,10 +34,28 @@ void Application2D::shutdown() {
 
 void Application2D::update(float deltaTime) {
 
+	m_tank.update(deltaTime);
 	m_timer += deltaTime;
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
+
+
+	// Rotate left and right
+	if (input->isKeyDown(aie::INPUT_KEY_A))
+		m_tank.rotate(deltaTime);
+	if (input->isKeyDown(aie::INPUT_KEY_D))
+		m_tank.rotate(-deltaTime);
+
+	// Movement
+	if (input->isKeyDown(aie::INPUT_KEY_W)) {
+		auto facing = m_tank.getLocalTransform()[1] * deltaTime * 100;
+		m_tank.translate(facing.x, facing.y);
+	}
+	if (input->isKeyDown(aie::INPUT_KEY_S)) {
+		auto facing = m_tank.getLocalTransform()[1] * deltaTime * -100;
+		m_tank.translate(facing.x, facing.y);
+	}
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
@@ -53,7 +71,7 @@ void Application2D::draw() {
 	m_2dRenderer->begin();
 
 	// Draw tank
-	m_tank.Draw(m_2dRenderer);
+	m_tank.draw(m_2dRenderer);
 	
 	// output some text, uses the last used colour
 	char fps[32];

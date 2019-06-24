@@ -23,6 +23,6 @@ bool SpriteObject::Load(const char* filename) {
 	return m_texture != nullptr;
 }
 
-void SpriteObject::Draw(aie::Renderer2D* renderer) {
+void SpriteObject::onDraw(aie::Renderer2D* renderer) {
 	renderer->drawSpriteTransformed3x3(m_texture, (float*)&m_globalTransform);
 }

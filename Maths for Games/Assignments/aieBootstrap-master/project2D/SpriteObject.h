@@ -8,8 +8,7 @@ public:
 	virtual ~SpriteObject();
 
 	bool Load(const char* filename);
-	virtual void Draw(aie::Renderer2D* renderer);
-
+	virtual void onDraw(aie::Renderer2D* renderer);
 
 protected:
 	aie::Texture* m_texture = nullptr;

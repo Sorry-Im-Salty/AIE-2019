@@ -3,6 +3,7 @@
 #include "Application.h"
 #include "Renderer2D.h"
 #include "SpriteObject.h"
+#include "SceneObject.h"
 
 class Application2D : public aie::Application {
 public:
@@ -21,8 +22,8 @@ protected:
 	aie::Renderer2D*	m_2dRenderer	=	nullptr;
 	aie::Font*			m_font			=	nullptr;
 
-	SpriteObject		m_tank			=	nullptr;
-	SpriteObject		m_turret		=	nullptr;
+	SpriteObject		m_tank			;
+	SpriteObject		m_turret		;
 
 	float				m_timer			=	0;
 };
