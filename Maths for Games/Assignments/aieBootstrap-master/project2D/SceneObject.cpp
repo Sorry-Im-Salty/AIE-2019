@@ -95,16 +95,25 @@ void SceneObject::setScale(float width, float height) {
 }
 
 void SceneObject::translate(float x, float y) {
-	m_localTransform.translate(x, y);
+	Matrix3 transMatrix;
+	transMatrix.translate(x, y);
+
+	m_localTransform = m_localTransform * transMatrix;
 	updateTransform();
 }
 
 void SceneObject::rotate(float radians) {
-	m_localTransform.setRotateZ(radians);
+	Matrix3 rotMatrix;
+	rotMatrix.setRotateZ(radians);
+
+	m_localTransform = m_localTransform * rotMatrix;
 	updateTransform();
 }
 
 void SceneObject::scale(float width, float height) {
-	m_localTransform.scale(width, height, 1);
+	Matrix3 scaleMatrix;
+	scaleMatrix.scale(width, height, 1);
+
+	m_localTransform = m_localTransform * scaleMatrix;
 	updateTransform();
 }
