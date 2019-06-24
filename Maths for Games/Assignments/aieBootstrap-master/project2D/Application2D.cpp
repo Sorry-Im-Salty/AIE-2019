@@ -18,9 +18,11 @@ bool Application2D::startup() {
 
 	m_tank.Load("./textures/tank.png");
 	m_turret.Load("./textures/gunTurret.png");
+	m_background.Load("./textures/background.png");
 	
 	m_tank.addChild(&m_turret);
 
+	m_background.setPosition(getWindowWidth() / 2.0f, getWindowHeight() / 2.0f);
 	m_tank.setPosition(getWindowWidth() / 2.0f, getWindowHeight() / 2.0f);
 
 	return true;
@@ -76,14 +78,11 @@ void Application2D::draw() {
 	// begin drawing sprites
 	m_2dRenderer->begin();
 
+	// Draw background
+	m_background.draw(m_2dRenderer);
+
 	// Draw tank
 	m_tank.draw(m_2dRenderer);
-	
-	// output some text, uses the last used colour
-	char fps[32];
-	sprintf_s(fps, 32, "FPS: %i", getFPS());
-	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
-	m_2dRenderer->drawText(m_font, "Press ESC to quit!", 0, 720 - 64);
 
 	// done drawing sprites
 	m_2dRenderer->end();
