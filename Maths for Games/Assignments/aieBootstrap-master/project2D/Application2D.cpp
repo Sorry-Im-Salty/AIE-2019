@@ -57,6 +57,12 @@ void Application2D::update(float deltaTime) {
 		m_tank.translate(facing.x, facing.y);
 	}
 
+	// Rotation of turret
+	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
+		m_turret.rotate(deltaTime);
+	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
+		m_turret.rotate(-deltaTime);
+
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
