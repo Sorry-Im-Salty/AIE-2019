@@ -63,6 +63,8 @@ void AI::Update(float deltaTime) {
 		direction.normalise();
 		m_v2Position = m_v2Position + direction * 100 * deltaTime;
 
+		m_fRotation = atan2f(direction.y, direction.x) - 1.5700f;
+
 		// Check if close to wall
 		if ((dest - m_v2Position).magnitude() < 10)
 			m_bRecalculate = true;
@@ -81,5 +83,5 @@ void AI::Draw(aie::Renderer2D* renderer) {
 	//}
 	renderer->setRenderColour(1.0f, 1.0f, 1.0f);
 
-	renderer->drawSprite(m_texture, m_v2Position.x, m_v2Position.y);
+	renderer->drawSprite(m_texture, m_v2Position.x, m_v2Position.y, 0.0f, 0.0f, m_fRotation);
 }

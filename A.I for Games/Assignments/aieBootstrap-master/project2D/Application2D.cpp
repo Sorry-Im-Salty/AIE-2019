@@ -25,6 +25,7 @@ bool Application2D::startup() {
 	m_pAI = new AI(m_pGrid);
 
 	m_timer = 0;
+	setVSync(false);
 
 	return true;
 }

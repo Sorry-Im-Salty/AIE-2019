@@ -17,6 +17,8 @@ public:
 
 private:
 	Vector2 m_v2Position;
+	float m_fRotation;
+
 	aie::Texture* m_texture;
 
 	Vector2 m_v2StartPos;
