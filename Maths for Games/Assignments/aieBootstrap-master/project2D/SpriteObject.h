@@ -7,7 +7,8 @@ public:
 	SpriteObject(const char* filename);
 	virtual ~SpriteObject();
 
-	bool load(const char* filename);
+	bool Load(const char* filename);
+	virtual void Draw(aie::Renderer2D* renderer);
 
 
 protected:

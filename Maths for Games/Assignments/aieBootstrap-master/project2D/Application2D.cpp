@@ -14,20 +14,21 @@ Application2D::~Application2D() {
 bool Application2D::startup() {
 	
 	m_2dRenderer = new aie::Renderer2D();
-
-	m_texture = new aie::Texture("./textures/numbered_grid.tga");
-	m_shipTexture = new aie::Texture("./textures/ship.png");
-
 	m_font = new aie::Font("./font/consolas.ttf", 32);
+
+	m_tank.Load("./textures/tankBlue.png");
+	m_turret.Load("./textures/barrelBlue.png");
 	
+	m_tank.addChild(&m_turret);
+
+	m_tank.setPosition(getWindowWidth() / 2.0f, getWindowHeight() / 2.0f);
+
 	return true;
 }
 
 void Application2D::shutdown() {
 	
 	delete m_font;
-	delete m_texture;
-	delete m_shipTexture;
 	delete m_2dRenderer;
 }
 
@@ -51,6 +52,8 @@ void Application2D::draw() {
 	// begin drawing sprites
 	m_2dRenderer->begin();
 
+	// Draw tank
+	m_tank.Draw(m_2dRenderer);
 	
 	// output some text, uses the last used colour
 	char fps[32];
