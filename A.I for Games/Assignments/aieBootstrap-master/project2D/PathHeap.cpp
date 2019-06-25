@@ -11,8 +11,8 @@ PathHeap::~PathHeap() {
 void PathHeap::Push(Node* pNode) {
 	m_Heap.push_back(pNode);
 
-	int nCurrent = m_Heap.size() - 1;
-	int nParent = GetParent(nCurrent);
+	int nCurrent = (int)m_Heap.size() - 1;
+	int nParent = (int)GetParent(nCurrent);
 
 	while (m_Heap[nCurrent]->m_nFScore < m_Heap[nParent]->m_nFScore) {
 		Node* pSwap = m_Heap[nCurrent];
@@ -27,7 +27,7 @@ void PathHeap::Push(Node* pNode) {
 Node* PathHeap::Pop() {
 	Node* pNode = m_Heap[0];
 
-	int nLast = m_Heap.size() - 1;
+	int nLast = (int)m_Heap.size() - 1;
 
 	int nCurrent = 0;
 	m_Heap[nCurrent] = m_Heap[nLast];
@@ -71,7 +71,7 @@ int PathHeap::GetChild(int nIndex, int nChild) {
 }
 
 int PathHeap::GetCount() {
-	return m_Heap.size();
+	return (int)m_Heap.size();
 }
 
 void PathHeap::Clear() {

@@ -41,8 +41,8 @@ void AI::Update(float deltaTime) {
 
 	// Move AI
 	Vector2 v2MousePos;
-	v2MousePos.x = input->getMouseX();
-	v2MousePos.y = input->getMouseY();
+	v2MousePos.x = (float)input->getMouseX();
+	v2MousePos.y = (float)input->getMouseY();
 
 	// Pathfinding
 	if (input->isMouseButtonDown(0)) {
@@ -87,7 +87,7 @@ void AI::Update(float deltaTime) {
 			m_bRecalculate = true;
 	}
 	else
-		m_v2EndPos = Vector2(rand() % 1000, rand() % 500);
+		m_v2EndPos = Vector2((float)(rand() % 1000), (float)(rand() % 500));
 }
 
 void AI::Draw(aie::Renderer2D* renderer) {
@@ -106,8 +106,8 @@ void AI::Draw(aie::Renderer2D* renderer) {
 void AI::Wander(float deltaTime) {
 	aie::Input* input = aie::Input::getInstance();
 	Vector2 v2MousePos;
-	v2MousePos.x = input->getMouseX();
-	v2MousePos.y = input->getMouseY();
+	v2MousePos.x = (float)input->getMouseX();
+	v2MousePos.y = (float)input->getMouseY();
 
 	// Calculate new destination if completed path
 	if (m_Path.size() <= 1)
@@ -144,8 +144,8 @@ void AI::Chase(float deltaTime) {
 void AI::Flee(float deltaTime) {
 	aie::Input* input = aie::Input::getInstance();
 	Vector2 v2MousePos;
-	v2MousePos.x = input->getMouseX();
-	v2MousePos.y = input->getMouseY();
+	v2MousePos.x = (float)input->getMouseX();
+	v2MousePos.y = (float)input->getMouseY();
 
 	Vector2 vDir = m_v2Position - v2MousePos;
 	vDir.normalise();
