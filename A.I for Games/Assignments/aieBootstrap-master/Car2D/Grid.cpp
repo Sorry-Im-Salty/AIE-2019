@@ -102,14 +102,6 @@ void Grid::Draw(aie::Renderer2D* pRenderer) {
 				pRenderer->setRenderColour(0.0f, 0.0f, 1.0f, 1.0f);
 
 			pRenderer->drawBox(v2Pos.x, v2Pos.y, SQUARE_SIZE - 5.0f, SQUARE_SIZE - 5.0f);
-
-			/*for (int n = 0; n < NEIGHBOUR_COUNT; ++n) {
-				if (m_pNodeList[x][y]->m_apNeighbours[n]) {
-					Vector2 v2NeighbourPos = m_pNodeList[x][y]->m_apNeighbours[n]->m_v2Position;
-					pRenderer->setRenderColour(1.0f, 0.0f, 0.0f);
-					pRenderer->drawLine(v2Pos.x, v2Pos.y, v2NeighbourPos.x, v2NeighbourPos.y);
-				}
-			}*/
 		}
 	}
 }
