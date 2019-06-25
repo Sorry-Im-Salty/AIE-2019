@@ -115,13 +115,25 @@ void Grid::Draw(aie::Renderer2D* pRenderer) {
 }
 
 Node* Grid::GetNodeByPos(Vector2 v2Pos) {
+	Node* pNode = nullptr;
 	int x = (int(v2Pos.x - GRID_POSX + (SQUARE_SIZE * 0.5f)) / SQUARE_SIZE);
 	int y = (int(v2Pos.y - GRID_POSY + (SQUARE_SIZE * 0.5f)) / SQUARE_SIZE);
 
-	if (x < 0 || y < 0 || x >= m_nWidth || y >= m_nHeight)
-		return nullptr;
+	if (x < 0)
+		x = 0;
 
-	return m_pNodeList[x][y];
+	if (y < 0)
+		y = 0;
+
+	if (x > m_nWidth - 1)
+		x = m_nWidth - 1;
+
+	if (y > m_nHeight - 1)
+		y = m_nHeight - 1;
+	
+	pNode = m_pNodeList[x][y];
+
+	return pNode;
 }
 
 //void Grid::SortOpenList() {

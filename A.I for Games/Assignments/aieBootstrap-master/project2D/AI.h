@@ -7,6 +7,14 @@
 #include "Input.h"
 #include "Texture.h"
 
+enum EAIState {
+	EAISTATE_WANDER,
+	EAISTATE_CHASE,
+	EAISTATE_FLEE
+};
+
+class Grid;
+
 class AI {
 public:
 	AI(Grid* pGrid);
@@ -16,6 +24,10 @@ public:
 	void Draw(aie::Renderer2D* renderer);
 
 private:
+	void Wander(float deltaTime);
+	void Chase(float deltaTime);
+	void Flee(float deltaTime);
+
 	Vector2 m_v2Position;
 	float m_fRotation;
 
@@ -27,5 +39,7 @@ private:
 
 	Grid* m_pGrid;
 	bool m_bRecalculate = true;
+
+	EAIState m_eCurrentState;
 };
 
