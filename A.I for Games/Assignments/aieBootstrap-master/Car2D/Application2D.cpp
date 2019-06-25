@@ -16,7 +16,6 @@ bool Application2D::startup() {
 	
 	m_2dRenderer = new aie::Renderer2D();
 
-	m_texture = new aie::Texture("./textures/numbered_grid.tga");
 	m_shipTexture = new aie::Texture("./textures/ship.png");
 
 	m_font = new aie::Font("./font/consolas.ttf", 32);
@@ -31,13 +30,11 @@ bool Application2D::startup() {
 }
 
 void Application2D::shutdown() {
-	
+	delete m_pAI;
+	delete m_pGrid;
 	delete m_font;
-	delete m_texture;
 	delete m_shipTexture;
 	delete m_2dRenderer;
-	delete m_pGrid;
-	delete m_pAI;
 }
 
 void Application2D::update(float deltaTime) {
