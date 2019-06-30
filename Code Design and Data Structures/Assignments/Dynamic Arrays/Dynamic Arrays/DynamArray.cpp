@@ -66,6 +66,7 @@ int DynamArray<T>::size()
 
 template<class T>
 int DynamArray<T>::LinearSearch(DynamArray* pArray[], int n, int x) {
+	int i;
 	for (i = 0; i < n; ++i) {
 		if (pArray[i] == x) {
 			return i;
