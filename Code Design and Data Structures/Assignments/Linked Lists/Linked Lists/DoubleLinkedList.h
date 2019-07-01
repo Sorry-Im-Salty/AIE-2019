@@ -16,7 +16,8 @@ public:
 
 	void pushFront(int value); // add a new value to the front of the list
 	void pushBack(int value); // add a new value to the end of the list
-	void insert(struct Node* prev, int value); // add a new value one-past the specified iterator location
+	void insert(struct Node* prevNode, int value); // add a new value one-past the specified iterator location
+	void display(); // displays the list
 	int begin(); // return an iterator to the first element
 	int end(); // return an iterator to a null element
 	int first(); // return the first element by value, assert if no elements
@@ -27,7 +28,7 @@ public:
 	void remove(int value); // remove all elements with matching value
 	void popBack(); // remove the last element
 	void popFront(); // remove the first element
-	int empty(); // return a Boolean, true if the list is empty, false otherwise
+	bool empty(); // return a Boolean, true if the list is empty, false otherwise
 	void clear(); // remove all elements from the list
 
 private:

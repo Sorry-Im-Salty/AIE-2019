@@ -57,23 +57,32 @@ void DoubleLinkedList::insert(struct Node* prevNode, int value)
 	if (newNode->next != NULL)
 		newNode->next->prev = newNode;
 }
-
-int DoubleLinkedList::begin()
+void DoubleLinkedList::display()
 {
-
+	struct Node* ptr;
+	ptr = head;
+	while (ptr != NULL) {
+		std::cout << ptr->data << " " << std::endl;
+		ptr = ptr->next;
+	}
 }
-int DoubleLinkedList::end()
-{
 
-}
-int DoubleLinkedList::first()
-{
-
-}
-int DoubleLinkedList::last()
-{
-
-}
+//int DoubleLinkedList::begin()
+//{
+//
+//}
+//int DoubleLinkedList::end()
+//{
+//
+//}
+//int DoubleLinkedList::first()
+//{
+//
+//}
+//int DoubleLinkedList::last()
+//{
+//
+//}
 int DoubleLinkedList::count()
 {
 	return sizeof(struct Node);
@@ -122,9 +131,12 @@ void DoubleLinkedList::popFront()
 
 }
 
-int DoubleLinkedList::empty()
+bool DoubleLinkedList::empty()
 {
-
+	if (sizeof(struct Node) == 0)
+		return true;
+	else
+		return false;
 }
 
 void DoubleLinkedList::clear()
