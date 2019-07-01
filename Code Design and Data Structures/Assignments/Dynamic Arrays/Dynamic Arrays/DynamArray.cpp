@@ -1,19 +1,19 @@
 #include "DynamArray.h"
-template<class T>
-DynamArray<T>::DynamArray()
-{
-	pArray = new T[10];
-	for (int i = 0; i < 10; i++)
-		pArray[i] = 0;
-	nLength = 10;
-	nNextIndex = 0;
-}
+//template<class T>
+//DynamArray<T>::DynamArray()
+//{
+//	pArray = new T[10];
+//	for (int i = 0; i < 10; i++)
+//		pArray[i] = 0;
+//	nLength = 10;
+//	nNextIndex = 0;
+//}
 
-template<class T>
-DynamArray<T>::~DynamArray()
-{
-	delete[] pArray;
-}
+//template<class T>
+//DynamArray<T>::~DynamArray()
+//{
+//	delete[] pArray;
+//}
 
 template<class T>
 T& DynamArray<T>::operator[](int nIndex)
@@ -35,34 +35,34 @@ T& DynamArray<T>::operator[](int nIndex)
 	return *(pArray + nIndex);
 }
 
-template<class T>
-void DynamArray<T>::add(int nVal)
-{
-	T *pNewArray;
-	if (nNextIndex == nLength)
-	{
-		nLength = nLength + 10;
-		pNewArray = new T[nLength];
-		for (int i = 0; i < nNextIndex; i++)
-			pNewArray[i] = pArray[i];
-		for (int j = nNextIndex; j < nLength; j++)
-			pNewArray[j] = 0;
-		delete[] pArray;
-		pArray = pNewArray;
-	}
-	pArray[nNextIndex++] = nVal;
-}
+//template<class T>
+//void DynamArray<T>::add(int nVal)
+//{
+//	T *pNewArray;
+//	if (nNextIndex == nLength)
+//	{
+//		nLength = nLength + 10;
+//		pNewArray = new T[nLength];
+//		for (int i = 0; i < nNextIndex; i++)
+//			pNewArray[i] = pArray[i];
+//		for (int j = nNextIndex; j < nLength; j++)
+//			pNewArray[j] = 0;
+//		delete[] pArray;
+//		pArray = pNewArray;
+//	}
+//	pArray[nNextIndex++] = nVal;
+//}
 
-template<class T>
-void DynamArray<T>::remove(int nVal) {
-	pArray[nNextIndex--] = nVal;
-}
+//template<class T>
+//void DynamArray<T>::remove(int nVal) {
+//	pArray[nNextIndex--] = nVal;
+//}
 
-template<class T>
-int DynamArray<T>::size()
-{
-	return nLength;
-}
+//template<class T>
+//int DynamArray<T>::size()
+//{
+//	return nLength;
+//}
 
 template<class T>
 int DynamArray<T>::LinearSearch(DynamArray* pArray[], int n, int x) {
