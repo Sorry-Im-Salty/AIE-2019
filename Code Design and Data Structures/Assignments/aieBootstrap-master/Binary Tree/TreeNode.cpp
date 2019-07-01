@@ -1,4 +1,5 @@
 #include "TreeNode.h"
+#include <stdio.h>
 
 extern aie::Font* g_systemFont;
 
@@ -22,7 +23,10 @@ void TreeNode::draw(aie::Renderer2D* renderer, int x, int y, bool selected)
 
 TreeNode::TreeNode(int value)
 {
+	m_value = value;
 
+	m_left = nullptr;
+	m_right = nullptr;
 }
 
 TreeNode::~TreeNode()

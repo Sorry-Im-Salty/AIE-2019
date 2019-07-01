@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Renderer2D.h"
 
 class TreeNode
@@ -26,6 +25,6 @@ private:
 	int m_value;
 
 	TreeNode* m_left;
-	TreeNode*m_right;
+	TreeNode* m_right;
 
 };
