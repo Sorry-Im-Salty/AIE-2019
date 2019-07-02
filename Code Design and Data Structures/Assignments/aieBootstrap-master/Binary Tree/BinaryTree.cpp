@@ -90,15 +90,3 @@ bool BinaryTree::findNode(int a_nSearchValue, TreeNode** ppOutNode, TreeNode** p
 	*ppOutParent = nullptr;
 	return false;
 }
-
-void BinaryTree::remove(int a_nValue) {
-	// find the value in the tree, obtaining a pointer to the node and its parent
-	TreeNode* currNode = m_pRoot;
-	TreeNode* parentNode = nullptr;
-
-	if (currNode->hasRight() == true) {
-		currNode = currNode->getRight();
-		while ()
-	}
-
-}

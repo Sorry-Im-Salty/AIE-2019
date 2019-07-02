@@ -2,6 +2,8 @@
 
 #include "Application.h"
 #include "Renderer2D.h"
+#include "BinaryTree.h"
+#include "TreeNode.h"
 
 class Binary_TreeApp : public aie::Application {
 public:
@@ -19,4 +21,6 @@ protected:
 
 	aie::Renderer2D*	m_2dRenderer;
 	aie::Font*			m_font;
+	BinaryTree			m_binaryTree;
+	TreeNode*			m_selectedNode;
 };

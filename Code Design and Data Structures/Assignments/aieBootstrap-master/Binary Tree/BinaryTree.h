@@ -9,8 +9,6 @@ public:
 
 	bool isEmpty() const;
 	void insert(int a_nValue);
-	void remove(int a_nValue);
-	TreeNode* find(int a_nValue);
 	void draw(aie::Renderer2D* renderer, TreeNode* selected = nullptr);
 
 private:
