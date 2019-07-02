@@ -18,6 +18,7 @@ bool Simon_SaysApp::startup() {
 
 	m_2dRenderer = new aie::Renderer2D();
 
+	
 	m_tArrowRight = new aie::Texture("./textures/arrow_right.png");
 	m_tArrowLeft = new aie::Texture("./textures/arrow_left.png");
 	m_tArrowUp = new aie::Texture("./textures/arrow_up.png");
@@ -33,6 +34,20 @@ bool Simon_SaysApp::startup() {
 	m_arrowUp = new Arrow(m_tArrowUp, 1280 / 2, 720 / 2, 200, 200, 1.6f);
 	m_arrowDown = new Arrow(m_tArrowDown, 1280 / 2, 720 / 2, 200, 200, 4.7f);
 
+	assert(m_tArrowRight != nullptr);
+	assert(m_tArrowLeft != nullptr);
+	assert(m_tArrowUp != nullptr);
+	assert(m_tArrowDown != nullptr);
+	assert(m_font != nullptr);
+	assert(m_fontBold != nullptr);
+	assert(m_playButton != nullptr);
+	assert(m_quitButton != nullptr);
+	assert(m_menu != nullptr);
+	assert(m_game != nullptr);
+	assert(m_arrowRight != nullptr);
+	assert(m_arrowLeft != nullptr);
+	assert(m_arrowUp != nullptr);
+	assert(m_arrowDown != nullptr);
 
 	m_score;
 	m_timer;
