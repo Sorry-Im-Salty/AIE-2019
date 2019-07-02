@@ -71,8 +71,11 @@ bool BinaryTree::findNode(int a_nSearchValue, TreeNode** ppOutNode, TreeNode** p
 	TreeNode* currNode = m_pRoot;
 	TreeNode* parentNode = nullptr;
 	while (currNode != nullptr) {
-		if (searchNode->getData() == currNode->getData())
-			return currNode, parentNode;
+		if (searchNode->getData() == currNode->getData()) {
+			*ppOutNode = currNode;
+			*ppOutParent = parentNode;
+			return true;
+		}
 		else
 			if (searchNode->getData() < currNode->getData()) {
 				parentNode = currNode;
@@ -83,6 +86,8 @@ bool BinaryTree::findNode(int a_nSearchValue, TreeNode** ppOutNode, TreeNode** p
 				currNode = currNode->getRight();
 			}
 	}
+	*ppOutNode = nullptr;
+	*ppOutParent = nullptr;
 	return false;
 }
 
@@ -92,6 +97,7 @@ void BinaryTree::remove(int a_nValue) {
 	TreeNode* parentNode = nullptr;
 
 	if (currNode->hasRight() == true) {
+		currNode = currNode->getRight();
 		while ()
 	}
 
