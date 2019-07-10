@@ -124,10 +124,49 @@ void DoubleLinkedList::remove(int value)
 }
 void DoubleLinkedList::popBack()
 {
+	struct Node* last = head;
+
+	if (head == NULL)
+		return;
+
+	while (last->next != NULL)
+		last = last->next;
+
+	if (head == last) {
+		deleteNode(head);
+		head = NULL;
+		last = NULL;
+	}
+
+	struct Node* current = head;
+	while (current->next != last)
+		current = current->next;
+
+	deleteNode(last);
+	last = current;
+	last->next = NULL;
 
 }
 void DoubleLinkedList::popFront()
 {
+	struct Node* last = head;
+
+	if (head == NULL)
+		return;
+
+	while (last->next != NULL)
+		last = last->next;
+
+	if (head == last) {
+		deleteNode(head);
+		head = NULL;
+		last = NULL;
+	}
+
+	struct Node* temp = head->next;
+
+	deleteNode(head);
+	head = temp;
 
 }
 
@@ -142,4 +181,13 @@ bool DoubleLinkedList::empty()
 void DoubleLinkedList::clear()
 {
 
+	struct Node* current = head;
+
+	while (head) {
+		current = head;
+		head = head->next;
+		deleteNode(current);
+	}
+
+	head = NULL;
 }
