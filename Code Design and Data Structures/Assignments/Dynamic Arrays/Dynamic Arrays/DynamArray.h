@@ -34,6 +34,18 @@ public:
 	}
 
 	void remove(int nVal) {
+		T* pNewArray;
+		if (nNextIndex == nLength)
+		{
+			nLength = nLength - 10;
+			pNewArray = new T[nLength];
+			for (int i = 0; i < nNextIndex; i++)
+				pNewArray[i] = pArray[i];
+			for (int j = nNextIndex; j < nLength; j++)
+				pNewArray[j] = 0;
+			delete[] pArray;
+			pArray = pNewArray;
+		}
 		pArray[nNextIndex--] = nVal;
 	}
 	
