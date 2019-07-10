@@ -1,9 +1,5 @@
 #include "HashFunction.h"
-
-namespace HashFunction {
-	
-	// implementation of a basic addition hash
-	unsigned int badHash(const char* data, unsigned int length) {
+	unsigned int HashFunction::badHash(const char* data, unsigned int length) {
 		unsigned int hash = 0;
 		
 		for (unsigned int i = 0; i < length; ++i)
@@ -12,7 +8,7 @@ namespace HashFunction {
 		return hash;
 	}
 
-	unsigned int RSHash(const char* data, unsigned int length) {
+	unsigned int HashFunction::RSHash(const char* data, unsigned int length) {
 		unsigned int b = 378551;
 		unsigned int a = 63689;
 		unsigned int hash = 0;
@@ -25,7 +21,7 @@ namespace HashFunction {
 		return hash;
 	}
 
-	unsigned int JSHash(const char* data, unsigned int length) {
+	unsigned int HashFunction::JSHash(const char* data, unsigned int length) {
 		unsigned int hash = 1315423911;
 		unsigned int i = 0;
 
@@ -34,4 +30,3 @@ namespace HashFunction {
 		}
 		return hash;
 	}
-}
