@@ -30,6 +30,11 @@ void Binary_TreeApp::shutdown() {
 void Binary_TreeApp::update(float deltaTime) {
 	aie::Input* input = aie::Input::getInstance();
 
+	static int value = 0;
+	
+	m_binaryTree.insert(value);
+
+
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
 		quit();
@@ -44,7 +49,8 @@ void Binary_TreeApp::draw() {
 	m_2dRenderer->begin();
 
 	// draw your stuff here!
-	
+	m_binaryTree.draw(m_2dRenderer, m_selectedNode);
+
 	// output some text, uses the last used colour
 	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
 
