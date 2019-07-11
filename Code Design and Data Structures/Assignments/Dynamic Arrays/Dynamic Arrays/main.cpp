@@ -25,6 +25,11 @@ int main() {
 
 	cout << "After removing 1 int, the size has decreased to: " << dArray.size() << endl;
 
+	dArray.BubbleSort(dArray.size());
+
+	if (dArray.LinearSearch(dArray.size(), 7) != true)
+		cout << "A 7 was found." << endl;
+
 	system("pause");
 	return 0;
 }

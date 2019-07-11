@@ -53,10 +53,34 @@ public:
 		return nNextIndex;
 	}
 
-	int LinearSearch(DynamArray* pArray[], int n, int x);
-	void BubbleSort(DynamArray* pArray[], int n);
+	bool LinearSearch(int n, int x) {
+		int i;
+		for (i = 0; i < n; ++i) {
+			if (pArray[i] == x) {
+				return true;
+			}
+			return false;
+		}
+	}
+
+	void BubbleSort(int n) {
+		int i, j;
+		for (i = 0; i < n - 1; i++)
+		{
+			for (j = 0; j < n - i - 1; j++)
+			{
+				if (pArray[j] > pArray[j + 1])
+				{
+					temp = pArray[j];
+					pArray[j] = pArray[j + 1];
+					pArray[j + 1] = temp;
+				}
+			}
+		}
+	}
 
 private:
+	T temp;
 	T *pArray;
 	int nLength;
 	int nNextIndex;
