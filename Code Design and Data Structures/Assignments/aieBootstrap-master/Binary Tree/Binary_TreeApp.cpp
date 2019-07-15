@@ -2,6 +2,7 @@
 #include "Texture.h"
 #include "Font.h"
 #include "Input.h"
+#include "imgui.h"
 
 Binary_TreeApp::Binary_TreeApp() {
 
@@ -32,8 +33,20 @@ void Binary_TreeApp::update(float deltaTime) {
 
 	static int value = 0;
 	
-	m_binaryTree.insert(value);
+	ImGui::InputInt("Value", &value);
 
+	if (ImGui::Button("Insert", ImVec2(50, 0))) {
+		m_binaryTree.insert(value);
+		m_selectedNode = m_binaryTree.find(value);
+	}
+
+	if (ImGui::Button("Remove", ImVec2(50, 0))) {
+		m_binaryTree.remove(value);
+	}
+
+	if (ImGui::Button("Find", ImVec2(50, 0))) {
+		m_selectedNode = m_binaryTree.find(value);
+	}
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
@@ -52,7 +65,7 @@ void Binary_TreeApp::draw() {
 	m_binaryTree.draw(m_2dRenderer, m_selectedNode);
 
 	// output some text, uses the last used colour
-	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
+	m_2dRenderer->drawText(g_systemFont, "Press ESC to quit", 0, 0);
 
 	// done drawing sprites
 	m_2dRenderer->end();

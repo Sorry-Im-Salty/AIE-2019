@@ -53,10 +53,15 @@ void BinaryTree::insert(int a_nValue) {
 		if (newNode->getData() < currNode->getData()) {
 			parentNode = currNode;
 			currNode = currNode->getLeft();
+			break;
 		}
 		if (newNode->getData() > currNode->getData()) {
 			parentNode = currNode;
 			currNode = currNode->getRight();
+			break;
+		}
+		if (newNode->getData() == currNode->getData()) {
+			break;
 		}
 	}
 	
@@ -64,6 +69,10 @@ void BinaryTree::insert(int a_nValue) {
 		newNode = newNode->getLeft();
 	else
 		newNode = newNode->getRight();
+}
+
+void BinaryTree::remove(int a_nValue) {
+	return;
 }
 
 bool BinaryTree::findNode(int a_nSearchValue, TreeNode** ppOutNode, TreeNode** ppOutParent) {
@@ -89,4 +98,14 @@ bool BinaryTree::findNode(int a_nSearchValue, TreeNode** ppOutNode, TreeNode** p
 	*ppOutNode = nullptr;
 	*ppOutParent = nullptr;
 	return false;
+}
+
+TreeNode* BinaryTree::find(int a_nValue) {
+	TreeNode** ppOutNode = nullptr;
+	TreeNode** ppOutParent = nullptr;
+	TreeNode* currNode = m_pRoot;
+
+
+	findNode(a_nValue, ppOutNode, ppOutParent);
+	return currNode;
 }
