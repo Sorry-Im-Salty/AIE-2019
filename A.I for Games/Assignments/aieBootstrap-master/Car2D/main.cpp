@@ -6,7 +6,7 @@ int main() {
 	auto app = new Car2DApp();
 
 	// initialise and loop
-	app->run("AIE", 1280, 720, false);
+	app->run("Car2D", 1280, 720, false);
 
 	// deallocation
 	delete app;
