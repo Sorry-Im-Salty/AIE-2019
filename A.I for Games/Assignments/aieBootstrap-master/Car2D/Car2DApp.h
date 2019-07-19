@@ -25,6 +25,7 @@ protected:
 	aie::Font* m_font;
 	Grid* m_pGrid;
 	AI* m_pAI;
+	AI* m_pAI2;
 
 	float m_timer;
 };
