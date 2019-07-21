@@ -3,6 +3,7 @@
 #include "Grid.h"
 #include "AI.h"
 #include "Vector2.h"
+#include "Game.h"
 #include <vector>
 
 class Car2DApp : public aie::Application {
@@ -26,6 +27,7 @@ protected:
 	Grid* m_pGrid;
 	AI* m_pAI;
 	AI* m_pAI2;
+	Game* m_pGame;
 
 	float m_timer;
 };

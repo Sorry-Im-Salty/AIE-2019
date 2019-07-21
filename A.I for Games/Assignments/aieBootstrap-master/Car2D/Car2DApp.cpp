@@ -25,6 +25,7 @@ bool Car2DApp::startup() {
 	m_pAI = new AI(m_pGrid);
 	m_pAI2 = new AI(m_pGrid);
 
+	m_pGame = new Game(m_2dRenderer, getWindowWidth() / 2, getWindowHeight() / 2, 1280.0f, 720.0f);
 	m_timer = 0;
 	setVSync(false);
 
@@ -33,6 +34,7 @@ bool Car2DApp::startup() {
 
 void Car2DApp::shutdown() {
 
+	delete m_pGame;
 	delete m_font;
 	delete m_texture;
 	delete m_shipTexture;
@@ -48,6 +50,12 @@ void Car2DApp::update(float deltaTime) {
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
+
+	m_2dRenderer->begin();
+	m_pGame->Update();
+	m_2dRenderer->end();
+
+
 	m_pAI->Update(deltaTime);
 	m_pAI2->Update(deltaTime);
 
