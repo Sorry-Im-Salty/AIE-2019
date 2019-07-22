@@ -101,11 +101,11 @@ bool BinaryTree::findNode(int a_nSearchValue, TreeNode** ppOutNode, TreeNode** p
 }
 
 TreeNode* BinaryTree::find(int a_nValue) {
-	TreeNode** ppOutNode = nullptr;
-	TreeNode** ppOutParent = nullptr;
+	TreeNode* ppOutNode = nullptr;
+	TreeNode* ppOutParent = nullptr;
 	TreeNode* currNode = m_pRoot;
 
 
-	findNode(a_nValue, ppOutNode, ppOutParent);
+	findNode(a_nValue, &ppOutNode, &ppOutParent);
 	return currNode;
 }
