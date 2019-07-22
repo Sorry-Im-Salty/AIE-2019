@@ -51,24 +51,37 @@ void BinaryTree::insert(int a_nValue) {
 
 	while (currNode != nullptr) {
 		if (newNode->getData() < currNode->getData()) {
-			parentNode = currNode;
-			currNode = currNode->getLeft();
-			break;
+			if (currNode->getLeft() == nullptr) {
+				currNode->setLeft(newNode);
+				break;
+			}
+			else {
+				parentNode = currNode;
+				currNode = currNode->getLeft();
+			}
 		}
 		if (newNode->getData() > currNode->getData()) {
-			parentNode = currNode;
-			currNode = currNode->getRight();
-			break;
+			//if curr's right is null
+			if (currNode->getRight() == nullptr) {
+				//set curr's right to be newNode
+				currNode->setRight(newNode);
+				//break
+				break;
+			}
+			else {
+				parentNode = currNode;
+				currNode = currNode->getRight();
+			}
 		}
 		if (newNode->getData() == currNode->getData()) {
 			break;
 		}
 	}
 	
-	if (newNode->getData() < parentNode->getData())
+	/*if (newNode->getData() < parentNode->getData())
 		newNode = newNode->getLeft();
 	else
-		newNode = newNode->getRight();
+		newNode = newNode->getRight();*/
 }
 
 void BinaryTree::remove(int a_nValue) {
