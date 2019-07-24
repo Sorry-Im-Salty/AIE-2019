@@ -77,35 +77,123 @@ void BinaryTree::insert(int a_nValue) {
 }
 
 void BinaryTree::remove(int a_nValue) {
-	TreeNode* currNode = m_pRoot;
-	TreeNode* miniNode = nullptr;
-	TreeNode* parentNode = nullptr;
+	removePrivate(a_nValue, m_pRoot);
 
-	while (miniNode = nullptr) {
-		if (currNode->hasRight()) {
-			currNode = currNode->getRight();
+}
+
+void BinaryTree::removePrivate(int a_nValue, TreeNode* Parent) {
+	if (m_pRoot != nullptr) {
+		if (m_pRoot->getData() == a_nValue) {
+			remRootMatch();
 		}
-		while (currNode->hasLeft()) {
-			currNode = currNode->getLeft();
-		}
-		if (currNode->hasLeft() == false) {
-			miniNode = currNode;
-			currNode = m_pRoot;
+		else {
+			if (a_nValue < Parent->getData() && Parent->getLeft() != nullptr) {
+				Parent->getLeft()->getData() == a_nValue ?
+				remMatch(Parent, Parent->getLeft(), true) :
+				removePrivate(a_nValue, Parent->getLeft());
+			}
+			else if (a_nValue > Parent->getData() && Parent->getRight() != nullptr) {
+				Parent->getRight()->getData() == a_nValue ?
+					remMatch(Parent, Parent->getRight(), false) :
+					removePrivate(a_nValue, Parent->getRight());
+			}
+			else {
+				return;
+			}
 		}
 	}
-
-	while (parentNode = nullptr) {
-		if (currNode->hasRight()) {
-			currNode = currNode->getRight();
-		}
-		while (currNode->hasLeft() && currNode->getLeft() != miniNode) {
-			currNode = currNode->getLeft();
-
-		}
-		parentNode = currNode;
+	else {
+		return;
 	}
+}
 
-	return;
+void BinaryTree::remRootMatch() {
+	if (m_pRoot != nullptr) {
+		TreeNode* delPtr = m_pRoot;
+		int rootKey = m_pRoot->getData();
+		int smallestRightSubTree;
+
+		// 0 children
+		if (m_pRoot->getLeft() == nullptr && m_pRoot->getRight() == nullptr) {
+			m_pRoot = nullptr;
+			delete delPtr;
+		}
+
+		// 1 child
+		else if (m_pRoot->getLeft() == nullptr && m_pRoot->getRight() != nullptr) {
+			m_pRoot = m_pRoot->getRight();
+			delPtr->setRight(nullptr);
+			delete delPtr;
+		}
+		else if (m_pRoot->getLeft() != nullptr && m_pRoot->getRight() == nullptr) {
+			m_pRoot = m_pRoot->getLeft();
+			delPtr->setLeft(nullptr);
+			delete delPtr;
+		}
+
+		// 2 Children
+		else {
+			smallestRightSubTree = findSmallestPrivate(m_pRoot->getRight());
+			removePrivate(smallestRightSubTree, m_pRoot);
+			m_pRoot->setData(smallestRightSubTree);
+		}
+	}
+	else {
+		return;
+	}
+}
+
+void BinaryTree::remMatch(TreeNode* parent, TreeNode* match, bool left) {
+	if (m_pRoot != nullptr) {
+		TreeNode* delPtr;
+		int matchKey = match->getData();
+		int smallestInRightSubtree;
+
+		// 0 children
+		if (match->getLeft() == nullptr && match->getRight() == nullptr) {
+			delPtr = match;
+			left == true ? parent->setLeft(nullptr) : parent->setRight(nullptr);
+			delete delPtr;
+		}
+
+		// 1 child
+		else if (match->getLeft() == nullptr && match->getRight() != nullptr) {
+			left == true ? parent->setLeft(match->getRight()) : parent->setRight(match->getRight());
+			match->setRight(nullptr);
+			delPtr = match;
+			delete delPtr;
+		}
+		else if (match->getLeft() != nullptr && match->getRight() == nullptr) {
+			left == true ? parent->setLeft(match->getLeft()) : parent->setRight(match->getLeft());
+			match->setLeft(nullptr);
+			delPtr = match;
+			delete delPtr;
+		}
+
+		// 2 children
+		else {
+			smallestInRightSubtree = findSmallestPrivate(match->getRight());
+			removePrivate(smallestInRightSubtree, match);
+			match->setData(smallestInRightSubtree);
+		}
+	}
+	else {
+		return;
+	}
+}
+
+int BinaryTree::findSmallestPrivate(TreeNode* Ptr) {
+	if (m_pRoot == nullptr) {
+		return -1000;
+	}
+	else {
+		if (Ptr->getLeft() != nullptr) {
+			return findSmallestPrivate(Ptr->getLeft());
+		}
+		else {
+			return Ptr->getData();
+		}
+	}
 }
 
 bool BinaryTree::findNode(int a_nSearchValue, TreeNode** ppOutNode, TreeNode** ppOutParent) {

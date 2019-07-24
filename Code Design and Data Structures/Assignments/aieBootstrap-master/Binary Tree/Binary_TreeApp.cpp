@@ -17,14 +17,14 @@ aie::Font* g_systemFont = nullptr;
 bool Binary_TreeApp::startup() {
 	
 	m_2dRenderer = new aie::Renderer2D();
-	m_font = new aie::Font("./font/consolas.ttf", 32);
+	g_systemFont = new aie::Font("./font/consolas.ttf", 32);
 
 	return true;
 }
 
 void Binary_TreeApp::shutdown() {
 
-	delete m_font;
+	delete g_systemFont;
 	delete m_2dRenderer;
 }
 

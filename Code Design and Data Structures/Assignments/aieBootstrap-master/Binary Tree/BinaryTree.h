@@ -16,6 +16,10 @@ public:
 private:
 	bool findNode(int a_nSearchValue, TreeNode** ppOutNode, TreeNode** ppOutParent);
 	void draw(aie::Renderer2D* renderer, TreeNode*, int x, int y, int horizontalSpacing, TreeNode* selected = nullptr);
+	void removePrivate(int a_nValue, TreeNode* Parent);
+	void remRootMatch();
+	void remMatch(TreeNode* parentm, TreeNode* match, bool left);
+	int findSmallestPrivate(TreeNode* Ptr);
 
 	TreeNode* m_pRoot;
 };
