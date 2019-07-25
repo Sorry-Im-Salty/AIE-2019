@@ -21,14 +21,19 @@ int main() {
 
 	cout << "After adding 11 ints to the array, the size has increased to: " << dArray.size() << endl;
 
-	dArray.remove(1);
-
-	cout << "After removing 1 int, the size has decreased to: " << dArray.size() << endl;
-
-	dArray.BubbleSort(dArray.size());
-
 	if (dArray.LinearSearch(dArray.size(), 7) != true)
 		cout << "A 7 was found." << endl;
+
+	cout << "Here's what the array looks like: " << endl; cout << endl;
+	dArray.print();
+
+	cout << "If we remove int 11 from the array: " << endl; cout << endl;
+	dArray.remove(6);
+	dArray.print();
+
+	cout << "Sorted Array: " << endl; cout << endl;
+	dArray.BubbleSort(dArray.size());
+	dArray.print();
 
 	system("pause");
 	return 0;

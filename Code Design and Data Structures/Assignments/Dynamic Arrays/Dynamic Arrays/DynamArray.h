@@ -33,22 +33,23 @@ public:
 		pArray[nNextIndex++] = nVal;
 	}
 
-	void remove(int nVal) {
-		T* pNewArray;
-		if (nNextIndex == nLength)
-		{
-			nLength = nLength - 10;
-			pNewArray = new T[nLength];
-			for (int i = 0; i < nNextIndex; i++)
-				pNewArray[i] = pArray[i];
-			for (int j = nNextIndex; j < nLength; j++)
-				pNewArray[j] = 0;
-			delete[] pArray;
-			pArray = pNewArray;
+	void remove(int nPos) {
+		if (nPos < nNextIndex && nPos >= 0) {
+			for (int i = nPos; i < nNextIndex - 1; i++)
+				pArray[i] = pArray[i + 1];
+			nNextIndex--;
+			if (nNextIndex = nLength - 10)
+				nLength = nLength - 10;
 		}
-		pArray[nNextIndex--] = nVal;
+
 	}
 	
+	void print() {
+		for (int i = 0; i < nLength; i++) {
+			std::cout << pArray[i] << std::endl;
+		}
+	}
+
 	int size() {
 		return nNextIndex;
 	}
