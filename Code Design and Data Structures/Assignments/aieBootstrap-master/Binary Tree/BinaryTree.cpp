@@ -228,5 +228,5 @@ TreeNode* BinaryTree::find(int a_nValue) {
 
 
 	findNode(a_nValue, &ppOutNode, &ppOutParent);
-	return currNode;
+	return ppOutNode;
 }
