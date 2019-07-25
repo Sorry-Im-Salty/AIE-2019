@@ -23,7 +23,7 @@ void DoubleLinkedList::pushFront(int value)
 void DoubleLinkedList::pushBack(int value)
 {
 	struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
-	struct Node* last = head;
+	tail = head;
 
 	newNode->data = value;
 	newNode->next = NULL;
@@ -34,28 +34,32 @@ void DoubleLinkedList::pushBack(int value)
 		return;
 	}
 
-	while (last->next != NULL)
-		last = last->next;
+	while (tail->next != NULL)
+		tail = tail->next;
 	
-	last->next = newNode;
-	newNode->prev = last;
+	tail->next = newNode;
+	newNode->prev = tail;
 	return;
 }
-void DoubleLinkedList::insert(struct Node* prevNode, int value)
+void DoubleLinkedList::insert(struct Node* Node, int value)
 {
-	if (prevNode == NULL)
-	{
-		return;
+	struct Node* n = (struct Node*) malloc(sizeof(struct Node));
+	n->data = value;
+	n->next = Node;
+
+	if (Node != NULL) {
+		n->prev = Node->prev;
+
+		if (Node->prev != NULL)
+			Node->prev->next = n;
+		Node->prev = n;
 	}
 
-	struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
-	newNode->data = value;
-	newNode->next = prevNode->next;
-	newNode->prev = prevNode;
-	newNode->next = newNode;
+	if (head = Node)
+		head = n;
+	if (tail == NULL)
+		tail = n;
 
-	if (newNode->next != NULL)
-		newNode->next->prev = newNode;
 }
 void DoubleLinkedList::display()
 {
@@ -96,6 +100,9 @@ void DoubleLinkedList::deleteNode(struct Node* del)
 	if (head == del)
 		head = del->next;
 
+	if (tail == del)
+		tail = del->prev;
+
 	if (del->next != NULL)
 		del->next->prev = del->prev;
 
@@ -124,43 +131,42 @@ void DoubleLinkedList::remove(int value)
 }
 void DoubleLinkedList::popBack()
 {
-	struct Node* last = head;
+	tail = head;
 
 	if (head == NULL)
 		return;
 
-	while (last->next != NULL)
-		last = last->next;
+	while (tail->next != NULL)
+		tail = tail->next;
 
-	if (head == last) {
+	if (head == tail) {
 		deleteNode(head);
 		head = NULL;
-		last = NULL;
+		tail = NULL;
 	}
 
-	struct Node* current = head;
-	while (current->next != last)
-		current = current->next;
+	struct Node* current = tail;
+		current = current->prev;
 
-	deleteNode(last);
-	last = current;
-	last->next = NULL;
+	deleteNode(tail);
+	tail = current;
+	tail->next = NULL;
 
 }
 void DoubleLinkedList::popFront()
 {
-	struct Node* last = head;
+	tail = head;
 
 	if (head == NULL)
 		return;
 
-	while (last->next != NULL)
-		last = last->next;
+	while (tail->next != NULL)
+		tail = tail->next;
 
-	if (head == last) {
+	if (head == tail) {
 		deleteNode(head);
 		head = NULL;
-		last = NULL;
+		tail = NULL;
 	}
 
 	struct Node* temp = head->next;

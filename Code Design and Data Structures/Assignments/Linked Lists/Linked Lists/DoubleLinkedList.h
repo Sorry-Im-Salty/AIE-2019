@@ -14,6 +14,8 @@ public:
 
 	struct Node* head = NULL;
 
+	struct Node* tail = NULL;
+
 	void pushFront(int value); // add a new value to the front of the list
 	void pushBack(int value); // add a new value to the end of the list
 	void insert(struct Node* prevNode, int value); // add a new value one-past the specified iterator location
