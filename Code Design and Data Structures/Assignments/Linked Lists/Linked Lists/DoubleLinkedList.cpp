@@ -19,6 +19,10 @@ void DoubleLinkedList::pushFront(int value)
 	if (head != NULL)
 		head->prev = newNode;
 	head = newNode;
+	if (tail == NULL)
+		tail = head;
+	while (tail->next != NULL)
+		tail = tail->next;
 }
 void DoubleLinkedList::pushBack(int value)
 {
@@ -196,4 +200,5 @@ void DoubleLinkedList::clear()
 	}
 
 	head = NULL;
+	tail = NULL;
 }
