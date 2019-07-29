@@ -1,18 +1,21 @@
 #include <iostream>
 #include "DoubleLinkedList.h"
 
-DoubleLinkedList::DoubleLinkedList()
+template<class T>
+DoubleLinkedList<T>::DoubleLinkedList()
 {
 
 }
-DoubleLinkedList::~DoubleLinkedList()
+template<class T>
+DoubleLinkedList<T>::~DoubleLinkedList()
 {
 
 }
 
-void DoubleLinkedList::pushFront(int value)
+template<class T>
+void DoubleLinkedList<T>::pushFront(int value)
 {
-	struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+	T* newNode = (T*) malloc(sizeof(T));
 	newNode->data = value;
 	newNode->prev = NULL;
 	newNode->next = head;
@@ -24,9 +27,10 @@ void DoubleLinkedList::pushFront(int value)
 	while (tail->next != NULL)
 		tail = tail->next;
 }
-void DoubleLinkedList::pushBack(int value)
+template<class T>
+void DoubleLinkedList<T>::pushBack(int value)
 {
-	struct Node* newNode = (struct Node*) malloc(sizeof(struct Node));
+	T* newNode = (T*) malloc(sizeof(T));
 	tail = head;
 
 	newNode->data = value;
@@ -45,9 +49,10 @@ void DoubleLinkedList::pushBack(int value)
 	newNode->prev = tail;
 	return;
 }
-void DoubleLinkedList::insert(struct Node* Node, int value)
+template<class T>
+void DoubleLinkedList<T>::insert(T* Node, int value)
 {
-	struct Node* n = (struct Node*) malloc(sizeof(struct Node));
+	T* n = (T*) malloc(sizeof(T));
 	n->data = value;
 	n->next = Node;
 
@@ -65,9 +70,10 @@ void DoubleLinkedList::insert(struct Node* Node, int value)
 		tail = n;
 
 }
-void DoubleLinkedList::display()
+template<class T>
+void DoubleLinkedList<T>::display()
 {
-	struct Node* ptr;
+	T* ptr;
 	ptr = head;
 	while (ptr != NULL) {
 		std::cout << ptr->data << " " << std::endl;
@@ -91,12 +97,14 @@ void DoubleLinkedList::display()
 //{
 //
 //}
-int DoubleLinkedList::count()
+template<class T>
+int DoubleLinkedList<T>::count()
 {
-	return sizeof(struct Node);
+	return sizeof(T);
 }
 
-void DoubleLinkedList::deleteNode(struct Node* del)
+template<class T>
+void DoubleLinkedList<T>::deleteNode(T* del)
 {
 	if (head == NULL || del == NULL)
 		return;
@@ -115,11 +123,12 @@ void DoubleLinkedList::deleteNode(struct Node* del)
 
 	free(del);
 }
-void DoubleLinkedList::erase(int iterator)
+template<class T>
+void DoubleLinkedList<T>::erase(int iterator)
 {
 	if (head == NULL || iterator <= 0)
 		return;
-	struct Node* current = head;
+	T* current = head;
 
 	for (int i = 1; current != NULL && i < iterator; i++)
 		current = current->next;
@@ -129,11 +138,13 @@ void DoubleLinkedList::erase(int iterator)
 
 	deleteNode(current);
 }
-void DoubleLinkedList::remove(int value)
+template<class T>
+void DoubleLinkedList<T>::remove(int value)
 {
 
 }
-void DoubleLinkedList::popBack()
+template<class T>
+void DoubleLinkedList<T>::popBack()
 {
 	tail = head;
 
@@ -149,7 +160,7 @@ void DoubleLinkedList::popBack()
 		tail = NULL;
 	}
 
-	struct Node* current = tail;
+	T* current = tail;
 		current = current->prev;
 
 	deleteNode(tail);
@@ -157,7 +168,8 @@ void DoubleLinkedList::popBack()
 	tail->next = NULL;
 
 }
-void DoubleLinkedList::popFront()
+template<class T>
+void DoubleLinkedList<T>::popFront()
 {
 	tail = head;
 
@@ -173,14 +185,15 @@ void DoubleLinkedList::popFront()
 		tail = NULL;
 	}
 
-	struct Node* temp = head->next;
+	T* temp = head->next;
 
 	deleteNode(head);
 	head = temp;
 
 }
 
-bool DoubleLinkedList::empty()
+template<class T>
+bool DoubleLinkedList<T>::empty()
 {
 	if (sizeof(struct Node) == 0)
 		return true;
@@ -188,10 +201,11 @@ bool DoubleLinkedList::empty()
 		return false;
 }
 
-void DoubleLinkedList::clear()
+template<class T>
+void DoubleLinkedList<T>::clear()
 {
 
-	struct Node* current = head;
+	T* current = head;
 
 	while (head) {
 		current = head;

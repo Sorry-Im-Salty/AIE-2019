@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-	DoubleLinkedList List;
+	DoubleLinkedList<int> List;
 	cout << "Before anything is added: " << endl; List.display(); cout << endl;
 	List.pushFront(10);
 	cout << "After adding the value of 10, the list looks like: " << endl; List.display(); cout << endl;
