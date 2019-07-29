@@ -16,7 +16,7 @@ private:
 	StateMachine* m_pStateMachine;
 	Button* m_PlayButton;
 	Button* m_QuitButton;
-	Font* m_Font;
+	aie::Font* m_Font;
 	
 	float m_fWindowWidth;
 	float m_fWindowHeight;

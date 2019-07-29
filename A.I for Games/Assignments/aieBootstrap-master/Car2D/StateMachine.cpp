@@ -1,6 +1,8 @@
 #include "StateMachine.h"
 #include "Renderer2D.h"
-
+#include "MenuState.h"
+#include "GameState.h"
+#include "GameOverState.h"
 
 StateMachine::StateMachine()
 {
@@ -37,13 +39,13 @@ bool StateMachine::Update(float deltaTime) {
 void StateMachine::Draw(aie::Renderer2D* renderer) {
 	switch (m_CurrentState) {
 	case ESTATE_MENU:
-		m_pMenuState->Draw(rendermanager);
+		m_pMenuState->Draw(renderer);
 		break;
 	case ESTATE_GAME:
-		m_pGameState->Draw(rendermanager);
+		m_pGameState->Draw(renderer);
 		break;
 	case ESTATE_GAMEOVER:
-		m_pGameOverState->Draw(rendermanager);
+		m_pGameOverState->Draw(renderer);
 		break;
 	}
 }
