@@ -167,20 +167,27 @@
     <ClCompile Include="AI.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Car2DApp.cpp" />
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameOverState.cpp" />
+    <ClCompile Include="GameState.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuState.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="PathHeap.cpp" />
+    <ClCompile Include="StateMachine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AI.h" />
+    <ClInclude Include="BaseState.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Car2DApp.h" />
-    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameOverState.h" />
+    <ClInclude Include="GameState.h" />
     <ClInclude Include="Grid.h" />
+    <ClInclude Include="MenuState.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="PathHeap.h" />
+    <ClInclude Include="StateMachine.h" />
     <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
