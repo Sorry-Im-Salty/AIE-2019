@@ -1,5 +1,6 @@
 #include "Matrix4.h"
 
+// Default constructor
 Matrix4::Matrix4() {
 	data[0][0] = 1; data[0][1] = 0; data[0][2] = 0; data[0][3] = 0;
 	data[1][0] = 0; data[1][1] = 1; data[1][2] = 0; data[1][3] = 0;
@@ -7,6 +8,7 @@ Matrix4::Matrix4() {
 	data[3][0] = 0; data[3][1] = 0; data[3][2] = 0; data[3][3] = 1;
 }
 
+// Manual constructor
 Matrix4::Matrix4(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9, float m10, float m11, float m12, float m13, float m14, float m15, float m16) {
 	data[0][0] = m1; data[0][1] = m2; data[0][2] = m3; data[0][3] = m4;
 	data[1][0] = m5; data[1][1] = m6; data[1][2] = m7; data[1][3] = m8;

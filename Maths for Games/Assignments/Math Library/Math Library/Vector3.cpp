@@ -1,12 +1,14 @@
 #include "Vector3.h"
 #include <cmath>
 
+// Default constructor
 Vector3::Vector3() {
 	data[0] = 0; 
 	data[1] = 0; 
 	data[2] = 0;
 }
 
+// Manual constructor
 Vector3::Vector3(float x, float y, float z) {
 	data[0] = x; 
 	data[1] = y; 

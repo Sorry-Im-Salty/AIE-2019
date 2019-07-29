@@ -1,11 +1,13 @@
 #include "Vector2.h"
 #include <cmath>
 
+// Default constructor
 Vector2::Vector2() {
 	data[0] = 0; 
 	data[1] = 0;
 }
 
+// Manual constructor
 Vector2::Vector2(float x, float y) {
 	data[0] = x; 
 	data[1] = y;

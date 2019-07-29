@@ -1,11 +1,13 @@
 #include "Matrix3.h"
 
+// Default constructor
 Matrix3::Matrix3() {
 	data[0][0] = 1; data[0][1] = 0; data[0][2] = 0;
 	data[1][0] = 0; data[1][1] = 1; data[1][2] = 0;
 	data[2][0] = 0; data[2][1] = 0; data[2][2] = 1;
 }
 
+// Manual constructor
 Matrix3::Matrix3(float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9) {
 	data[0][0] = m1; data[0][1] = m2; data[0][2] = m3;
 	data[1][0] = m4; data[1][1] = m5; data[1][2] = m6;

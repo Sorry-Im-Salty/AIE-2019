@@ -1,6 +1,7 @@
 #include "Vector4.h"
 #include <cmath>
 
+// Default constructor
 Vector4::Vector4() {
 	data[0] = 0; 
 	data[1] = 0; 
@@ -8,6 +9,7 @@ Vector4::Vector4() {
 	data[3] = 0;
 }
 
+// Manual constructor
 Vector4::Vector4(float x, float y, float z, float w) {
 	data[0] = x; 
 	data[1] = y; 
