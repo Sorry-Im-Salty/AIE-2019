@@ -32,7 +32,7 @@ MenuState::~MenuState(){
 void MenuState::Enter() {
 	m_PlayButton = new Button("Play", m_fWindowWidth / 3.0f, m_fWindowHeight / 3.0f, 320, 85, 0, 255, 0);
 	m_QuitButton = new Button("Quit", m_fWindowWidth / 1.5f, m_fWindowHeight / 3.0f, 320, 85, 255, 0, 0);
-	m_Font = new aie::Font("./font/consolas_bold.ttf", 32);
+	m_Font = new aie::Font("./font/consolas_bold.ttf", 72);
 
 }
 
@@ -62,6 +62,9 @@ void MenuState::Draw(aie::Renderer2D* renderer) {
 	renderer->setRenderColour(255, 255, 255);
 	m_PlayButton->Draw(renderer, m_fWindowWidth / 3.0f, m_fWindowHeight / 3.0f);
 	m_QuitButton->Draw(renderer, m_fWindowWidth / 1.5f, m_fWindowHeight / 3.0f);
+
+	// Text
+	renderer->drawText(m_Font, "Car2D!", m_fWindowWidth / 2.4f, m_fWindowHeight / 1.4f);
 }
 
 void MenuState::Exit() {

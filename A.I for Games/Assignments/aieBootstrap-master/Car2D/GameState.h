@@ -3,13 +3,13 @@
 class GameState : public BaseState {
 public:
 	GameState();
-	virtual ~GameState();
+	~GameState();
 
 	void Enter();
 	void Exit();
 
-	virtual bool Update(float deltaTime, StateMachine* pStateMachine);
-	virtual void Draw(aie::Renderer2D* renderer);
+	bool Update(float deltaTime, StateMachine* pStateMachine);
+	void Draw(aie::Renderer2D* renderer);
 
 private:
 
