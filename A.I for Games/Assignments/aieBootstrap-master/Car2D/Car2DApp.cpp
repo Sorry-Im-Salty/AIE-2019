@@ -23,10 +23,6 @@ bool Car2DApp::startup() {
 
 	m_pStateMachine = new StateMachine();
 
-	m_pGrid = new Grid(25, 12);
-	m_pAI = new AI(m_pGrid);
-	m_pAI2 = new AI(m_pGrid);
-
 	m_timer = 0;
 	setVSync(false);
 
@@ -40,9 +36,6 @@ void Car2DApp::shutdown() {
 	delete m_texture;
 	delete m_shipTexture;
 	delete m_2dRenderer;
-	delete m_pGrid;
-	delete m_pAI;
-	delete m_pAI2;
 }
 
 void Car2DApp::update(float deltaTime) {
@@ -54,9 +47,6 @@ void Car2DApp::update(float deltaTime) {
 
 	if (m_pStateMachine->Update(deltaTime))
 		quit();
-
-	/*m_pAI->Update(deltaTime);
-	m_pAI2->Update(deltaTime);*/
 }
 
 void Car2DApp::draw() {
@@ -68,10 +58,6 @@ void Car2DApp::draw() {
 	m_2dRenderer->begin();
 
 	m_pStateMachine->Draw(m_2dRenderer);
-
-	/*m_pGrid->Draw(m_2dRenderer);
-	m_pAI->Draw(m_2dRenderer);
-	m_pAI2->Draw(m_2dRenderer);*/
 
 	// output some text, uses the last used colour
 	char fps[32];

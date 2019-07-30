@@ -24,9 +24,6 @@ protected:
 	aie::Texture* m_texture;
 	aie::Texture* m_shipTexture;
 	aie::Font* m_font;
-	Grid* m_pGrid;
-	AI* m_pAI;
-	AI* m_pAI2;
 	StateMachine* m_pStateMachine;
 
 	float m_timer;
