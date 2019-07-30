@@ -78,7 +78,6 @@ void Car2DApp::draw() {
 	sprintf_s(fps, 32, "FPS: %i", getFPS());
 	m_2dRenderer->setRenderColour(0.0f, 0.0f, 1.0f);
 	m_2dRenderer->drawText(m_font, fps, 0, 720 - 32);
-	m_2dRenderer->drawText(m_font, "Press ESC to quit!", 0, 720 - 64);
 
 	// done drawing sprites
 	m_2dRenderer->end();
