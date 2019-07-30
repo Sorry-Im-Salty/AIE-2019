@@ -26,7 +26,7 @@ Button::~Button()
 	}
 }
 
-void Button::Draw(aie::Renderer2D* renderer, float width, float height)
+void Button::Draw(aie::Renderer2D* renderer)
 {
 	// grey interior
 	renderer->setRenderColour(0.9f, 0.9f, 0.9f);

@@ -60,8 +60,8 @@ void MenuState::Draw(aie::Renderer2D* renderer) {
 	renderer->drawBox(m_fWindowWidth / 1.5f, m_fWindowHeight / 3.0f, 350, 100);
 
 	renderer->setRenderColour(255, 255, 255);
-	m_PlayButton->Draw(renderer, m_fWindowWidth / 3.0f, m_fWindowHeight / 3.0f);
-	m_QuitButton->Draw(renderer, m_fWindowWidth / 1.5f, m_fWindowHeight / 3.0f);
+	m_PlayButton->Draw(renderer);
+	m_QuitButton->Draw(renderer);
 
 	// Text
 	renderer->drawText(m_Font, "Car2D!", m_fWindowWidth / 2.4f, m_fWindowHeight / 1.4f);
