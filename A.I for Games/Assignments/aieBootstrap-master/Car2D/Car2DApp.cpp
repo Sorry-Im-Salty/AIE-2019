@@ -52,6 +52,9 @@ void Car2DApp::update(float deltaTime) {
 	// input example
 	aie::Input* input = aie::Input::getInstance();
 
+	if (m_pStateMachine->Update(deltaTime))
+		quit();
+
 	m_pAI->Update(deltaTime);
 	m_pAI2->Update(deltaTime);
 
