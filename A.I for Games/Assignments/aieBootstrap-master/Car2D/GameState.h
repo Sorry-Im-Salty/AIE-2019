@@ -1,5 +1,7 @@
 #pragma once
 #include "BaseState.h"
+#include "AI.h"
+#include "Grid.h"
 class GameState : public BaseState {
 public:
 	GameState();
@@ -12,6 +14,9 @@ public:
 	void Draw(aie::Renderer2D* renderer);
 
 private:
-
+	Grid* m_pGrid;
+	AI* m_pAI;
+	AI* m_pAI2;
+	StateMachine* m_pStateMachine;
 };
 

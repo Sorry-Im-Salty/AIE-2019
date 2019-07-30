@@ -7,8 +7,7 @@ class GameOverState;
 
 enum EState {
 	ESTATE_MENU,
-	ESTATE_GAME,
-	ESTATE_GAMEOVER
+	ESTATE_GAME
 };
 
 class StateMachine
@@ -27,6 +26,5 @@ protected:
 
 	MenuState* m_pMenuState;
 	GameState* m_pGameState;
-	GameOverState* m_pGameOverState;
 };
 
