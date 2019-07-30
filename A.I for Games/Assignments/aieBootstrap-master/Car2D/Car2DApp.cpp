@@ -55,12 +55,8 @@ void Car2DApp::update(float deltaTime) {
 	if (m_pStateMachine->Update(deltaTime))
 		quit();
 
-	m_pAI->Update(deltaTime);
-	m_pAI2->Update(deltaTime);
-
-	// exit the application
-	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
-		quit();
+	/*m_pAI->Update(deltaTime);
+	m_pAI2->Update(deltaTime);*/
 }
 
 void Car2DApp::draw() {
