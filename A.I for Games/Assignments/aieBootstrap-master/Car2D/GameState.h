@@ -18,5 +18,10 @@ private:
 	AI* m_pAI;
 	AI* m_pAI2;
 	StateMachine* m_pStateMachine;
+	Button* m_pPauseButton;
+
+	float m_fWindowWidth;
+	float m_fWindowHeight;
+	bool m_bPause;
 };
 
