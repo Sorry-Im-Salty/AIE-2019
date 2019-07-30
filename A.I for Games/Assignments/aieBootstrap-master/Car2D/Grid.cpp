@@ -1,6 +1,7 @@
 #include "Grid.h"
 #include "Node.h"
 #include <cmath>
+#include "Input.h"
 
 #define SQUARE_SIZE 50.0f
 #define GRID_POSX 45
@@ -111,6 +112,26 @@ void Grid::Draw(aie::Renderer2D* pRenderer) {
 				}
 			}*/
 		}
+	}
+}
+
+void Grid::Update(float deltaTime) {
+	aie::Input* input = aie::Input::getInstance();
+
+	Vector2 v2MousePos;
+	v2MousePos.x = (float)input->getMouseX();
+	v2MousePos.y = (float)input->getMouseY();
+
+	if (input->isMouseButtonDown(0)) {
+		Node* pMouseMode = GetNodeByPos(v2MousePos);
+		if (pMouseMode)
+			pMouseMode->m_bBlocked = true;
+	}
+
+	if (input->isMouseButtonDown(1)) {
+		Node* pMouseMode = GetNodeByPos(v2MousePos);
+		if (pMouseMode)
+			pMouseMode->m_bBlocked = false;
 	}
 }
 

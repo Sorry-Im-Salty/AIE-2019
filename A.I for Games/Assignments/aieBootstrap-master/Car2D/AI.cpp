@@ -45,17 +45,6 @@ void AI::Update(float deltaTime) {
 	v2MousePos.y = (float)input->getMouseY();
 
 	// Pathfinding
-	if (input->isMouseButtonDown(0)) {
-		Node* pMouseMode = m_pGrid->GetNodeByPos(v2MousePos);
-		if (pMouseMode)
-			pMouseMode->m_bBlocked = true;
-	}
-
-	if (input->isMouseButtonDown(1)) {
-		Node* pMouseMode = m_pGrid->GetNodeByPos(v2MousePos);
-		if (pMouseMode)
-			pMouseMode->m_bBlocked = false;
-	}
 
 	if (input->wasKeyPressed(aie::INPUT_KEY_S)) {
 		m_v2StartPos = v2MousePos;

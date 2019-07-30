@@ -13,6 +13,7 @@ public:
 	~Grid();
 
 	void Draw(aie::Renderer2D* pRenderer);
+	void Update(float deltaTime);
 
 	Node* GetNodeByPos(Vector2 v2Pos);
 	bool FindPath(Vector2 v2Start, Vector2 v2End, std::vector<Vector2>& path);
