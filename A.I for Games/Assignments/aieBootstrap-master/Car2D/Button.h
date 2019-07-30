@@ -8,7 +8,7 @@ public:
 	Button(const char* buttonText, float x, float y, float width, float height, float r, float g, float b);
 	~Button();
 
-	void Draw(aie::Renderer2D* renderer, float width, float height);
+	void Draw(aie::Renderer2D* renderer);
 	bool Update();
 
 private:
