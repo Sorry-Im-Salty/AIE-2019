@@ -20,7 +20,10 @@ Button::Button(const char* buttonText, float x, float y, float width, float heig
 
 Button::~Button()
 {
-	delete m_font;
+	if (m_font) {
+		delete m_font;
+		m_font = nullptr;
+	}
 }
 
 void Button::Draw(aie::Renderer2D* renderer, float width, float height)
