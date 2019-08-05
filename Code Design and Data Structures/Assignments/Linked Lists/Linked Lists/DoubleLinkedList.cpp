@@ -13,9 +13,9 @@ DoubleLinkedList<T>::~DoubleLinkedList()
 }
 
 template<class T>
-void DoubleLinkedList<T>::pushFront(T value)
+void DoubleLinkedList<T>::pushFront(int value)
 {
-	Node* newNode = (Node*) malloc(sizeof(Node));
+	T* newNode = (Node*) malloc(sizeof(Node));
 	newNode->data = value;
 	newNode->prev = NULL;
 	newNode->next = head;
@@ -28,9 +28,9 @@ void DoubleLinkedList<T>::pushFront(T value)
 		tail = tail->next;
 }
 template<class T>
-void DoubleLinkedList<T>::pushBack(T value)
+void DoubleLinkedList<T>::pushBack(int value)
 {
-	Node* newNode = (Node*) malloc(sizeof(Node));
+	T* newNode = (Node*) malloc(sizeof(Node));
 	tail = head;
 
 	newNode->data = value;
@@ -50,9 +50,9 @@ void DoubleLinkedList<T>::pushBack(T value)
 	return;
 }
 template<class T>
-void DoubleLinkedList<T>::insert(Node* prevNode, T value)
+void DoubleLinkedList<T>::insert(Node* prevNode, int value)
 {
-	Node* n = (Node*) malloc(sizeof(Node));
+	T* n = (Node*) malloc(sizeof(Node));
 	n->data = value;
 	n->next = prevNode;
 
@@ -73,7 +73,7 @@ void DoubleLinkedList<T>::insert(Node* prevNode, T value)
 template<class T>
 void DoubleLinkedList<T>::display()
 {
-	Node* ptr;
+	T* ptr;
 	ptr = head;
 	while (ptr != NULL) {
 		std::cout << ptr->data << " " << std::endl;
@@ -98,7 +98,7 @@ void DoubleLinkedList<T>::display()
 //
 //}
 template<class T>
-T DoubleLinkedList<T>::count()
+int DoubleLinkedList<T>::count()
 {
 	return sizeof(Node);
 }
@@ -124,11 +124,11 @@ void DoubleLinkedList<T>::deleteNode(Node* del)
 	free(del);
 }
 template<class T>
-void DoubleLinkedList<T>::erase(T iterator)
+void DoubleLinkedList<T>::erase(int iterator)
 {
 	if (head == NULL || iterator <= 0)
 		return;
-	Node* current = head;
+	T* current = head;
 
 	for (int i = 1; current != NULL && i < iterator; i++)
 		current = current->next;
@@ -139,7 +139,7 @@ void DoubleLinkedList<T>::erase(T iterator)
 	deleteNode(current);
 }
 template<class T>
-void DoubleLinkedList<T>::remove(T value)
+void DoubleLinkedList<T>::remove(int value)
 {
 
 }
@@ -160,7 +160,7 @@ void DoubleLinkedList<T>::popBack()
 		tail = NULL;
 	}
 
-	Node* current = tail;
+	T* current = tail;
 		current = current->prev;
 
 	deleteNode(tail);
@@ -185,7 +185,7 @@ void DoubleLinkedList<T>::popFront()
 		tail = NULL;
 	}
 
-	Node* temp = head->next;
+	T* temp = head->next;
 
 	deleteNode(head);
 	head = temp;
@@ -205,7 +205,7 @@ template<class T>
 void DoubleLinkedList<T>::clear()
 {
 
-	Node* current = head;
+	T* current = head;
 
 	while (head) {
 		current = head;
