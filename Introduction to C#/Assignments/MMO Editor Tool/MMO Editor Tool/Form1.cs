@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace MMO_Editor_Tool
 {
-	public partial class Form1 : Form
+	public partial class formMain : Form
 	{
-		public Form1()
+		public formMain()
 		{
 			InitializeComponent();
 		}
