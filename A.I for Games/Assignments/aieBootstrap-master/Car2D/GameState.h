@@ -15,13 +15,15 @@ public:
 
 private:
 	Grid* m_pGrid;
-	AI* m_pAI;
-	AI* m_pAI2;
+	AI* m_pAI[10];
 	StateMachine* m_pStateMachine;
 	Button* m_pPauseButton;
+	Button* m_pResetButton;
+	Button* m_pAddAIButton;
 
 	float m_fWindowWidth;
 	float m_fWindowHeight;
 	bool m_bPause;
+	int m_nAICount;
 };
 
