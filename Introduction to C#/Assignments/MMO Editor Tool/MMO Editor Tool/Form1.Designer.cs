@@ -70,6 +70,13 @@
 			this.labelSpeed = new System.Windows.Forms.Label();
 			this.labelStrength = new System.Windows.Forms.Label();
 			this.panelStats = new System.Windows.Forms.Panel();
+			this.numericUpDownLevelReq = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownPrice = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownAgility = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownMagic = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownRange = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownStrength = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownSpeed = new System.Windows.Forms.NumericUpDown();
 			this.numericUpDownHealth = new System.Windows.Forms.NumericUpDown();
 			this.labelLevelReq = new System.Windows.Forms.Label();
 			this.labelPrice = new System.Windows.Forms.Label();
@@ -82,25 +89,18 @@
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.saveFileDialogMain = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialogMain = new System.Windows.Forms.OpenFileDialog();
-			this.numericUpDownSpeed = new System.Windows.Forms.NumericUpDown();
-			this.numericUpDownStrength = new System.Windows.Forms.NumericUpDown();
-			this.numericUpDownRange = new System.Windows.Forms.NumericUpDown();
-			this.numericUpDownMagic = new System.Windows.Forms.NumericUpDown();
-			this.numericUpDownAgility = new System.Windows.Forms.NumericUpDown();
-			this.numericUpDownPrice = new System.Windows.Forms.NumericUpDown();
-			this.numericUpDownLevelReq = new System.Windows.Forms.NumericUpDown();
 			this.menuStripMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
 			this.panelStats.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevelReq)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownAgility)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownMagic)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownRange)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownStrength)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeed)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownHealth)).BeginInit();
 			this.panelDetails.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeed)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownStrength)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownRange)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownMagic)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownAgility)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevelReq)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStripMain
@@ -345,6 +345,7 @@
 			this.comboBoxType.Name = "comboBoxType";
 			this.comboBoxType.Size = new System.Drawing.Size(121, 21);
 			this.comboBoxType.TabIndex = 4;
+			this.comboBoxType.SelectedIndexChanged += new System.EventHandler(this.comboBoxType_SelectedIndexChanged);
 			// 
 			// labelNameTitle
 			// 
@@ -370,12 +371,14 @@
 			// comboBoxSubType
 			// 
 			this.comboBoxSubType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBoxSubType.Enabled = false;
 			this.comboBoxSubType.FormattingEnabled = true;
 			this.comboBoxSubType.Location = new System.Drawing.Point(119, 102);
 			this.comboBoxSubType.MaxDropDownItems = 2;
 			this.comboBoxSubType.Name = "comboBoxSubType";
 			this.comboBoxSubType.Size = new System.Drawing.Size(121, 21);
 			this.comboBoxSubType.TabIndex = 9;
+			this.comboBoxSubType.SelectedIndexChanged += new System.EventHandler(this.comboBoxSubType_SelectedIndexChanged);
 			// 
 			// labelName
 			// 
@@ -477,8 +480,107 @@
 			this.panelStats.Size = new System.Drawing.Size(274, 354);
 			this.panelStats.TabIndex = 21;
 			// 
+			// numericUpDownLevelReq
+			// 
+			this.numericUpDownLevelReq.Enabled = false;
+			this.numericUpDownLevelReq.Location = new System.Drawing.Point(118, 252);
+			this.numericUpDownLevelReq.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownLevelReq.Name = "numericUpDownLevelReq";
+			this.numericUpDownLevelReq.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownLevelReq.TabIndex = 37;
+			this.numericUpDownLevelReq.ValueChanged += new System.EventHandler(this.numericUpDownLevelReq_ValueChanged);
+			// 
+			// numericUpDownPrice
+			// 
+			this.numericUpDownPrice.Enabled = false;
+			this.numericUpDownPrice.Location = new System.Drawing.Point(118, 226);
+			this.numericUpDownPrice.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownPrice.Name = "numericUpDownPrice";
+			this.numericUpDownPrice.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownPrice.TabIndex = 36;
+			this.numericUpDownPrice.ValueChanged += new System.EventHandler(this.numericUpDownPrice_ValueChanged);
+			// 
+			// numericUpDownAgility
+			// 
+			this.numericUpDownAgility.Enabled = false;
+			this.numericUpDownAgility.Location = new System.Drawing.Point(118, 200);
+			this.numericUpDownAgility.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownAgility.Name = "numericUpDownAgility";
+			this.numericUpDownAgility.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownAgility.TabIndex = 35;
+			this.numericUpDownAgility.ValueChanged += new System.EventHandler(this.numericUpDownAgility_ValueChanged);
+			// 
+			// numericUpDownMagic
+			// 
+			this.numericUpDownMagic.Enabled = false;
+			this.numericUpDownMagic.Location = new System.Drawing.Point(118, 174);
+			this.numericUpDownMagic.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownMagic.Name = "numericUpDownMagic";
+			this.numericUpDownMagic.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownMagic.TabIndex = 34;
+			this.numericUpDownMagic.ValueChanged += new System.EventHandler(this.numericUpDownMagic_ValueChanged);
+			// 
+			// numericUpDownRange
+			// 
+			this.numericUpDownRange.Enabled = false;
+			this.numericUpDownRange.Location = new System.Drawing.Point(118, 148);
+			this.numericUpDownRange.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownRange.Name = "numericUpDownRange";
+			this.numericUpDownRange.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownRange.TabIndex = 33;
+			this.numericUpDownRange.ValueChanged += new System.EventHandler(this.numericUpDownRange_ValueChanged);
+			// 
+			// numericUpDownStrength
+			// 
+			this.numericUpDownStrength.Enabled = false;
+			this.numericUpDownStrength.Location = new System.Drawing.Point(118, 122);
+			this.numericUpDownStrength.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownStrength.Name = "numericUpDownStrength";
+			this.numericUpDownStrength.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownStrength.TabIndex = 32;
+			this.numericUpDownStrength.ValueChanged += new System.EventHandler(this.numericUpDownStrength_ValueChanged);
+			// 
+			// numericUpDownSpeed
+			// 
+			this.numericUpDownSpeed.Enabled = false;
+			this.numericUpDownSpeed.Location = new System.Drawing.Point(118, 96);
+			this.numericUpDownSpeed.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownSpeed.Name = "numericUpDownSpeed";
+			this.numericUpDownSpeed.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownSpeed.TabIndex = 31;
+			this.numericUpDownSpeed.ValueChanged += new System.EventHandler(this.numericUpDownSpeed_ValueChanged);
+			// 
 			// numericUpDownHealth
 			// 
+			this.numericUpDownHealth.Enabled = false;
 			this.numericUpDownHealth.Location = new System.Drawing.Point(118, 70);
 			this.numericUpDownHealth.Maximum = new decimal(new int[] {
             1000,
@@ -591,97 +693,6 @@
 			this.buttonOpen.UseVisualStyleBackColor = true;
 			this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
 			// 
-			// numericUpDownSpeed
-			// 
-			this.numericUpDownSpeed.Location = new System.Drawing.Point(118, 96);
-			this.numericUpDownSpeed.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.numericUpDownSpeed.Name = "numericUpDownSpeed";
-			this.numericUpDownSpeed.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDownSpeed.TabIndex = 31;
-			this.numericUpDownSpeed.ValueChanged += new System.EventHandler(this.numericUpDownSpeed_ValueChanged);
-			// 
-			// numericUpDownStrength
-			// 
-			this.numericUpDownStrength.Location = new System.Drawing.Point(118, 122);
-			this.numericUpDownStrength.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.numericUpDownStrength.Name = "numericUpDownStrength";
-			this.numericUpDownStrength.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDownStrength.TabIndex = 32;
-			this.numericUpDownStrength.ValueChanged += new System.EventHandler(this.numericUpDownStrength_ValueChanged);
-			// 
-			// numericUpDownRange
-			// 
-			this.numericUpDownRange.Location = new System.Drawing.Point(118, 148);
-			this.numericUpDownRange.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.numericUpDownRange.Name = "numericUpDownRange";
-			this.numericUpDownRange.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDownRange.TabIndex = 33;
-			this.numericUpDownRange.ValueChanged += new System.EventHandler(this.numericUpDownRange_ValueChanged);
-			// 
-			// numericUpDownMagic
-			// 
-			this.numericUpDownMagic.Location = new System.Drawing.Point(118, 174);
-			this.numericUpDownMagic.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.numericUpDownMagic.Name = "numericUpDownMagic";
-			this.numericUpDownMagic.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDownMagic.TabIndex = 34;
-			this.numericUpDownMagic.ValueChanged += new System.EventHandler(this.numericUpDownMagic_ValueChanged);
-			// 
-			// numericUpDownAgility
-			// 
-			this.numericUpDownAgility.Location = new System.Drawing.Point(118, 200);
-			this.numericUpDownAgility.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.numericUpDownAgility.Name = "numericUpDownAgility";
-			this.numericUpDownAgility.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDownAgility.TabIndex = 35;
-			this.numericUpDownAgility.ValueChanged += new System.EventHandler(this.numericUpDownAgility_ValueChanged);
-			// 
-			// numericUpDownPrice
-			// 
-			this.numericUpDownPrice.Location = new System.Drawing.Point(118, 226);
-			this.numericUpDownPrice.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.numericUpDownPrice.Name = "numericUpDownPrice";
-			this.numericUpDownPrice.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDownPrice.TabIndex = 36;
-			this.numericUpDownPrice.ValueChanged += new System.EventHandler(this.numericUpDownPrice_ValueChanged);
-			// 
-			// numericUpDownLevelReq
-			// 
-			this.numericUpDownLevelReq.Location = new System.Drawing.Point(118, 252);
-			this.numericUpDownLevelReq.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-			this.numericUpDownLevelReq.Name = "numericUpDownLevelReq";
-			this.numericUpDownLevelReq.Size = new System.Drawing.Size(120, 20);
-			this.numericUpDownLevelReq.TabIndex = 37;
-			this.numericUpDownLevelReq.ValueChanged += new System.EventHandler(this.numericUpDownLevelReq_ValueChanged);
-			// 
 			// formMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -703,16 +714,16 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
 			this.panelStats.ResumeLayout(false);
 			this.panelStats.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevelReq)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownAgility)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownMagic)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownRange)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownStrength)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeed)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownHealth)).EndInit();
 			this.panelDetails.ResumeLayout(false);
 			this.panelDetails.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeed)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownStrength)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownRange)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownMagic)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownAgility)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevelReq)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

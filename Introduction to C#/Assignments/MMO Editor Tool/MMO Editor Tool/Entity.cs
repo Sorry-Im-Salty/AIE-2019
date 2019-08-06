@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MMO_Editor_Tool
 {
-	class Entity
+	public class Entity
 	{
-		private string sType;
-		private string sSubType;
+		private int sType;
+		private int sSubType;
 		private string sName;
 		private int nHealth;
 		private int nSpeed;
@@ -20,20 +20,20 @@ namespace MMO_Editor_Tool
 		private int nPrice;
 		private int nLevelReq;
 
-		public void setType(string type)
+		public void setType(int type)
 		{
 			sType = type;
 		}
-		public string getType()
+		public int getType()
 		{
 			return sType;
 		}
 
-		public void setSubType(string subType)
+		public void setSubType(int subType)
 		{
 			sSubType = subType;
 		}
-		public string getSubType()
+		public int getSubType()
 		{
 			return sSubType;
 		}
