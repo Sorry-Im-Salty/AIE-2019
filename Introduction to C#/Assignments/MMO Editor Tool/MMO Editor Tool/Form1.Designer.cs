@@ -73,18 +73,20 @@
 			this.labelStrength = new System.Windows.Forms.Label();
 			this.textBoxSpeed = new System.Windows.Forms.TextBox();
 			this.panelStats = new System.Windows.Forms.Panel();
-			this.panelDetails = new System.Windows.Forms.Panel();
-			this.labelRange = new System.Windows.Forms.Label();
-			this.textBoxRange = new System.Windows.Forms.TextBox();
-			this.labelHealth = new System.Windows.Forms.Label();
-			this.labelMagic = new System.Windows.Forms.Label();
-			this.textBoxMagic = new System.Windows.Forms.TextBox();
-			this.labelAgility = new System.Windows.Forms.Label();
-			this.textBoxAgility = new System.Windows.Forms.TextBox();
-			this.labelPrice = new System.Windows.Forms.Label();
-			this.textBoxPrice = new System.Windows.Forms.TextBox();
-			this.labelLevelReq = new System.Windows.Forms.Label();
 			this.textBoxLevelReq = new System.Windows.Forms.TextBox();
+			this.labelLevelReq = new System.Windows.Forms.Label();
+			this.textBoxPrice = new System.Windows.Forms.TextBox();
+			this.labelPrice = new System.Windows.Forms.Label();
+			this.textBoxAgility = new System.Windows.Forms.TextBox();
+			this.labelAgility = new System.Windows.Forms.Label();
+			this.textBoxMagic = new System.Windows.Forms.TextBox();
+			this.labelMagic = new System.Windows.Forms.Label();
+			this.labelHealth = new System.Windows.Forms.Label();
+			this.textBoxRange = new System.Windows.Forms.TextBox();
+			this.labelRange = new System.Windows.Forms.Label();
+			this.panelDetails = new System.Windows.Forms.Panel();
+			this.buttonSave = new System.Windows.Forms.Button();
+			this.buttonOpen = new System.Windows.Forms.Button();
 			this.menuStripMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
 			this.panelStats.SuspendLayout();
@@ -483,6 +485,107 @@
 			this.panelStats.Size = new System.Drawing.Size(274, 354);
 			this.panelStats.TabIndex = 21;
 			// 
+			// textBoxLevelReq
+			// 
+			this.textBoxLevelReq.Location = new System.Drawing.Point(118, 253);
+			this.textBoxLevelReq.Name = "textBoxLevelReq";
+			this.textBoxLevelReq.Size = new System.Drawing.Size(66, 20);
+			this.textBoxLevelReq.TabIndex = 31;
+			// 
+			// labelLevelReq
+			// 
+			this.labelLevelReq.AutoSize = true;
+			this.labelLevelReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelLevelReq.Location = new System.Drawing.Point(9, 253);
+			this.labelLevelReq.Name = "labelLevelReq";
+			this.labelLevelReq.Size = new System.Drawing.Size(89, 20);
+			this.labelLevelReq.TabIndex = 30;
+			this.labelLevelReq.Text = "Level Req";
+			this.labelLevelReq.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// textBoxPrice
+			// 
+			this.textBoxPrice.Location = new System.Drawing.Point(118, 227);
+			this.textBoxPrice.Name = "textBoxPrice";
+			this.textBoxPrice.Size = new System.Drawing.Size(66, 20);
+			this.textBoxPrice.TabIndex = 30;
+			// 
+			// labelPrice
+			// 
+			this.labelPrice.AutoSize = true;
+			this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelPrice.Location = new System.Drawing.Point(9, 227);
+			this.labelPrice.Name = "labelPrice";
+			this.labelPrice.Size = new System.Drawing.Size(49, 20);
+			this.labelPrice.TabIndex = 29;
+			this.labelPrice.Text = "Price";
+			this.labelPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// textBoxAgility
+			// 
+			this.textBoxAgility.Location = new System.Drawing.Point(118, 201);
+			this.textBoxAgility.Name = "textBoxAgility";
+			this.textBoxAgility.Size = new System.Drawing.Size(66, 20);
+			this.textBoxAgility.TabIndex = 28;
+			// 
+			// labelAgility
+			// 
+			this.labelAgility.AutoSize = true;
+			this.labelAgility.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelAgility.Location = new System.Drawing.Point(9, 201);
+			this.labelAgility.Name = "labelAgility";
+			this.labelAgility.Size = new System.Drawing.Size(57, 20);
+			this.labelAgility.TabIndex = 27;
+			this.labelAgility.Text = "Agility";
+			this.labelAgility.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// textBoxMagic
+			// 
+			this.textBoxMagic.Location = new System.Drawing.Point(118, 175);
+			this.textBoxMagic.Name = "textBoxMagic";
+			this.textBoxMagic.Size = new System.Drawing.Size(66, 20);
+			this.textBoxMagic.TabIndex = 26;
+			// 
+			// labelMagic
+			// 
+			this.labelMagic.AutoSize = true;
+			this.labelMagic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelMagic.Location = new System.Drawing.Point(9, 175);
+			this.labelMagic.Name = "labelMagic";
+			this.labelMagic.Size = new System.Drawing.Size(56, 20);
+			this.labelMagic.TabIndex = 24;
+			this.labelMagic.Text = "Magic";
+			this.labelMagic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// labelHealth
+			// 
+			this.labelHealth.AutoSize = true;
+			this.labelHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelHealth.Location = new System.Drawing.Point(9, 71);
+			this.labelHealth.Name = "labelHealth";
+			this.labelHealth.Size = new System.Drawing.Size(62, 20);
+			this.labelHealth.TabIndex = 25;
+			this.labelHealth.Text = "Health";
+			this.labelHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// textBoxRange
+			// 
+			this.textBoxRange.Location = new System.Drawing.Point(118, 149);
+			this.textBoxRange.Name = "textBoxRange";
+			this.textBoxRange.Size = new System.Drawing.Size(66, 20);
+			this.textBoxRange.TabIndex = 24;
+			// 
+			// labelRange
+			// 
+			this.labelRange.AutoSize = true;
+			this.labelRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelRange.Location = new System.Drawing.Point(9, 149);
+			this.labelRange.Name = "labelRange";
+			this.labelRange.Size = new System.Drawing.Size(62, 20);
+			this.labelRange.TabIndex = 23;
+			this.labelRange.Text = "Range";
+			this.labelRange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// panelDetails
 			// 
 			this.panelDetails.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -498,112 +601,31 @@
 			this.panelDetails.Size = new System.Drawing.Size(274, 354);
 			this.panelDetails.TabIndex = 22;
 			// 
-			// labelRange
+			// buttonSave
 			// 
-			this.labelRange.AutoSize = true;
-			this.labelRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelRange.Location = new System.Drawing.Point(9, 149);
-			this.labelRange.Name = "labelRange";
-			this.labelRange.Size = new System.Drawing.Size(62, 20);
-			this.labelRange.TabIndex = 23;
-			this.labelRange.Text = "Range";
-			this.labelRange.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.buttonSave.Location = new System.Drawing.Point(770, 436);
+			this.buttonSave.Name = "buttonSave";
+			this.buttonSave.Size = new System.Drawing.Size(80, 37);
+			this.buttonSave.TabIndex = 23;
+			this.buttonSave.Text = "Save";
+			this.buttonSave.UseVisualStyleBackColor = true;
 			// 
-			// textBoxRange
+			// buttonOpen
 			// 
-			this.textBoxRange.Location = new System.Drawing.Point(118, 149);
-			this.textBoxRange.Name = "textBoxRange";
-			this.textBoxRange.Size = new System.Drawing.Size(66, 20);
-			this.textBoxRange.TabIndex = 24;
-			// 
-			// labelHealth
-			// 
-			this.labelHealth.AutoSize = true;
-			this.labelHealth.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelHealth.Location = new System.Drawing.Point(9, 71);
-			this.labelHealth.Name = "labelHealth";
-			this.labelHealth.Size = new System.Drawing.Size(62, 20);
-			this.labelHealth.TabIndex = 25;
-			this.labelHealth.Text = "Health";
-			this.labelHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// labelMagic
-			// 
-			this.labelMagic.AutoSize = true;
-			this.labelMagic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelMagic.Location = new System.Drawing.Point(9, 175);
-			this.labelMagic.Name = "labelMagic";
-			this.labelMagic.Size = new System.Drawing.Size(56, 20);
-			this.labelMagic.TabIndex = 24;
-			this.labelMagic.Text = "Magic";
-			this.labelMagic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// textBoxMagic
-			// 
-			this.textBoxMagic.Location = new System.Drawing.Point(118, 175);
-			this.textBoxMagic.Name = "textBoxMagic";
-			this.textBoxMagic.Size = new System.Drawing.Size(66, 20);
-			this.textBoxMagic.TabIndex = 26;
-			// 
-			// labelAgility
-			// 
-			this.labelAgility.AutoSize = true;
-			this.labelAgility.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelAgility.Location = new System.Drawing.Point(9, 201);
-			this.labelAgility.Name = "labelAgility";
-			this.labelAgility.Size = new System.Drawing.Size(57, 20);
-			this.labelAgility.TabIndex = 27;
-			this.labelAgility.Text = "Agility";
-			this.labelAgility.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// textBoxAgility
-			// 
-			this.textBoxAgility.Location = new System.Drawing.Point(118, 201);
-			this.textBoxAgility.Name = "textBoxAgility";
-			this.textBoxAgility.Size = new System.Drawing.Size(66, 20);
-			this.textBoxAgility.TabIndex = 28;
-			// 
-			// labelPrice
-			// 
-			this.labelPrice.AutoSize = true;
-			this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelPrice.Location = new System.Drawing.Point(9, 227);
-			this.labelPrice.Name = "labelPrice";
-			this.labelPrice.Size = new System.Drawing.Size(49, 20);
-			this.labelPrice.TabIndex = 29;
-			this.labelPrice.Text = "Price";
-			this.labelPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// textBoxPrice
-			// 
-			this.textBoxPrice.Location = new System.Drawing.Point(118, 227);
-			this.textBoxPrice.Name = "textBoxPrice";
-			this.textBoxPrice.Size = new System.Drawing.Size(66, 20);
-			this.textBoxPrice.TabIndex = 30;
-			// 
-			// labelLevelReq
-			// 
-			this.labelLevelReq.AutoSize = true;
-			this.labelLevelReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelLevelReq.Location = new System.Drawing.Point(9, 253);
-			this.labelLevelReq.Name = "labelLevelReq";
-			this.labelLevelReq.Size = new System.Drawing.Size(89, 20);
-			this.labelLevelReq.TabIndex = 30;
-			this.labelLevelReq.Text = "Level Req";
-			this.labelLevelReq.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// textBoxLevelReq
-			// 
-			this.textBoxLevelReq.Location = new System.Drawing.Point(118, 253);
-			this.textBoxLevelReq.Name = "textBoxLevelReq";
-			this.textBoxLevelReq.Size = new System.Drawing.Size(66, 20);
-			this.textBoxLevelReq.TabIndex = 31;
+			this.buttonOpen.Location = new System.Drawing.Point(871, 436);
+			this.buttonOpen.Name = "buttonOpen";
+			this.buttonOpen.Size = new System.Drawing.Size(91, 37);
+			this.buttonOpen.TabIndex = 24;
+			this.buttonOpen.Text = "Open";
+			this.buttonOpen.UseVisualStyleBackColor = true;
 			// 
 			// formMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(985, 531);
+			this.Controls.Add(this.buttonOpen);
+			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.panelDetails);
 			this.Controls.Add(this.panelStats);
 			this.Controls.Add(this.labelNameTitle);
@@ -683,6 +705,8 @@
 		private System.Windows.Forms.Label labelLevelReq;
 		private System.Windows.Forms.TextBox textBoxPrice;
 		private System.Windows.Forms.Label labelPrice;
+		private System.Windows.Forms.Button buttonSave;
+		private System.Windows.Forms.Button buttonOpen;
 	}
 }
 
