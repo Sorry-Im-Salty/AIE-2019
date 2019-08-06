@@ -67,32 +67,40 @@
 			this.labelStatsTitle = new System.Windows.Forms.Label();
 			this.labelDetailsTitle = new System.Windows.Forms.Label();
 			this.labelSubType = new System.Windows.Forms.Label();
-			this.textBoxHealth = new System.Windows.Forms.TextBox();
 			this.labelSpeed = new System.Windows.Forms.Label();
-			this.textBoxStrength = new System.Windows.Forms.TextBox();
 			this.labelStrength = new System.Windows.Forms.Label();
-			this.textBoxSpeed = new System.Windows.Forms.TextBox();
 			this.panelStats = new System.Windows.Forms.Panel();
-			this.textBoxLevelReq = new System.Windows.Forms.TextBox();
+			this.numericUpDownHealth = new System.Windows.Forms.NumericUpDown();
 			this.labelLevelReq = new System.Windows.Forms.Label();
-			this.textBoxPrice = new System.Windows.Forms.TextBox();
 			this.labelPrice = new System.Windows.Forms.Label();
-			this.textBoxAgility = new System.Windows.Forms.TextBox();
 			this.labelAgility = new System.Windows.Forms.Label();
-			this.textBoxMagic = new System.Windows.Forms.TextBox();
 			this.labelMagic = new System.Windows.Forms.Label();
 			this.labelHealth = new System.Windows.Forms.Label();
-			this.textBoxRange = new System.Windows.Forms.TextBox();
 			this.labelRange = new System.Windows.Forms.Label();
 			this.panelDetails = new System.Windows.Forms.Panel();
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.saveFileDialogMain = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialogMain = new System.Windows.Forms.OpenFileDialog();
+			this.numericUpDownSpeed = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownStrength = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownRange = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownMagic = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownAgility = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownPrice = new System.Windows.Forms.NumericUpDown();
+			this.numericUpDownLevelReq = new System.Windows.Forms.NumericUpDown();
 			this.menuStripMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
 			this.panelStats.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownHealth)).BeginInit();
 			this.panelDetails.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeed)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownStrength)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownRange)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownMagic)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownAgility)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevelReq)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStripMain
@@ -128,7 +136,7 @@
 			this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.newToolStripMenuItem.Name = "newToolStripMenuItem";
 			this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-			this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.newToolStripMenuItem.Text = "&New";
 			// 
 			// openToolStripMenuItem
@@ -137,14 +145,14 @@
 			this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.openToolStripMenuItem.Name = "openToolStripMenuItem";
 			this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-			this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.openToolStripMenuItem.Text = "&Open";
 			this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator
 			// 
 			this.toolStripSeparator.Name = "toolStripSeparator";
-			this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator.Size = new System.Drawing.Size(143, 6);
 			// 
 			// saveToolStripMenuItem
 			// 
@@ -152,25 +160,25 @@
 			this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
 			this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-			this.saveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.saveToolStripMenuItem.Text = "&Save";
 			this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
 			// 
 			// saveAsToolStripMenuItem
 			// 
 			this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.saveAsToolStripMenuItem.Text = "Save &As";
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			// 
 			// editToolStripMenuItem
@@ -257,13 +265,13 @@
 			// customizeToolStripMenuItem
 			// 
 			this.customizeToolStripMenuItem.Name = "customizeToolStripMenuItem";
-			this.customizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.customizeToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
 			this.customizeToolStripMenuItem.Text = "&Customize";
 			// 
 			// optionsToolStripMenuItem
 			// 
 			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
 			this.optionsToolStripMenuItem.Text = "&Options";
 			// 
 			// helpToolStripMenuItem
@@ -281,30 +289,30 @@
 			// contentsToolStripMenuItem
 			// 
 			this.contentsToolStripMenuItem.Name = "contentsToolStripMenuItem";
-			this.contentsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.contentsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.contentsToolStripMenuItem.Text = "&Contents";
 			// 
 			// indexToolStripMenuItem
 			// 
 			this.indexToolStripMenuItem.Name = "indexToolStripMenuItem";
-			this.indexToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.indexToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.indexToolStripMenuItem.Text = "&Index";
 			// 
 			// searchToolStripMenuItem
 			// 
 			this.searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-			this.searchToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.searchToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.searchToolStripMenuItem.Text = "&Search";
 			// 
 			// toolStripSeparator5
 			// 
 			this.toolStripSeparator5.Name = "toolStripSeparator5";
-			this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator5.Size = new System.Drawing.Size(119, 6);
 			// 
 			// aboutToolStripMenuItem
 			// 
 			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
 			this.aboutToolStripMenuItem.Text = "&About...";
 			// 
 			// pictureBoxMain
@@ -342,12 +350,11 @@
 			// 
 			this.labelNameTitle.AutoSize = true;
 			this.labelNameTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelNameTitle.Location = new System.Drawing.Point(172, 42);
+			this.labelNameTitle.Location = new System.Drawing.Point(29, 42);
 			this.labelNameTitle.Name = "labelNameTitle";
-			this.labelNameTitle.Size = new System.Drawing.Size(90, 31);
+			this.labelNameTitle.Size = new System.Drawing.Size(0, 31);
 			this.labelNameTitle.TabIndex = 5;
-			this.labelNameTitle.Text = "Name";
-			this.labelNameTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.labelNameTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
 			// 
 			// labelType
 			// 
@@ -384,9 +391,11 @@
 			// textBoxName
 			// 
 			this.textBoxName.Location = new System.Drawing.Point(119, 133);
+			this.textBoxName.MaxLength = 60;
 			this.textBoxName.Name = "textBoxName";
 			this.textBoxName.Size = new System.Drawing.Size(100, 20);
 			this.textBoxName.TabIndex = 11;
+			this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
 			// 
 			// labelStatsTitle
 			// 
@@ -421,140 +430,104 @@
 			this.labelSubType.Text = "Sub Type";
 			this.labelSubType.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// textBoxHealth
-			// 
-			this.textBoxHealth.Location = new System.Drawing.Point(118, 71);
-			this.textBoxHealth.Name = "textBoxHealth";
-			this.textBoxHealth.Size = new System.Drawing.Size(66, 20);
-			this.textBoxHealth.TabIndex = 16;
-			// 
 			// labelSpeed
 			// 
 			this.labelSpeed.AutoSize = true;
 			this.labelSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelSpeed.Location = new System.Drawing.Point(9, 97);
+			this.labelSpeed.Location = new System.Drawing.Point(9, 96);
 			this.labelSpeed.Name = "labelSpeed";
 			this.labelSpeed.Size = new System.Drawing.Size(61, 20);
 			this.labelSpeed.TabIndex = 17;
 			this.labelSpeed.Text = "Speed";
 			this.labelSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// textBoxStrength
-			// 
-			this.textBoxStrength.Location = new System.Drawing.Point(118, 123);
-			this.textBoxStrength.Name = "textBoxStrength";
-			this.textBoxStrength.Size = new System.Drawing.Size(66, 20);
-			this.textBoxStrength.TabIndex = 18;
-			// 
 			// labelStrength
 			// 
 			this.labelStrength.AutoSize = true;
 			this.labelStrength.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelStrength.Location = new System.Drawing.Point(9, 123);
+			this.labelStrength.Location = new System.Drawing.Point(9, 122);
 			this.labelStrength.Name = "labelStrength";
 			this.labelStrength.Size = new System.Drawing.Size(79, 20);
 			this.labelStrength.TabIndex = 19;
 			this.labelStrength.Text = "Strength";
 			this.labelStrength.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// textBoxSpeed
-			// 
-			this.textBoxSpeed.Location = new System.Drawing.Point(118, 97);
-			this.textBoxSpeed.Name = "textBoxSpeed";
-			this.textBoxSpeed.Size = new System.Drawing.Size(66, 20);
-			this.textBoxSpeed.TabIndex = 20;
-			// 
 			// panelStats
 			// 
 			this.panelStats.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.panelStats.Controls.Add(this.textBoxLevelReq);
+			this.panelStats.Controls.Add(this.numericUpDownLevelReq);
+			this.panelStats.Controls.Add(this.numericUpDownPrice);
+			this.panelStats.Controls.Add(this.numericUpDownAgility);
+			this.panelStats.Controls.Add(this.numericUpDownMagic);
+			this.panelStats.Controls.Add(this.numericUpDownRange);
+			this.panelStats.Controls.Add(this.numericUpDownStrength);
+			this.panelStats.Controls.Add(this.numericUpDownSpeed);
+			this.panelStats.Controls.Add(this.numericUpDownHealth);
 			this.panelStats.Controls.Add(this.labelLevelReq);
-			this.panelStats.Controls.Add(this.textBoxPrice);
 			this.panelStats.Controls.Add(this.labelPrice);
-			this.panelStats.Controls.Add(this.textBoxAgility);
 			this.panelStats.Controls.Add(this.labelAgility);
-			this.panelStats.Controls.Add(this.textBoxMagic);
 			this.panelStats.Controls.Add(this.labelMagic);
 			this.panelStats.Controls.Add(this.labelHealth);
-			this.panelStats.Controls.Add(this.textBoxRange);
 			this.panelStats.Controls.Add(this.labelRange);
 			this.panelStats.Controls.Add(this.labelStatsTitle);
-			this.panelStats.Controls.Add(this.textBoxSpeed);
-			this.panelStats.Controls.Add(this.textBoxStrength);
 			this.panelStats.Controls.Add(this.labelStrength);
-			this.panelStats.Controls.Add(this.textBoxHealth);
 			this.panelStats.Controls.Add(this.labelSpeed);
 			this.panelStats.Location = new System.Drawing.Point(688, 76);
 			this.panelStats.Name = "panelStats";
 			this.panelStats.Size = new System.Drawing.Size(274, 354);
 			this.panelStats.TabIndex = 21;
 			// 
-			// textBoxLevelReq
+			// numericUpDownHealth
 			// 
-			this.textBoxLevelReq.Location = new System.Drawing.Point(118, 253);
-			this.textBoxLevelReq.Name = "textBoxLevelReq";
-			this.textBoxLevelReq.Size = new System.Drawing.Size(66, 20);
-			this.textBoxLevelReq.TabIndex = 31;
+			this.numericUpDownHealth.Location = new System.Drawing.Point(118, 70);
+			this.numericUpDownHealth.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownHealth.Name = "numericUpDownHealth";
+			this.numericUpDownHealth.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownHealth.TabIndex = 15;
+			this.numericUpDownHealth.ValueChanged += new System.EventHandler(this.numericUpDownHealth_ValueChanged);
 			// 
 			// labelLevelReq
 			// 
 			this.labelLevelReq.AutoSize = true;
 			this.labelLevelReq.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelLevelReq.Location = new System.Drawing.Point(9, 253);
+			this.labelLevelReq.Location = new System.Drawing.Point(9, 252);
 			this.labelLevelReq.Name = "labelLevelReq";
 			this.labelLevelReq.Size = new System.Drawing.Size(89, 20);
 			this.labelLevelReq.TabIndex = 30;
 			this.labelLevelReq.Text = "Level Req";
 			this.labelLevelReq.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// textBoxPrice
-			// 
-			this.textBoxPrice.Location = new System.Drawing.Point(118, 227);
-			this.textBoxPrice.Name = "textBoxPrice";
-			this.textBoxPrice.Size = new System.Drawing.Size(66, 20);
-			this.textBoxPrice.TabIndex = 30;
-			// 
 			// labelPrice
 			// 
 			this.labelPrice.AutoSize = true;
 			this.labelPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelPrice.Location = new System.Drawing.Point(9, 227);
+			this.labelPrice.Location = new System.Drawing.Point(9, 226);
 			this.labelPrice.Name = "labelPrice";
 			this.labelPrice.Size = new System.Drawing.Size(49, 20);
 			this.labelPrice.TabIndex = 29;
 			this.labelPrice.Text = "Price";
 			this.labelPrice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// textBoxAgility
-			// 
-			this.textBoxAgility.Location = new System.Drawing.Point(118, 201);
-			this.textBoxAgility.Name = "textBoxAgility";
-			this.textBoxAgility.Size = new System.Drawing.Size(66, 20);
-			this.textBoxAgility.TabIndex = 28;
-			// 
 			// labelAgility
 			// 
 			this.labelAgility.AutoSize = true;
 			this.labelAgility.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelAgility.Location = new System.Drawing.Point(9, 201);
+			this.labelAgility.Location = new System.Drawing.Point(9, 200);
 			this.labelAgility.Name = "labelAgility";
 			this.labelAgility.Size = new System.Drawing.Size(57, 20);
 			this.labelAgility.TabIndex = 27;
 			this.labelAgility.Text = "Agility";
 			this.labelAgility.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// textBoxMagic
-			// 
-			this.textBoxMagic.Location = new System.Drawing.Point(118, 175);
-			this.textBoxMagic.Name = "textBoxMagic";
-			this.textBoxMagic.Size = new System.Drawing.Size(66, 20);
-			this.textBoxMagic.TabIndex = 26;
-			// 
 			// labelMagic
 			// 
 			this.labelMagic.AutoSize = true;
 			this.labelMagic.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelMagic.Location = new System.Drawing.Point(9, 175);
+			this.labelMagic.Location = new System.Drawing.Point(9, 174);
 			this.labelMagic.Name = "labelMagic";
 			this.labelMagic.Size = new System.Drawing.Size(56, 20);
 			this.labelMagic.TabIndex = 24;
@@ -572,18 +545,11 @@
 			this.labelHealth.Text = "Health";
 			this.labelHealth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// textBoxRange
-			// 
-			this.textBoxRange.Location = new System.Drawing.Point(118, 149);
-			this.textBoxRange.Name = "textBoxRange";
-			this.textBoxRange.Size = new System.Drawing.Size(66, 20);
-			this.textBoxRange.TabIndex = 24;
-			// 
 			// labelRange
 			// 
 			this.labelRange.AutoSize = true;
 			this.labelRange.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelRange.Location = new System.Drawing.Point(9, 149);
+			this.labelRange.Location = new System.Drawing.Point(9, 148);
 			this.labelRange.Name = "labelRange";
 			this.labelRange.Size = new System.Drawing.Size(62, 20);
 			this.labelRange.TabIndex = 23;
@@ -625,6 +591,97 @@
 			this.buttonOpen.UseVisualStyleBackColor = true;
 			this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
 			// 
+			// numericUpDownSpeed
+			// 
+			this.numericUpDownSpeed.Location = new System.Drawing.Point(118, 96);
+			this.numericUpDownSpeed.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownSpeed.Name = "numericUpDownSpeed";
+			this.numericUpDownSpeed.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownSpeed.TabIndex = 31;
+			this.numericUpDownSpeed.ValueChanged += new System.EventHandler(this.numericUpDownSpeed_ValueChanged);
+			// 
+			// numericUpDownStrength
+			// 
+			this.numericUpDownStrength.Location = new System.Drawing.Point(118, 122);
+			this.numericUpDownStrength.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownStrength.Name = "numericUpDownStrength";
+			this.numericUpDownStrength.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownStrength.TabIndex = 32;
+			this.numericUpDownStrength.ValueChanged += new System.EventHandler(this.numericUpDownStrength_ValueChanged);
+			// 
+			// numericUpDownRange
+			// 
+			this.numericUpDownRange.Location = new System.Drawing.Point(118, 148);
+			this.numericUpDownRange.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownRange.Name = "numericUpDownRange";
+			this.numericUpDownRange.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownRange.TabIndex = 33;
+			this.numericUpDownRange.ValueChanged += new System.EventHandler(this.numericUpDownRange_ValueChanged);
+			// 
+			// numericUpDownMagic
+			// 
+			this.numericUpDownMagic.Location = new System.Drawing.Point(118, 174);
+			this.numericUpDownMagic.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownMagic.Name = "numericUpDownMagic";
+			this.numericUpDownMagic.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownMagic.TabIndex = 34;
+			this.numericUpDownMagic.ValueChanged += new System.EventHandler(this.numericUpDownMagic_ValueChanged);
+			// 
+			// numericUpDownAgility
+			// 
+			this.numericUpDownAgility.Location = new System.Drawing.Point(118, 200);
+			this.numericUpDownAgility.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownAgility.Name = "numericUpDownAgility";
+			this.numericUpDownAgility.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownAgility.TabIndex = 35;
+			this.numericUpDownAgility.ValueChanged += new System.EventHandler(this.numericUpDownAgility_ValueChanged);
+			// 
+			// numericUpDownPrice
+			// 
+			this.numericUpDownPrice.Location = new System.Drawing.Point(118, 226);
+			this.numericUpDownPrice.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownPrice.Name = "numericUpDownPrice";
+			this.numericUpDownPrice.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownPrice.TabIndex = 36;
+			this.numericUpDownPrice.ValueChanged += new System.EventHandler(this.numericUpDownPrice_ValueChanged);
+			// 
+			// numericUpDownLevelReq
+			// 
+			this.numericUpDownLevelReq.Location = new System.Drawing.Point(118, 252);
+			this.numericUpDownLevelReq.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+			this.numericUpDownLevelReq.Name = "numericUpDownLevelReq";
+			this.numericUpDownLevelReq.Size = new System.Drawing.Size(120, 20);
+			this.numericUpDownLevelReq.TabIndex = 37;
+			this.numericUpDownLevelReq.ValueChanged += new System.EventHandler(this.numericUpDownLevelReq_ValueChanged);
+			// 
 			// formMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -646,8 +703,16 @@
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
 			this.panelStats.ResumeLayout(false);
 			this.panelStats.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownHealth)).EndInit();
 			this.panelDetails.ResumeLayout(false);
 			this.panelDetails.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownSpeed)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownStrength)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownRange)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownMagic)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownAgility)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevelReq)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -693,28 +758,28 @@
 		private System.Windows.Forms.Label labelStatsTitle;
 		private System.Windows.Forms.Label labelDetailsTitle;
 		private System.Windows.Forms.Label labelSubType;
-		private System.Windows.Forms.TextBox textBoxHealth;
 		private System.Windows.Forms.Label labelSpeed;
-		private System.Windows.Forms.TextBox textBoxStrength;
 		private System.Windows.Forms.Label labelStrength;
-		private System.Windows.Forms.TextBox textBoxSpeed;
 		private System.Windows.Forms.Panel panelStats;
 		private System.Windows.Forms.Panel panelDetails;
-		private System.Windows.Forms.TextBox textBoxRange;
 		private System.Windows.Forms.Label labelRange;
 		private System.Windows.Forms.Label labelHealth;
-		private System.Windows.Forms.TextBox textBoxMagic;
 		private System.Windows.Forms.Label labelMagic;
-		private System.Windows.Forms.TextBox textBoxAgility;
 		private System.Windows.Forms.Label labelAgility;
-		private System.Windows.Forms.TextBox textBoxLevelReq;
 		private System.Windows.Forms.Label labelLevelReq;
-		private System.Windows.Forms.TextBox textBoxPrice;
 		private System.Windows.Forms.Label labelPrice;
 		private System.Windows.Forms.Button buttonSave;
 		private System.Windows.Forms.Button buttonOpen;
 		private System.Windows.Forms.SaveFileDialog saveFileDialogMain;
 		private System.Windows.Forms.OpenFileDialog openFileDialogMain;
+		private System.Windows.Forms.NumericUpDown numericUpDownHealth;
+		private System.Windows.Forms.NumericUpDown numericUpDownLevelReq;
+		private System.Windows.Forms.NumericUpDown numericUpDownPrice;
+		private System.Windows.Forms.NumericUpDown numericUpDownAgility;
+		private System.Windows.Forms.NumericUpDown numericUpDownMagic;
+		private System.Windows.Forms.NumericUpDown numericUpDownRange;
+		private System.Windows.Forms.NumericUpDown numericUpDownStrength;
+		private System.Windows.Forms.NumericUpDown numericUpDownSpeed;
 	}
 }
 
