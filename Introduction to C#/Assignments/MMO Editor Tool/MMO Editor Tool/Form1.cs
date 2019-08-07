@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace MMO_Editor_Tool
@@ -17,6 +19,7 @@ namespace MMO_Editor_Tool
 		public formMain()
 		{
 			InitializeComponent();
+			
 		}
 
 		Entity m_Entity = new Entity();
@@ -24,16 +27,30 @@ namespace MMO_Editor_Tool
 		// Saving
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
-			SaveFileDialog saveFileDialogMain = new SaveFileDialog();
-			saveFileDialogMain.Filter = "XML File|*.xml";
-			saveFileDialogMain.Title = "Save";
-			saveFileDialogMain.ShowDialog();
+			Entity en = new Entity();
+			en.nType = comboBoxType.SelectedIndex;
+			en.nSubType = comboBoxSubType.SelectedIndex;
+			en.sName = textBoxName.Text;
+			en.nHealth = (int)numericUpDownHealth.Value;
+			en.nSpeed = (int)numericUpDownSpeed.Value;
+			en.nStrength = (int)numericUpDownStrength.Value;
+			en.nRange = (int)numericUpDownRange.Value;
+			en.nMagic = (int)numericUpDownMagic.Value;
+			en.nAgility = (int)numericUpDownAgility.Value;
+			en.nPrice = (int)numericUpDownPrice.Value;
+			en.nLevelReq = (int)numericUpDownLevelReq.Value;
 
-				XmlSerializer serializer = new XmlSerializer(typeof(Entity));
-				using (FileStream fs = new FileStream("data.xml", FileMode.Create))
-				{
-					serializer.Serialize(fs, m_Entity);
-				}
+			SaveFileDialog saveFileDialogMain = new SaveFileDialog();
+			saveFileDialogMain.Filter = "xml file (*.xml)|*.xml";
+			saveFileDialogMain.Title = "Save";
+			saveFileDialogMain.RestoreDirectory = true;
+			saveFileDialogMain.CheckPathExists = true;
+			saveFileDialogMain.FileName = textBoxName.Text;
+
+			if (saveFileDialogMain.ShowDialog() == DialogResult.OK && saveFileDialogMain.FileName.Length > 0)
+			{
+				Save(en);
+			}	
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,6 +67,31 @@ namespace MMO_Editor_Tool
 				serializer.Serialize(file, m_Entity);
 				file.Close();
 			}
+		}
+
+		public void Save(Entity entity)
+		{
+			using (XmlWriter writer = XmlWriter.Create(textBoxName.Text + ".xml"))
+			{
+				writer.WriteStartDocument();
+				writer.WriteStartElement("RPG_Entity");
+
+				writer.WriteElementString("Type", entity.nType.ToString());
+				writer.WriteElementString("Sub_Type", entity.nSubType.ToString());
+				writer.WriteElementString("Name", entity.sName);
+				writer.WriteElementString("Health", entity.nHealth.ToString());
+				writer.WriteElementString("Speed", entity.nSpeed.ToString());
+				writer.WriteElementString("Strength", entity.nStrength.ToString());
+				writer.WriteElementString("Range", entity.nRange.ToString());
+				writer.WriteElementString("Magic", entity.nMagic.ToString());
+				writer.WriteElementString("Agility", entity.nAgility.ToString());
+				writer.WriteElementString("Price", entity.nPrice.ToString());
+				writer.WriteElementString("Level_Req", entity.nLevelReq.ToString());
+
+				writer.WriteEndElement();
+				writer.WriteEndDocument();
+			}
+				
 		}
 /* ====================================================================================*/
 		// Opening
@@ -88,7 +130,7 @@ namespace MMO_Editor_Tool
 		// Assign Type
 		private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			m_Entity.setType(comboBoxType.SelectedIndex);
+			m_Entity.nType = comboBoxType.SelectedIndex;
 
 			if (comboBoxType.SelectedIndex == 0)
 			{
@@ -114,7 +156,7 @@ namespace MMO_Editor_Tool
 		// Assign SubType
 		private void comboBoxSubType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			m_Entity.setSubType(comboBoxSubType.SelectedIndex);
+			m_Entity.nSubType = comboBoxSubType.SelectedIndex;
 
 			if (comboBoxType.SelectedIndex == 0)
 			{
@@ -271,51 +313,51 @@ namespace MMO_Editor_Tool
 				}
 			}
 		}
-		// Name Label / Assign Name
+		// Name Label
 		private void textBoxName_TextChanged(object sender, EventArgs e)
 		{
-			m_Entity.setName(textBoxName.Text);
-			labelNameTitle.Text = m_Entity.getName();
+			m_Entity.sName = textBoxName.Text;
+			labelNameTitle.Text = m_Entity.sName;
 		}
 		// Assign Health
 		private void numericUpDownHealth_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.setHealth((int)numericUpDownHealth.Value);
+			m_Entity.nHealth = (int)numericUpDownHealth.Value;
 		}
 		// Assign Speed
 		private void numericUpDownSpeed_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.setSpeed((int)numericUpDownSpeed.Value);
+			m_Entity.nSpeed = (int)numericUpDownSpeed.Value;
 		}
 		// Assign Strength
 		private void numericUpDownStrength_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.setStrength((int)numericUpDownStrength.Value);
+			m_Entity.nStrength = (int)numericUpDownStrength.Value;
 		}
 		// Assign Range
 		private void numericUpDownRange_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.setRange((int)numericUpDownRange.Value);
+			m_Entity.nRange = (int)numericUpDownRange.Value;
 		}
 		// Assign Magic
 		private void numericUpDownMagic_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.setMagic((int)numericUpDownMagic.Value);
+			m_Entity.nMagic = (int)numericUpDownMagic.Value;
 		}
 		// Assign Agility
 		private void numericUpDownAgility_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.setAgility((int)numericUpDownAgility.Value);
+			m_Entity.nAgility = (int)numericUpDownAgility.Value;
 		}
 		// Assign Price
 		private void numericUpDownPrice_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.setPrice((int)numericUpDownPrice.Value);
+			m_Entity.nPrice = (int)numericUpDownPrice.Value;
 		}
 		// Assign Level Req
 		private void numericUpDownLevelReq_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.setLevelReq((int)numericUpDownLevelReq.Value);
+			m_Entity.nLevelReq = (int)numericUpDownLevelReq.Value;
 		}
 	}
 }

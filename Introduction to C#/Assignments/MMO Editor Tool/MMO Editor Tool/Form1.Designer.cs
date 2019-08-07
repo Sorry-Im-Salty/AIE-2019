@@ -693,6 +693,10 @@
 			this.buttonOpen.UseVisualStyleBackColor = true;
 			this.buttonOpen.Click += new System.EventHandler(this.buttonOpen_Click);
 			// 
+			// saveFileDialogMain
+			// 
+			this.saveFileDialogMain.DefaultExt = "xml";
+			// 
 			// formMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
