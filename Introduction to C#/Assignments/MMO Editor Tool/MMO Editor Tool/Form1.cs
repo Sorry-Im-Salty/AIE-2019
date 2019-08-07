@@ -45,12 +45,13 @@ namespace MMO_Editor_Tool
 			saveFileDialogMain.Title = "Save";
 			saveFileDialogMain.RestoreDirectory = true;
 			saveFileDialogMain.CheckPathExists = true;
-			saveFileDialogMain.FileName = textBoxName.Text;
+			saveFileDialogMain.FileName = labelNameTitle.Text;
 
-			if (saveFileDialogMain.ShowDialog() == DialogResult.OK && saveFileDialogMain.FileName.Length > 0)
+			
+			if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
 			{
 				Save(en);
-			}	
+			}
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,27 +72,28 @@ namespace MMO_Editor_Tool
 
 		public void Save(Entity entity)
 		{
-			using (XmlWriter writer = XmlWriter.Create(textBoxName.Text + ".xml"))
-			{
-				writer.WriteStartDocument();
-				writer.WriteStartElement("RPG_Entity");
+			XmlSerializer writer = new XmlSerializer(typeof(Entity));
+			FileStream file = File.Create("Entity.xml");
 
-				writer.WriteElementString("Type", entity.nType.ToString());
-				writer.WriteElementString("Sub_Type", entity.nSubType.ToString());
-				writer.WriteElementString("Name", entity.sName);
-				writer.WriteElementString("Health", entity.nHealth.ToString());
-				writer.WriteElementString("Speed", entity.nSpeed.ToString());
-				writer.WriteElementString("Strength", entity.nStrength.ToString());
-				writer.WriteElementString("Range", entity.nRange.ToString());
-				writer.WriteElementString("Magic", entity.nMagic.ToString());
-				writer.WriteElementString("Agility", entity.nAgility.ToString());
-				writer.WriteElementString("Price", entity.nPrice.ToString());
-				writer.WriteElementString("Level_Req", entity.nLevelReq.ToString());
+			writer.Serialize(file, entity);
 
-				writer.WriteEndElement();
-				writer.WriteEndDocument();
-			}
-				
+			//writer.WriteStartDocument();
+			//writer.WriteStartElement("RPG_Entity");
+
+			//writer.WriteElementString("Type", entity.nType.ToString());
+			//writer.WriteElementString("Sub_Type", entity.nSubType.ToString());
+			//writer.WriteElementString("Name", entity.sName);
+			//writer.WriteElementString("Health", entity.nHealth.ToString());
+			//writer.WriteElementString("Speed", entity.nSpeed.ToString());
+			//writer.WriteElementString("Strength", entity.nStrength.ToString());
+			//writer.WriteElementString("Range", entity.nRange.ToString());
+			//writer.WriteElementString("Magic", entity.nMagic.ToString());
+			//writer.WriteElementString("Agility", entity.nAgility.ToString());
+			//writer.WriteElementString("Price", entity.nPrice.ToString());
+			//writer.WriteElementString("Level_Req", entity.nLevelReq.ToString());
+
+			//writer.WriteEndElement();
+			//writer.WriteEndDocument();	
 		}
 /* ====================================================================================*/
 		// Opening
