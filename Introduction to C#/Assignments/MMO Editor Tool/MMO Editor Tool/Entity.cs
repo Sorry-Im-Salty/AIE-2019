@@ -19,5 +19,6 @@ namespace MMO_Editor_Tool
 		public int nAgility { get; set; }
 		public int nPrice { get; set; }
 		public int nLevelReq { get; set; }
+		public string sSprite { get; set; }
 	}
 }

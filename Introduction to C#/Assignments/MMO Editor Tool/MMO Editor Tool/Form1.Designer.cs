@@ -37,7 +37,7 @@
 			this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pictureBoxMain = new System.Windows.Forms.PictureBox();
+			this.pictureBoxSprite = new System.Windows.Forms.PictureBox();
 			this.buttonImportSprite = new System.Windows.Forms.Button();
 			this.comboBoxType = new System.Windows.Forms.ComboBox();
 			this.labelNameTitle = new System.Windows.Forms.Label();
@@ -71,7 +71,7 @@
 			this.saveFileDialogMain = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialogMain = new System.Windows.Forms.OpenFileDialog();
 			this.menuStripMain.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxSprite)).BeginInit();
 			this.panelStats.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevelReq)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownPrice)).BeginInit();
@@ -156,14 +156,15 @@
 			this.aboutToolStripMenuItem.Text = "&About...";
 			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
-			// pictureBoxMain
+			// pictureBoxSprite
 			// 
-			this.pictureBoxMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.pictureBoxMain.Location = new System.Drawing.Point(35, 76);
-			this.pictureBoxMain.Name = "pictureBoxMain";
-			this.pictureBoxMain.Size = new System.Drawing.Size(367, 407);
-			this.pictureBoxMain.TabIndex = 1;
-			this.pictureBoxMain.TabStop = false;
+			this.pictureBoxSprite.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.pictureBoxSprite.Location = new System.Drawing.Point(35, 76);
+			this.pictureBoxSprite.Name = "pictureBoxSprite";
+			this.pictureBoxSprite.Size = new System.Drawing.Size(367, 407);
+			this.pictureBoxSprite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+			this.pictureBoxSprite.TabIndex = 1;
+			this.pictureBoxSprite.TabStop = false;
 			// 
 			// buttonImportSprite
 			// 
@@ -173,6 +174,7 @@
 			this.buttonImportSprite.TabIndex = 2;
 			this.buttonImportSprite.Text = "Import Sprite";
 			this.buttonImportSprite.UseVisualStyleBackColor = true;
+			this.buttonImportSprite.Click += new System.EventHandler(this.buttonImportSprite_Click);
 			// 
 			// comboBoxType
 			// 
@@ -541,14 +543,14 @@
 			this.Controls.Add(this.panelStats);
 			this.Controls.Add(this.labelNameTitle);
 			this.Controls.Add(this.buttonImportSprite);
-			this.Controls.Add(this.pictureBoxMain);
+			this.Controls.Add(this.pictureBoxSprite);
 			this.Controls.Add(this.menuStripMain);
 			this.MainMenuStrip = this.menuStripMain;
 			this.Name = "formMain";
 			this.Text = "MMO Editor";
 			this.menuStripMain.ResumeLayout(false);
 			this.menuStripMain.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBoxMain)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBoxSprite)).EndInit();
 			this.panelStats.ResumeLayout(false);
 			this.panelStats.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numericUpDownLevelReq)).EndInit();
@@ -576,7 +578,7 @@
 		private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-		private System.Windows.Forms.PictureBox pictureBoxMain;
+		private System.Windows.Forms.PictureBox pictureBoxSprite;
 		private System.Windows.Forms.Button buttonImportSprite;
 		private System.Windows.Forms.ComboBox comboBoxType;
 		private System.Windows.Forms.Label labelNameTitle;

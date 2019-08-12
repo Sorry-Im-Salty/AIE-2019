@@ -14,7 +14,7 @@ namespace MMO_Editor_Tool
 			
 		}
 
-		Entity m_Entity = new Entity();
+		Entity en = new Entity();
 
 /* ====================================================================================*/
 		// Help
@@ -23,14 +23,13 @@ namespace MMO_Editor_Tool
 			MessageBox.Show("This tool is used to create entities that would be added to an RPG styled game.\n\n" +
 				"Entity files are saved as .xml files.\n\n" +
 				"Only relevant information for the entity will be available depending on the Type and Sub-Type, which means that if you wanted to make a type of currency, the entity wouldn't need a health stat.\n\n" +
-				"Users may drag and drop sprites into the box on the left, these sprite files must be .png or .jpeg\n\n" +
+				"Users may drag and drop sprites into the box on the left, these sprite files must be .png. If the image directory cannot be found, it will display a cross.\n\n" +
 				"Made by Thomas Maltezos\nEmail: thomasmaltezos00@gmail.com", "About...");
 		}
 /* ====================================================================================*/
 		// Saving
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
-			Entity en = new Entity();
 			en.nType = comboBoxType.Text;
 			en.nSubType = comboBoxSubType.Text;
 			en.sName = textBoxName.Text;
@@ -42,97 +41,133 @@ namespace MMO_Editor_Tool
 			en.nAgility = (int)numericUpDownAgility.Value;
 			en.nPrice = (int)numericUpDownPrice.Value;
 			en.nLevelReq = (int)numericUpDownLevelReq.Value;
+			en.sSprite = pictureBoxSprite.ImageLocation;
 
 			SaveFileDialog saveFileDialogMain = new SaveFileDialog();
-			saveFileDialogMain.Filter = "xml file (*.xml)|*.xml";
+			saveFileDialogMain.Filter = "XML Document (*.xml)|*.xml";
 			saveFileDialogMain.Title = "Save";
 			saveFileDialogMain.RestoreDirectory = true;
 			saveFileDialogMain.CheckPathExists = true;
 			saveFileDialogMain.FileName = labelNameTitle.Text;
 
-			
 			if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
 			{
-				Save(en);
+				Save(en, saveFileDialogMain.FileName);
 			}
 		}
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			SaveFileDialog saveFileDialogMain = new SaveFileDialog();
-			saveFileDialogMain.Filter = "XML File|*.xml";
-			saveFileDialogMain.Title = "Save";
-			saveFileDialogMain.ShowDialog();
+			en.nType = comboBoxType.Text;
+			en.nSubType = comboBoxSubType.Text;
+			en.sName = textBoxName.Text;
+			en.nHealth = (int)numericUpDownHealth.Value;
+			en.nSpeed = (int)numericUpDownSpeed.Value;
+			en.nStrength = (int)numericUpDownStrength.Value;
+			en.nRange = (int)numericUpDownRange.Value;
+			en.nMagic = (int)numericUpDownMagic.Value;
+			en.nAgility = (int)numericUpDownAgility.Value;
+			en.nPrice = (int)numericUpDownPrice.Value;
+			en.nLevelReq = (int)numericUpDownLevelReq.Value;
+			en.sSprite = pictureBoxSprite.ImageLocation;
 
-			if (saveFileDialogMain.FileName != "")
+			SaveFileDialog saveFileDialogMain = new SaveFileDialog();
+			saveFileDialogMain.Filter = "XML Document (*.xml)|*.xml";
+			saveFileDialogMain.Title = "Save";
+			saveFileDialogMain.RestoreDirectory = true;
+			saveFileDialogMain.CheckPathExists = true;
+			saveFileDialogMain.FileName = labelNameTitle.Text;
+
+			if (saveFileDialogMain.ShowDialog() == DialogResult.OK)
 			{
-				XmlSerializer serializer = new XmlSerializer(typeof(Entity));
-				StreamWriter file = new StreamWriter("Entity.xml");
-				serializer.Serialize(file, m_Entity);
-				file.Close();
+				Save(en, saveFileDialogMain.FileName);
 			}
 		}
 
-		public void Save(Entity entity)
+		public void Save(Entity entity, string filename)
 		{
 			XmlSerializer serializer = new XmlSerializer(typeof(Entity));
-			using (TextWriter textWriter = new StreamWriter(saveFileDialogMain.FileName + ".xml"))
-			{
-				serializer.Serialize(textWriter, entity);
-			}
-
-			//textWriter.WriteStartDocument();
-			//textWriter.WriteStartElement("RPG_Entity");
-
-			//textWriter.WriteElementString("Type", entity.nType.ToString());
-			//writer.WriteElementString("Sub_Type", entity.nSubType.ToString());
-			//writer.WriteElementString("Name", entity.sName);
-			//writer.WriteElementString("Health", entity.nHealth.ToString());
-			//writer.WriteElementString("Speed", entity.nSpeed.ToString());
-			//writer.WriteElementString("Strength", entity.nStrength.ToString());
-			//writer.WriteElementString("Range", entity.nRange.ToString());
-			//writer.WriteElementString("Magic", entity.nMagic.ToString());
-			//writer.WriteElementString("Agility", entity.nAgility.ToString());
-			//writer.WriteElementString("Price", entity.nPrice.ToString());
-			//writer.WriteElementString("Level_Req", entity.nLevelReq.ToString());
-
-			//writer.WriteEndElement();
-			//writer.WriteEndDocument();
+			StreamWriter file = new StreamWriter(filename + ".xml");
+			serializer.Serialize(file, entity);
+			file.Close();
 		}
 /* ====================================================================================*/
 		// Opening
 		private void buttonOpen_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog openFileDialogMain = new OpenFileDialog();
-			openFileDialogMain.Filter = "XML File|*.xml";
+			openFileDialogMain.Filter = "XML Document|*.xml";
 			openFileDialogMain.Title = "Open";
 			openFileDialogMain.ShowDialog();
 
 			if (openFileDialogMain.FileName != "")
 			{
-				XmlSerializer serializer = new XmlSerializer(typeof(Entity));
-				StreamReader file = new StreamReader("Entity.xml");
-				m_Entity = (Entity)serializer.Deserialize(file);
-				file.Close();
+				Open(en, openFileDialogMain.FileName);
+
+				comboBoxType.Text = en.nType;
+				comboBoxSubType.Text = en.nSubType;
+				textBoxName.Text = en.sName;
+				numericUpDownHealth.Value = en.nHealth;
+				numericUpDownSpeed.Value = en.nSpeed;
+				numericUpDownStrength.Value = en.nStrength;
+				numericUpDownRange.Value = en.nRange;
+				numericUpDownMagic.Value = en.nMagic;
+				numericUpDownAgility.Value = en.nAgility;
+				numericUpDownPrice.Value = en.nPrice;
+				numericUpDownLevelReq.Value = en.nLevelReq;
+				pictureBoxSprite.ImageLocation = en.sSprite;
 			}
 		}
 
 		private void openToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			OpenFileDialog openFileDialogMain = new OpenFileDialog();
-			openFileDialogMain.Filter = "XML File|*.xml";
+			openFileDialogMain.Filter = "XML Document|*.xml";
 			openFileDialogMain.Title = "Open";
 			openFileDialogMain.ShowDialog();
 
 			if (openFileDialogMain.FileName != "")
 			{
-				XmlSerializer serializer = new XmlSerializer(typeof(Entity));
-				StreamReader file = new StreamReader("Entity.xml");
-				m_Entity = (Entity)serializer.Deserialize(file);
-				file.Close();
+				Open(en, openFileDialogMain.FileName);
+
+				comboBoxType.Text = en.nType;
+				comboBoxSubType.Text = en.nSubType;
+				textBoxName.Text = en.sName;
+				numericUpDownHealth.Value = en.nHealth;
+				numericUpDownSpeed.Value = en.nSpeed;
+				numericUpDownStrength.Value = en.nStrength;
+				numericUpDownRange.Value = en.nRange;
+				numericUpDownMagic.Value = en.nMagic;
+				numericUpDownAgility.Value = en.nAgility;
+				numericUpDownPrice.Value = en.nPrice;
+				numericUpDownLevelReq.Value = en.nLevelReq;
+				pictureBoxSprite.ImageLocation = en.sSprite;
 			}
 		}
-		/* ====================================================================================*/
+
+		public void Open(Entity entity, string filename)
+		{
+			XmlSerializer serializer = new XmlSerializer(typeof(Entity));
+			StreamReader file = new StreamReader(filename);
+			en = (Entity)serializer.Deserialize(file);
+			file.Close();
+		}
+/* ====================================================================================*/
+		// Import Sprite
+		private void buttonImportSprite_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog openFileDialogMain = new OpenFileDialog();
+			openFileDialogMain.Filter = "PNG File|*.png";
+			openFileDialogMain.Title = "Import Sprite";
+			openFileDialogMain.ShowDialog();
+
+			if (openFileDialogMain.FileName != "")
+			{
+				pictureBoxSprite.Image = Image.FromFile(openFileDialogMain.FileName);
+				pictureBoxSprite.ImageLocation = openFileDialogMain.FileName;
+			}
+		}
+/* ====================================================================================*/
 		// New File
 		private void newToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -158,10 +193,11 @@ namespace MMO_Editor_Tool
 				numericUpDownLevelReq.Value = 0;
 				numericUpDownLevelReq.Enabled = false;
 				textBoxName.Text = "";
+				pictureBoxSprite.ImageLocation = "";
+				pictureBoxSprite.Image = null;
 			}
 		}
-		/* ====================================================================================*/
-
+/* ====================================================================================*/
 		// Assign Type
 		private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
 		{
