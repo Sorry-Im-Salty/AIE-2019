@@ -15,6 +15,17 @@ namespace MMO_Editor_Tool
 		}
 
 		Entity m_Entity = new Entity();
+
+/* ====================================================================================*/
+		// Help
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("This tool is used to create entities that would be added to an RPG styled game.\n\n" +
+				"Entity files are saved as .xml files.\n\n" +
+				"Only relevant information for the entity will be available depending on the Type and Sub-Type, which means that if you wanted to make a type of currency, the entity wouldn't need a health stat.\n\n" +
+				"Users may drag and drop sprites into the box on the left, these sprite files must be .png or .jpeg\n\n" +
+				"Made by Thomas Maltezos\nEmail: thomasmaltezos00@gmail.com", "About...");
+		}
 /* ====================================================================================*/
 		// Saving
 		private void buttonSave_Click(object sender, EventArgs e)
@@ -353,38 +364,6 @@ namespace MMO_Editor_Tool
 		private void textBoxName_TextChanged(object sender, EventArgs e)
 		{
 			labelNameTitle.Text = textBoxName.Text;
-		}
-
-		private void numericUpDownHealth_ValueChanged(object sender, EventArgs e)
-		{
-		}
-
-		private void numericUpDownSpeed_ValueChanged(object sender, EventArgs e)
-		{
-		}
-
-		private void numericUpDownStrength_ValueChanged(object sender, EventArgs e)
-		{
-		}
-
-		private void numericUpDownRange_ValueChanged(object sender, EventArgs e)
-		{
-		}
-
-		private void numericUpDownMagic_ValueChanged(object sender, EventArgs e)
-		{
-		}
-
-		private void numericUpDownAgility_ValueChanged(object sender, EventArgs e)
-		{
-		}
-
-		private void numericUpDownPrice_ValueChanged(object sender, EventArgs e)
-		{
-		}
-
-		private void numericUpDownLevelReq_ValueChanged(object sender, EventArgs e)
-		{
 		}
 	}
 }
