@@ -10,7 +10,7 @@ Binary::~Binary() {
 
 }
 
-// Binary to Decimal
+// Binary to Decimal *Note to self - Reword this in own words.
 int Binary::binToDec(const char* binaryString) {
 	int dec = 0;
 	int size = strlen(binaryString);
@@ -23,7 +23,7 @@ int Binary::binToDec(const char* binaryString) {
 	return dec;
 }
 
-// Decimal to Binary
+// Decimal to Binary *Note to self - Reword this in own words.
 void Binary::decToBin(char* binaryString, int len, int value) {
 	int dec = value;
 	int size = strlen(binaryString);
