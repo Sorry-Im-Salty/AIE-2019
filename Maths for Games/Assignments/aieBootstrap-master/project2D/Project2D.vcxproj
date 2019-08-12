@@ -176,12 +176,14 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SceneObject.cpp" />
     <ClCompile Include="SpriteObject.cpp" />
+    <ClCompile Include="Tank.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application2D.h" />
     <ClInclude Include="Matrix3.h" />
     <ClInclude Include="SceneObject.h" />
     <ClInclude Include="SpriteObject.h" />
+    <ClInclude Include="Tank.h" />
     <ClInclude Include="Vector3.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
