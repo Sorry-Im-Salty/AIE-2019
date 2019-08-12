@@ -35,11 +35,23 @@ public:
 
 	void remove(int nPos) {
 		if (nPos < nNextIndex && nPos >= 0) {
-			for (int i = nPos; i < nNextIndex - 1; i++)
-				pArray[i] = pArray[i + 1];
-			nNextIndex--;
-			if (nNextIndex = nLength - 10)
-				nLength = nLength - 10;
+			for (int i = 0; i < nNextIndex - 1; i++) {
+				if (pArray[i] == nPos) {
+					for (; i < nNextIndex - 1; i++) {
+						pArray[i] = pArray[i + 1];
+					}
+
+					pArray[nNextIndex - 1] = 0;
+					nLength = nLength - 1;
+				}
+			}
+				
+				
+				
+				//	pArray[i] = pArray[i + 1];
+			//nNextIndex--;
+			//if (nNextIndex = nLength - 10)
+			//	nLength = nLength - 10;
 		}
 
 	}
