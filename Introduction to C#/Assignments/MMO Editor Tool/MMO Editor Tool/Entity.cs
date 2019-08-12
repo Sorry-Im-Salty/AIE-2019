@@ -8,8 +8,8 @@ namespace MMO_Editor_Tool
 {
 	public class Entity
 	{
-		public int nType { get; set; }
-		public int nSubType { get; set; }
+		public string nType { get; set; }
+		public string nSubType { get; set; }
 		public string sName { get; set; }
 		public int nHealth { get; set; }
 		public int nSpeed { get; set; }

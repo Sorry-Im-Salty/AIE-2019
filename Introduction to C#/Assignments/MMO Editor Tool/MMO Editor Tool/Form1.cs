@@ -31,8 +31,8 @@ namespace MMO_Editor_Tool
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
 			Entity en = new Entity();
-			en.nType = comboBoxType.SelectedIndex;
-			en.nSubType = comboBoxSubType.SelectedIndex;
+			en.nType = comboBoxType.Text;
+			en.nSubType = comboBoxSubType.Text;
 			en.sName = textBoxName.Text;
 			en.nHealth = (int)numericUpDownHealth.Value;
 			en.nSpeed = (int)numericUpDownSpeed.Value;
@@ -81,10 +81,10 @@ namespace MMO_Editor_Tool
 				serializer.Serialize(textWriter, entity);
 			}
 
-			//writer.WriteStartDocument();
-			//writer.WriteStartElement("RPG_Entity");
+			//textWriter.WriteStartDocument();
+			//textWriter.WriteStartElement("RPG_Entity");
 
-			//writer.WriteElementString("Type", entity.nType.ToString());
+			//textWriter.WriteElementString("Type", entity.nType.ToString());
 			//writer.WriteElementString("Sub_Type", entity.nSubType.ToString());
 			//writer.WriteElementString("Name", entity.sName);
 			//writer.WriteElementString("Health", entity.nHealth.ToString());
@@ -97,7 +97,7 @@ namespace MMO_Editor_Tool
 			//writer.WriteElementString("Level_Req", entity.nLevelReq.ToString());
 
 			//writer.WriteEndElement();
-			//writer.WriteEndDocument();	
+			//writer.WriteEndDocument();
 		}
 /* ====================================================================================*/
 		// Opening
@@ -165,8 +165,6 @@ namespace MMO_Editor_Tool
 		// Assign Type
 		private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			m_Entity.nType = comboBoxType.SelectedIndex;
-
 			if (comboBoxType.SelectedIndex == 0)
 			{
 				comboBoxSubType.Items.Clear();
@@ -191,8 +189,6 @@ namespace MMO_Editor_Tool
 		// Assign SubType
 		private void comboBoxSubType_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			m_Entity.nSubType = comboBoxSubType.SelectedIndex;
-
 			// Item Selected 
 			if (comboBoxType.SelectedIndex == 0)
 			{
