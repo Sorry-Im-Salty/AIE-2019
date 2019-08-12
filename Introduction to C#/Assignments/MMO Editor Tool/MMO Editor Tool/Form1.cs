@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace MMO_Editor_Tool
@@ -72,10 +64,11 @@ namespace MMO_Editor_Tool
 
 		public void Save(Entity entity)
 		{
-			XmlSerializer writer = new XmlSerializer(typeof(Entity));
-			FileStream file = File.Create("Entity.xml");
-
-			writer.Serialize(file, entity);
+			XmlSerializer serializer = new XmlSerializer(typeof(Entity));
+			using (TextWriter textWriter = new StreamWriter(saveFileDialogMain.FileName + ".xml"))
+			{
+				serializer.Serialize(textWriter, entity);
+			}
 
 			//writer.WriteStartDocument();
 			//writer.WriteStartElement("RPG_Entity");
@@ -129,6 +122,35 @@ namespace MMO_Editor_Tool
 			}
 		}
 		/* ====================================================================================*/
+		// New File
+		private void newToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			if (MessageBox.Show("Are you sure you want to create a new entity? All unsaved changed will be lost.", "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
+			{
+				comboBoxSubType.Items.Clear();
+				comboBoxSubType.Enabled = false;
+				comboBoxType.SelectedIndex = -1;
+				numericUpDownHealth.Value = 0;
+				numericUpDownHealth.Enabled = false;
+				numericUpDownSpeed.Value = 0;
+				numericUpDownSpeed.Enabled = false;
+				numericUpDownStrength.Value = 0;
+				numericUpDownStrength.Enabled = false;
+				numericUpDownRange.Value = 0;
+				numericUpDownRange.Enabled = false;
+				numericUpDownMagic.Value = 0;
+				numericUpDownMagic.Enabled = false;
+				numericUpDownAgility.Value = 0;
+				numericUpDownAgility.Enabled = false;
+				numericUpDownPrice.Value = 0;
+				numericUpDownPrice.Enabled = false;
+				numericUpDownLevelReq.Value = 0;
+				numericUpDownLevelReq.Enabled = false;
+				textBoxName.Text = "";
+			}
+		}
+		/* ====================================================================================*/
+
 		// Assign Type
 		private void comboBoxType_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -160,8 +182,10 @@ namespace MMO_Editor_Tool
 		{
 			m_Entity.nSubType = comboBoxSubType.SelectedIndex;
 
+			// Item Selected 
 			if (comboBoxType.SelectedIndex == 0)
 			{
+				// Weapon Selected
 				if (comboBoxSubType.SelectedIndex == 0)
 				{
 					numericUpDownHealth.Value = 0;
@@ -175,6 +199,7 @@ namespace MMO_Editor_Tool
 					numericUpDownPrice.Enabled = true;
 					numericUpDownLevelReq.Enabled = true;
 				}
+				// Tool Selected
 				if (comboBoxSubType.SelectedIndex == 1)
 				{
 					numericUpDownHealth.Value = 0;
@@ -191,6 +216,7 @@ namespace MMO_Editor_Tool
 					numericUpDownPrice.Enabled = true;
 					numericUpDownLevelReq.Enabled = true;
 				}
+				// Ore Selected
 				if (comboBoxSubType.SelectedIndex == 2)
 				{
 					numericUpDownHealth.Value = 0;
@@ -208,6 +234,7 @@ namespace MMO_Editor_Tool
 					numericUpDownPrice.Enabled = true;
 					numericUpDownLevelReq.Enabled = true;
 				}
+				// Wood Selected
 				if (comboBoxSubType.SelectedIndex == 3)
 				{
 					numericUpDownHealth.Value = 0;
@@ -225,6 +252,7 @@ namespace MMO_Editor_Tool
 					numericUpDownPrice.Enabled = true;
 					numericUpDownLevelReq.Enabled = true;
 				}
+				// Currency Selected
 				if (comboBoxSubType.SelectedIndex == 4)
 				{
 					numericUpDownHealth.Value = 0;
@@ -243,6 +271,7 @@ namespace MMO_Editor_Tool
 					numericUpDownLevelReq.Value = 0;
 					numericUpDownLevelReq.Enabled = false;
 				}
+				// Misc Selected
 				if (comboBoxSubType.SelectedIndex == 5)
 				{
 					numericUpDownHealth.Enabled = true;
@@ -255,8 +284,10 @@ namespace MMO_Editor_Tool
 					numericUpDownLevelReq.Enabled = true;
 				}
 			}
+			// Character Selected
 			else if (comboBoxType.SelectedIndex == 1)
 			{
+				// Enemy Selected
 				if (comboBoxSubType.SelectedIndex == 0)
 				{
 					numericUpDownHealth.Enabled = true;
@@ -270,6 +301,7 @@ namespace MMO_Editor_Tool
 					numericUpDownLevelReq.Value = 0;
 					numericUpDownLevelReq.Enabled = false;
 				}
+				// Neutral Selected
 				if (comboBoxSubType.SelectedIndex == 1)
 				{
 					numericUpDownHealth.Enabled = true;
@@ -283,6 +315,7 @@ namespace MMO_Editor_Tool
 					numericUpDownLevelReq.Value = 0;
 					numericUpDownLevelReq.Enabled = false;
 				}
+				// Friendly Selected
 				if (comboBoxSubType.SelectedIndex == 2)
 				{
 					numericUpDownHealth.Enabled = true;
@@ -296,6 +329,7 @@ namespace MMO_Editor_Tool
 					numericUpDownLevelReq.Value = 0;
 					numericUpDownLevelReq.Enabled = false;
 				}
+				// Shop Selected
 				if (comboBoxSubType.SelectedIndex == 3)
 				{
 					numericUpDownHealth.Value = 0;
@@ -318,48 +352,39 @@ namespace MMO_Editor_Tool
 		// Name Label
 		private void textBoxName_TextChanged(object sender, EventArgs e)
 		{
-			m_Entity.sName = textBoxName.Text;
-			labelNameTitle.Text = m_Entity.sName;
+			labelNameTitle.Text = textBoxName.Text;
 		}
-		// Assign Health
+
 		private void numericUpDownHealth_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.nHealth = (int)numericUpDownHealth.Value;
 		}
-		// Assign Speed
+
 		private void numericUpDownSpeed_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.nSpeed = (int)numericUpDownSpeed.Value;
 		}
-		// Assign Strength
+
 		private void numericUpDownStrength_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.nStrength = (int)numericUpDownStrength.Value;
 		}
-		// Assign Range
+
 		private void numericUpDownRange_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.nRange = (int)numericUpDownRange.Value;
 		}
-		// Assign Magic
+
 		private void numericUpDownMagic_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.nMagic = (int)numericUpDownMagic.Value;
 		}
-		// Assign Agility
+
 		private void numericUpDownAgility_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.nAgility = (int)numericUpDownAgility.Value;
 		}
-		// Assign Price
+
 		private void numericUpDownPrice_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.nPrice = (int)numericUpDownPrice.Value;
 		}
-		// Assign Level Req
+
 		private void numericUpDownLevelReq_ValueChanged(object sender, EventArgs e)
 		{
-			m_Entity.nLevelReq = (int)numericUpDownLevelReq.Value;
 		}
 	}
 }
