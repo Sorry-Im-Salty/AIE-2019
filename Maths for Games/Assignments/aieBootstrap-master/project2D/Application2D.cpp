@@ -15,15 +15,11 @@ bool Application2D::startup() {
 	
 	m_2dRenderer = new aie::Renderer2D();
 	m_font = new aie::Font("./font/consolas.ttf", 32);
-
-	m_tank.Load("./textures/tank.png");
-	m_turret.Load("./textures/gunTurret.png");
 	m_background.Load("./textures/background.png");
-	
-	m_tank.addChild(&m_turret);
 
 	m_background.setPosition(getWindowWidth() / 2.0f, getWindowHeight() / 2.0f);
-	m_tank.setPosition(getWindowWidth() / 2.0f, getWindowHeight() / 2.0f);
+
+	m_tank.initialize();
 
 	return true;
 }
@@ -45,14 +41,13 @@ void Application2D::update(float deltaTime) {
 
 	// Rotate left and right
 	if (input->isKeyDown(aie::INPUT_KEY_A))
-		m_tank.rotate(deltaTime);
+		m_tank.tankRotate(deltaTime);
 	if (input->isKeyDown(aie::INPUT_KEY_D))
-		m_tank.rotate(-deltaTime);
+		m_tank.tankRotate(-deltaTime);
 
 	// Movement
 	if (input->isKeyDown(aie::INPUT_KEY_W)) {
-		auto facing = m_tank.getLocalTransform()[1] * deltaTime * 100;
-		m_tank.translate(facing.x, facing.y);
+		m_tank.tankForward(deltaTime);
 	}
 	if (input->isKeyDown(aie::INPUT_KEY_S)) {
 		auto facing = m_tank.getLocalTransform()[1] * deltaTime * -100;
@@ -61,9 +56,9 @@ void Application2D::update(float deltaTime) {
 
 	// Rotation of turret
 	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
-		m_turret.rotate(deltaTime);
+		m_tank.turretRotate(deltaTime);
 	if (input->isKeyDown(aie::INPUT_KEY_RIGHT))
-		m_turret.rotate(-deltaTime);
+		m_tank.turretRotate(-deltaTime);
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))

@@ -2,12 +2,17 @@
 #pragma once
 
 
-class Tank {
+class Tank : public SceneObject{
 public:
 	Tank();
 	~Tank();
 
-	void initializeChild(SpriteObject Child);
+	void initialize();
+	void turretRotate(float deltaTime);
+	void tankRotate(float deltaTime);
+	void tankForward(float deltaTime);
+	void draw(aie::Renderer2D* renderer);
+	void update(float deltaTime);
 
 private:
 	SpriteObject m_tank;
