@@ -29,13 +29,14 @@ int Binary::binToDec(const char* binaryString) {
 void Binary::decToBin(char* binaryString, int length, int value) {
 	int dec = value;
 	int a[10];
+	int i = 0;
 
-	for (int i = 0; dec > 0; i++) {
+	for (i = 0; dec > 0; i++) {
 		a[i] = dec % 2;
 		dec = dec / 2;
 	}
 
-	for (int i = i - 1; i > 0; i--) {
+	for (i = i - 1; i > 0; i--) {
 		binaryString[i] = (char)a[i];
 	}
 	//for (i = 0; *binaryString; ++i, ++binaryString) {
