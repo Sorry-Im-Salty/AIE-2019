@@ -10,7 +10,7 @@ public:
 	void initialize();
 	void turretRotate(float deltaTime);
 	void tankRotate(float deltaTime);
-	void tankForward(float deltaTime);
+	void tankForward(int forward);
 	void draw(aie::Renderer2D* renderer);
 	void update(float deltaTime);
 

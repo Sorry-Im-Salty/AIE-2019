@@ -25,9 +25,9 @@ void Tank::tankRotate(float deltaTime) {
 	m_tank.rotate(deltaTime);
 }
 
-void Tank::tankForward(float deltaTime) {
-	auto facing = m_tank.getLocalTransform()[1] * deltaTime * 100;
-	m_tank.translate(facing.x, facing.y);
+void Tank::tankForward(int forward) {
+	//auto facing = m_tank.getLocalTransform()[1] * deltaTime * 100;
+	m_tank.translate(0, forward);
 }
 
 void Tank::draw(aie::Renderer2D* renderer) {
