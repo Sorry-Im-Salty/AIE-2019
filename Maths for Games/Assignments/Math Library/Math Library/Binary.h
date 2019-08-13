@@ -6,7 +6,7 @@ public:
 	~Binary();
 
 	int binToDec(const char* binaryString);
-	void decToBin(char* binaryString, int length, int value);
+	int decToBin(int value);
 	void setBit(char& bitfield, char bit, char value);
 	char checkBit(char& bitfield, char bit);
 };

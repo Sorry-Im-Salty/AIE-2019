@@ -26,23 +26,19 @@ int Binary::binToDec(const char* binaryString) {
 }
 
 // Decimal to Binary
-void Binary::decToBin(char* binaryString, int length, int value) {
+int Binary::decToBin(int value) {
 	int dec = value;
-	int a[10];
-	int i = 0;
+	int result = 0;
+	int remain;
+	int i = 1;
 
-	for (i = 0; dec > 0; i++) {
-		a[i] = dec % 2;
-		dec = dec / 2;
+	while (dec != 0) {
+		remain = dec % 2;
+		dec /= 2;
+		result += remain * i;
+		i *= 10;
 	}
-
-	for (i = i - 1; i > 0; i--) {
-		binaryString[i] = (char)a[i];
-	}
-	//for (i = 0; *binaryString; ++i, ++binaryString) {
-	//	a[i] = dec % 2;
-	//	dec = dec / 2;
-	//}
+	return result;
 }
 
 void Binary::setBit(char& bitfield, char bit, char value) {
