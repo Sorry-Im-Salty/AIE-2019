@@ -67,11 +67,10 @@ void Matrix3::scale(float x, float y, float z) {
 
 // Translate
 void Matrix3::translate(float x, float y) {
-	Matrix3 m;
-	m[2][0] = x;
-	m[2][1] = y;
+	data[2][0] = x;
+	data[2][1] = y;
 
-	*this = *this * m;
+	//*this = *this * m;
 }
 
 // Matrix * Matrix
