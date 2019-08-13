@@ -10,30 +10,38 @@ Binary::~Binary() {
 
 }
 
-// Binary to Decimal *Note to self - Reword this in own words.
+// Binary to Decimal
 int Binary::binToDec(const char* binaryString) {
 	int dec = 0;
-	int size = strlen(binaryString);
-	int i = 0;
+	const char* num = binaryString;
+	int base = 1;
+	int length = strlen(binaryString);
 
-	for (i = 0; *binaryString; ++i, ++binaryString) {
-		int ch = *binaryString - 48;
-		dec += ch * pow(2, size - i - 1);
+	for (int i = length - 1; i >= 0; i--) {
+		if (num[i] == '1')
+			dec += base;
+		base = base * 2;
 	}
 	return dec;
 }
 
-// Decimal to Binary *Note to self - Reword this in own words.
-void Binary::decToBin(char* binaryString, int len, int value) {
+// Decimal to Binary
+void Binary::decToBin(char* binaryString, int length, int value) {
 	int dec = value;
-	int size = strlen(binaryString);
-	int i = len;
 	int a[10];
 
-	for (i = 0; *binaryString; ++i, ++binaryString) {
+	for (int i = 0; dec > 0; i++) {
 		a[i] = dec % 2;
 		dec = dec / 2;
 	}
+
+	for (int i = i - 1; i > 0; i--) {
+		binaryString[i] = (char)a[i];
+	}
+	//for (i = 0; *binaryString; ++i, ++binaryString) {
+	//	a[i] = dec % 2;
+	//	dec = dec / 2;
+	//}
 }
 
 void Binary::setBit(char& bitfield, char bit, char value) {
