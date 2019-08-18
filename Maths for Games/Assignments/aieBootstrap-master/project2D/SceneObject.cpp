@@ -84,6 +84,10 @@ void SceneObject::setPosition(float x, float y) {
 	updateTransform();
 }
 
+Vector3 SceneObject::getPosition() {
+	return m_localTransform[2];
+}
+
 void SceneObject::setRotate(float radians) {
 	m_localTransform.setRotateZ(radians);
 	updateTransform();

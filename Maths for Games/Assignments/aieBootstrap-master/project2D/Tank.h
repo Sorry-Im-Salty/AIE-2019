@@ -1,4 +1,5 @@
 #include "SpriteObject.h"
+#include "Vector2.h"
 #pragma once
 
 
@@ -10,7 +11,7 @@ public:
 	void initialize();
 	void turretRotate(float deltaTime);
 	void tankRotate(float deltaTime);
-	void tankForward(int forward);
+	void tankForward(int forward, float deltaTime);
 	void draw(aie::Renderer2D* renderer);
 	void update(float deltaTime);
 

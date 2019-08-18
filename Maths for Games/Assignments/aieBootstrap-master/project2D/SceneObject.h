@@ -28,6 +28,7 @@ public:
 	void updateTransform();
 
 	void setPosition(float x, float y);
+	Vector3 getPosition();
 	void setRotate(float radians);
 	void setScale(float width, float height);
 	void translate(float x, float y);
