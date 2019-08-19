@@ -35,20 +35,13 @@ public:
 
 	void remove(int nPos) {
 		if (nPos < nNextIndex && nPos >= 0) {
-			for (int i = 0; i < nNextIndex - 1; i++) {
-				if (pArray[i] == nPos) {
-					for (; i < nNextIndex - 1; i++) {
-						pArray[i] = pArray[i + 1];
-					}
-
-					pArray[nNextIndex - 1] = 0;
-					nLength = nLength - 1;
-				}
+			for (int i = nPos; i < nNextIndex; i++) {
+				pArray[i] = pArray[i + 1];
 			}
 				
-				
-				
-				//	pArray[i] = pArray[i + 1];
+			nLength--;
+
+			//	pArray[i] = pArray[i + 1];
 			//nNextIndex--;
 			//if (nNextIndex = nLength - 10)
 			//	nLength = nLength - 10;
@@ -66,14 +59,14 @@ public:
 		return nNextIndex;
 	}
 
-	bool LinearSearch(int n, int x) {
+	int LinearSearch(int n, int x) {
 		int i;
-		for (i = 0; i < n; ++i) {
+		for (i = 0; i < n; i++) {
 			if (pArray[i] == x) {
-				return true;
+				return i;
 			}
-			return false;
 		}
+		return 0;
 	}
 
 	void BubbleSort(int n) {
