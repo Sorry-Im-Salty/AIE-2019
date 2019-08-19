@@ -11,7 +11,10 @@ namespace MMO_Editor_Tool
 		public formMain()
 		{
 			InitializeComponent();
-			
+			pictureBoxSprite.DragDrop += new DragEventHandler(pictureBoxSprite_DragDrop);
+			pictureBoxSprite.DragEnter += new DragEventHandler(pictureBoxSprite_DragEnter);
+			pictureBoxSprite.AllowDrop = true;
+
 		}
 
 		Entity en = new Entity();
@@ -165,6 +168,24 @@ namespace MMO_Editor_Tool
 			{
 				pictureBoxSprite.Image = Image.FromFile(openFileDialogMain.FileName);
 				pictureBoxSprite.ImageLocation = openFileDialogMain.FileName;
+			}
+		}
+
+		private void pictureBoxSprite_DragEnter(object sender, DragEventArgs e)
+		{
+			if (e.Data.GetDataPresent(DataFormats.FileDrop))
+				e.Effect = DragDropEffects.All;
+			else
+				e.Effect = DragDropEffects.None;
+		}
+
+		private void pictureBoxSprite_DragDrop(object sender, DragEventArgs e)
+		{
+			string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+			for (int i = 0; i < s.Length; i++)
+			{
+				pictureBoxSprite.ImageLocation = s[i];
+				pictureBoxSprite.Image = Image.FromFile(pictureBoxSprite.ImageLocation);
 			}
 		}
 /* ====================================================================================*/

@@ -165,6 +165,8 @@
 			this.pictureBoxSprite.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
 			this.pictureBoxSprite.TabIndex = 1;
 			this.pictureBoxSprite.TabStop = false;
+			this.pictureBoxSprite.DragDrop += new System.Windows.Forms.DragEventHandler(this.pictureBoxSprite_DragDrop);
+			this.pictureBoxSprite.DragEnter += new System.Windows.Forms.DragEventHandler(this.pictureBoxSprite_DragEnter);
 			// 
 			// buttonImportSprite
 			// 
@@ -327,11 +329,6 @@
 			// 
 			this.numericUpDownLevelReq.Enabled = false;
 			this.numericUpDownLevelReq.Location = new System.Drawing.Point(118, 252);
-			this.numericUpDownLevelReq.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
 			this.numericUpDownLevelReq.Name = "numericUpDownLevelReq";
 			this.numericUpDownLevelReq.Size = new System.Drawing.Size(120, 20);
 			this.numericUpDownLevelReq.TabIndex = 37;
@@ -341,7 +338,7 @@
 			this.numericUpDownPrice.Enabled = false;
 			this.numericUpDownPrice.Location = new System.Drawing.Point(118, 226);
 			this.numericUpDownPrice.Maximum = new decimal(new int[] {
-            1000,
+            1000000,
             0,
             0,
             0});
@@ -353,11 +350,6 @@
 			// 
 			this.numericUpDownAgility.Enabled = false;
 			this.numericUpDownAgility.Location = new System.Drawing.Point(118, 200);
-			this.numericUpDownAgility.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
 			this.numericUpDownAgility.Name = "numericUpDownAgility";
 			this.numericUpDownAgility.Size = new System.Drawing.Size(120, 20);
 			this.numericUpDownAgility.TabIndex = 35;
@@ -366,11 +358,6 @@
 			// 
 			this.numericUpDownMagic.Enabled = false;
 			this.numericUpDownMagic.Location = new System.Drawing.Point(118, 174);
-			this.numericUpDownMagic.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
 			this.numericUpDownMagic.Name = "numericUpDownMagic";
 			this.numericUpDownMagic.Size = new System.Drawing.Size(120, 20);
 			this.numericUpDownMagic.TabIndex = 34;
@@ -379,11 +366,6 @@
 			// 
 			this.numericUpDownRange.Enabled = false;
 			this.numericUpDownRange.Location = new System.Drawing.Point(118, 148);
-			this.numericUpDownRange.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
 			this.numericUpDownRange.Name = "numericUpDownRange";
 			this.numericUpDownRange.Size = new System.Drawing.Size(120, 20);
 			this.numericUpDownRange.TabIndex = 33;
@@ -392,11 +374,6 @@
 			// 
 			this.numericUpDownStrength.Enabled = false;
 			this.numericUpDownStrength.Location = new System.Drawing.Point(118, 122);
-			this.numericUpDownStrength.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
 			this.numericUpDownStrength.Name = "numericUpDownStrength";
 			this.numericUpDownStrength.Size = new System.Drawing.Size(120, 20);
 			this.numericUpDownStrength.TabIndex = 32;
@@ -405,11 +382,6 @@
 			// 
 			this.numericUpDownSpeed.Enabled = false;
 			this.numericUpDownSpeed.Location = new System.Drawing.Point(118, 96);
-			this.numericUpDownSpeed.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
 			this.numericUpDownSpeed.Name = "numericUpDownSpeed";
 			this.numericUpDownSpeed.Size = new System.Drawing.Size(120, 20);
 			this.numericUpDownSpeed.TabIndex = 31;
@@ -418,11 +390,6 @@
 			// 
 			this.numericUpDownHealth.Enabled = false;
 			this.numericUpDownHealth.Location = new System.Drawing.Point(118, 70);
-			this.numericUpDownHealth.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
 			this.numericUpDownHealth.Name = "numericUpDownHealth";
 			this.numericUpDownHealth.Size = new System.Drawing.Size(120, 20);
 			this.numericUpDownHealth.TabIndex = 15;
