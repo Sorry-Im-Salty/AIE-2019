@@ -46,14 +46,14 @@ void AI::Update(float deltaTime) {
 
 	// Pathfinding
 
-	if (input->wasKeyPressed(aie::INPUT_KEY_S)) {
-		m_v2StartPos = v2MousePos;
-		m_bRecalculate = true;
-	}
-	if (input->wasKeyPressed(aie::INPUT_KEY_E)) {
-		m_v2EndPos = v2MousePos;
-		m_bRecalculate = true;
-	}
+	//if (input->wasKeyPressed(aie::INPUT_KEY_S)) {
+	//	m_v2StartPos = v2MousePos;
+	//	m_bRecalculate = true;
+	//}
+	//if (input->wasKeyPressed(aie::INPUT_KEY_E)) {
+	//	m_v2EndPos = v2MousePos;
+	//	m_bRecalculate = true;
+	//}
 
 	if (m_bRecalculate) {
 		if (m_pGrid->FindPath(m_v2Position, m_v2EndPos, m_Path)) {
@@ -109,7 +109,7 @@ void AI::Wander(float deltaTime) {
 	if (fDistance < 300.0f)
 		m_eCurrentState = EAISTATE_CHASE;
 
-	if (input->wasMouseButtonPressed(2))
+	if (input->isKeyDown(aie::INPUT_KEY_F))
 		m_eCurrentState = EAISTATE_FLEE;
 }
 
@@ -129,7 +129,7 @@ void AI::Chase(float deltaTime) {
 	if (fDistance > 50 && m_Path.size() == 0)
 		m_eCurrentState = EAISTATE_WANDER;
 
-	if (input->wasMouseButtonPressed(2))
+	if (input->isKeyDown(aie::INPUT_KEY_F))
 		m_eCurrentState = EAISTATE_FLEE;
 }
 

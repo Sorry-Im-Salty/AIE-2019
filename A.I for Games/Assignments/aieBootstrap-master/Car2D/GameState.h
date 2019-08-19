@@ -21,6 +21,7 @@ private:
 	Button* m_pResetButton;
 	Button* m_pAddAIButton;
 	Button* m_pTracerButton;
+	Button* m_pMenuButton;
 
 	float m_fWindowWidth;
 	float m_fWindowHeight;

@@ -10,6 +10,7 @@ GameState::GameState() {
 	m_pResetButton = nullptr;
 	m_pAddAIButton = nullptr;
 	m_pTracerButton = nullptr;
+	m_pMenuButton = nullptr;
 
 	m_fWindowWidth = 1280.0f;
 	m_fWindowHeight = 720.0f;
@@ -81,6 +82,10 @@ GameState::~GameState() {
 		delete m_pTracerButton;
 		m_pTracerButton = nullptr;
 	}
+	if (m_pMenuButton) {
+		delete m_pMenuButton;
+		m_pMenuButton = nullptr;
+	}
 }
 
 void GameState::Enter() {
@@ -91,6 +96,7 @@ void GameState::Enter() {
 	m_pResetButton = new Button("Reset", m_fWindowWidth / 1.4f, m_fWindowHeight - 55.0f, 100, 85);
 	m_pAddAIButton = new Button("Add AI", m_fWindowWidth / 1.25f, m_fWindowHeight - 55.0f, 100, 85);
 	m_pTracerButton = new Button("Tracers", 1024 + 110, m_fWindowHeight - 55.0f, 100, 85);
+	m_pMenuButton = new Button("Menu", m_fWindowWidth / 2.0f - 350, m_fWindowHeight - 55.0f, 250, 85);
 }
 
 bool GameState::Update(float deltaTime, StateMachine* pStateMachine) {
@@ -155,6 +161,10 @@ bool GameState::Update(float deltaTime, StateMachine* pStateMachine) {
 
 	// Allows user to still shade boxes if paused
 	m_pGrid->Update(deltaTime);
+
+	if (m_pMenuButton->Update()) {
+		m_pStateMachine->ChangeState(ESTATE_MENU);
+	}
 
 	return false;
 }
@@ -224,6 +234,8 @@ void GameState::Draw(aie::Renderer2D* renderer) {
 		m_pAddAIButton->Draw(renderer, 0, 125, 0);
 	else
 		m_pAddAIButton->Draw(renderer, 204, 0, 0);
+
+	m_pMenuButton->Draw(renderer, 204, 0, 0);
 }
 
 void GameState::Exit() {
@@ -287,5 +299,9 @@ void GameState::Exit() {
 	if (m_pTracerButton) {
 		delete m_pTracerButton;
 		m_pTracerButton = nullptr;
+	}
+	if (m_pMenuButton) {
+		delete m_pMenuButton;
+		m_pMenuButton = nullptr;
 	}
 }
