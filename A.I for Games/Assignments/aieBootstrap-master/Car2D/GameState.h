@@ -20,10 +20,12 @@ private:
 	Button* m_pPauseButton;
 	Button* m_pResetButton;
 	Button* m_pAddAIButton;
+	Button* m_pTracerButton;
 
 	float m_fWindowWidth;
 	float m_fWindowHeight;
 	bool m_bPause;
+	bool m_bTracer;
 	int m_nAICount;
 };
 

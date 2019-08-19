@@ -5,10 +5,10 @@
 
 class Button {
 public:
-	Button(const char* buttonText, float x, float y, float width, float height, float r, float g, float b);
+	Button(const char* buttonText, float x, float y, float width, float height);
 	~Button();
 
-	void Draw(aie::Renderer2D* renderer);
+	void Draw(aie::Renderer2D* renderer, float r, float g, float b);
 	bool Update();
 
 private:

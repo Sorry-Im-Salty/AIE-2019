@@ -4,7 +4,7 @@
 
 AI::AI(Grid* pGrid) {
 	// Load sprite
-	m_texture = new aie::Texture("./textures/ship.png");
+	m_texture = new aie::Texture("./textures/car.png");
 
 	// Set position
 	m_v2Position.x = 600;
@@ -80,6 +80,11 @@ void AI::Update(float deltaTime) {
 }
 
 void AI::Draw(aie::Renderer2D* renderer) {
+	renderer->setRenderColour(1.0f, 1.0f, 1.0f);
+	renderer->drawSprite(m_texture, m_v2Position.x, m_v2Position.y, 0.0f, 0.0f, m_fRotation);
+}
+
+void AI::drawTracers(aie::Renderer2D* renderer) {
 	renderer->setRenderColour(0.0f, 1.0f, 1.0f);
 	renderer->drawCircle(m_v2StartPos.x, m_v2StartPos.y, 10.0f);
 	renderer->drawCircle(m_v2EndPos.x, m_v2EndPos.y, 10.0f);
@@ -88,8 +93,6 @@ void AI::Draw(aie::Renderer2D* renderer) {
 		renderer->drawLine(m_Path[i - 1].x, m_Path[i - 1].y, m_Path[i].x, m_Path[i].y, 5.0f);
 	}
 	renderer->setRenderColour(1.0f, 1.0f, 1.0f);
-
-	renderer->drawSprite(m_texture, m_v2Position.x, m_v2Position.y, 0.0f, 0.0f, m_fRotation);
 }
 
 void AI::Wander(float deltaTime) {

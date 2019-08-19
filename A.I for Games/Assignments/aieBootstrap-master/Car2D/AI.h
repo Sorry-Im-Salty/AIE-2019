@@ -22,6 +22,7 @@ public:
 
 	void Update(float deltaTime);
 	void Draw(aie::Renderer2D* renderer);
+	void drawTracers(aie::Renderer2D* renderer);
 
 private:
 	void Wander(float deltaTime);

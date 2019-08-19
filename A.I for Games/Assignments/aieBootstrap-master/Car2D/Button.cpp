@@ -1,6 +1,6 @@
 #include "Button.h"
 #include <string.h>
-Button::Button(const char* buttonText, float x, float y, float width, float height, float r, float g, float b)
+Button::Button(const char* buttonText, float x, float y, float width, float height)
 {
 	// stores copy of the text
 	strcpy_s(m_kButtonText, 64, buttonText);
@@ -13,9 +13,6 @@ Button::Button(const char* buttonText, float x, float y, float width, float heig
 	m_fPosY = y;
 	m_fWidth = width;
 	m_fHeight = height;
-	m_fColourRed = r;
-	m_fColourGreen = g;
-	m_fColourBlue = b;
 }
 
 Button::~Button()
@@ -26,12 +23,12 @@ Button::~Button()
 	}
 }
 
-void Button::Draw(aie::Renderer2D* renderer)
+void Button::Draw(aie::Renderer2D* renderer, float r, float g, float b)
 {
 	// grey interior
 	renderer->setRenderColour(0.9f, 0.9f, 0.9f);
 	renderer->drawBox(m_fPosX, m_fPosY, m_fWidth, m_fHeight);
-	renderer->setRenderColour(m_fColourRed, m_fColourGreen, m_fColourBlue);
+	renderer->setRenderColour(r, g, b);
 
 	// calculating centered text
 	float textWidth = m_font->getStringWidth(m_kButtonText);
