@@ -14,10 +14,16 @@ namespace MMO_Editor_Tool
 			pictureBoxSprite.DragDrop += new DragEventHandler(pictureBoxSprite_DragDrop);
 			pictureBoxSprite.DragEnter += new DragEventHandler(pictureBoxSprite_DragEnter);
 			pictureBoxSprite.AllowDrop = true;
-
+			Entity[] pointlessArray = new Entity[10];
+			for (int i = 0; i < 10; i++)
+			{
+				pointlessArray[i] = en;
+			}
 		}
 
 		Entity en = new Entity();
+
+		
 
 /* ====================================================================================*/
 		// Help
