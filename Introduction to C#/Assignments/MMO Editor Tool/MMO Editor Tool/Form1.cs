@@ -90,7 +90,7 @@ namespace MMO_Editor_Tool
 		public void Save(Entity entity, string filename)
 		{
 			XmlSerializer serializer = new XmlSerializer(typeof(Entity));
-			StreamWriter file = new StreamWriter(filename + ".xml");
+			StreamWriter file = new StreamWriter(filename);
 			serializer.Serialize(file, entity);
 			file.Close();
 		}
@@ -110,14 +110,62 @@ namespace MMO_Editor_Tool
 				comboBoxType.Text = en.nType;
 				comboBoxSubType.Text = en.nSubType;
 				textBoxName.Text = en.sName;
-				numericUpDownHealth.Value = en.nHealth;
-				numericUpDownSpeed.Value = en.nSpeed;
-				numericUpDownStrength.Value = en.nStrength;
-				numericUpDownRange.Value = en.nRange;
-				numericUpDownMagic.Value = en.nMagic;
-				numericUpDownAgility.Value = en.nAgility;
-				numericUpDownPrice.Value = en.nPrice;
-				numericUpDownLevelReq.Value = en.nLevelReq;
+				if (en.nHealth > 100)
+				{
+					en.nHealth = 100;
+					numericUpDownHealth.Value = en.nHealth;
+				}
+				else
+					numericUpDownHealth.Value = en.nHealth;
+				if (en.nSpeed > 100)
+				{
+					en.nSpeed = 100;
+					numericUpDownSpeed.Value = en.nSpeed;
+				}
+				else
+					numericUpDownSpeed.Value = en.nSpeed;
+				if (en.nStrength > 100)
+				{
+					en.nStrength = 100;
+					numericUpDownStrength.Value = en.nStrength;
+				}
+				else
+					numericUpDownStrength.Value = en.nStrength;
+				if (en.nRange > 100)
+				{
+					en.nRange = 100;
+					numericUpDownRange.Value = en.nRange;
+				}
+				else
+					numericUpDownRange.Value = en.nRange;
+				if (en.nMagic > 100)
+				{
+					en.nMagic = 100;
+					numericUpDownMagic.Value = en.nMagic;
+				}
+				else
+					numericUpDownMagic.Value = en.nMagic;
+				if (en.nAgility > 100)
+				{
+					en.nAgility = 100;
+					numericUpDownAgility.Value = en.nAgility;
+				}
+				else
+					numericUpDownAgility.Value = en.nAgility;
+				if (en.nPrice > 1000000)
+				{
+					en.nPrice = 1000000;
+					numericUpDownPrice.Value = en.nPrice;
+				}
+				else
+					numericUpDownPrice.Value = en.nPrice;
+				if (en.nLevelReq > 100)
+				{
+					en.nLevelReq = 100;
+					numericUpDownLevelReq.Value = en.nLevelReq;
+				}
+				else
+					numericUpDownLevelReq.Value = en.nLevelReq;
 				pictureBoxSprite.ImageLocation = en.sSprite;
 			}
 		}
@@ -136,14 +184,62 @@ namespace MMO_Editor_Tool
 				comboBoxType.Text = en.nType;
 				comboBoxSubType.Text = en.nSubType;
 				textBoxName.Text = en.sName;
-				numericUpDownHealth.Value = en.nHealth;
-				numericUpDownSpeed.Value = en.nSpeed;
-				numericUpDownStrength.Value = en.nStrength;
-				numericUpDownRange.Value = en.nRange;
-				numericUpDownMagic.Value = en.nMagic;
-				numericUpDownAgility.Value = en.nAgility;
-				numericUpDownPrice.Value = en.nPrice;
-				numericUpDownLevelReq.Value = en.nLevelReq;
+				if (en.nHealth > 100)
+				{
+					en.nHealth = 100;
+					numericUpDownHealth.Value = en.nHealth;
+				}
+				else
+					numericUpDownHealth.Value = en.nHealth;
+				if (en.nSpeed > 100)
+				{
+					en.nSpeed = 100;
+					numericUpDownSpeed.Value = en.nSpeed;
+				}
+				else
+					numericUpDownSpeed.Value = en.nSpeed;
+				if (en.nStrength > 100)
+				{
+					en.nStrength = 100;
+					numericUpDownStrength.Value = en.nStrength;
+				}
+				else
+					numericUpDownStrength.Value = en.nStrength;
+				if (en.nRange > 100)
+				{
+					en.nRange = 100;
+					numericUpDownRange.Value = en.nRange;
+				}
+				else
+					numericUpDownRange.Value = en.nRange;
+				if (en.nMagic > 100)
+				{
+					en.nMagic = 100;
+					numericUpDownMagic.Value = en.nMagic;
+				}
+				else
+					numericUpDownMagic.Value = en.nMagic;
+				if (en.nAgility > 100)
+				{
+					en.nAgility = 100;
+					numericUpDownAgility.Value = en.nAgility;
+				}
+				else
+					numericUpDownAgility.Value = en.nAgility;
+				if (en.nPrice > 1000000)
+				{
+					en.nPrice = 1000000;
+					numericUpDownPrice.Value = en.nPrice;
+				}
+				else
+					numericUpDownPrice.Value = en.nPrice;
+				if (en.nLevelReq > 100)
+				{
+					en.nLevelReq = 100;
+					numericUpDownLevelReq.Value = en.nLevelReq;
+				}
+				else
+					numericUpDownLevelReq.Value = en.nLevelReq;
 				pictureBoxSprite.ImageLocation = en.sSprite;
 			}
 		}
