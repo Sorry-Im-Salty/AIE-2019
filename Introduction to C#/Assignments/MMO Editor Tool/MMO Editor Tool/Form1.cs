@@ -26,7 +26,7 @@ namespace MMO_Editor_Tool
 			MessageBox.Show("This tool is used to create entities that would be added to an RPG styled game.\n\n" +
 				"Entity files are saved as .xml files.\n\n" +
 				"Only relevant information for the entity will be available depending on the Type and Sub-Type, which means that if you wanted to make a type of currency, the entity wouldn't need a health stat.\n\n" +
-				"Users may drag and drop sprites into the box on the left, these sprite files must be .png. If the image directory cannot be found, it will display a cross.\n\n" +
+				"Users may drag and drop sprites into the box on the left, these sprite files are recommended to be .png but can also be .jpeg. If the image directory cannot be found, it will display a cross.\n\n" +
 				"Made by Thomas Maltezos\nEmail: thomasmaltezos00@gmail.com", "About...");
 		}
 /* ====================================================================================*/
