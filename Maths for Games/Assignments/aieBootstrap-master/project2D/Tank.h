@@ -11,12 +11,12 @@ public:
 	void initialize();
 	void turretRotate(float deltaTime);
 	void tankRotate(float deltaTime);
-	void tankForward(int forward, float deltaTime);
 	void draw(aie::Renderer2D* renderer);
 	void update(float deltaTime);
 
 private:
 	SpriteObject m_tank;
 	SpriteObject m_turret;
+	Vector2 m_vel;
 };
 

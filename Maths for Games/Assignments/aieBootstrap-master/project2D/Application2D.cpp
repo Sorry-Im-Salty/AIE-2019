@@ -42,21 +42,11 @@ void Application2D::update(float deltaTime) {
 	// Rotate left and right
 	if (input->isKeyDown(aie::INPUT_KEY_A)) {
 		m_tank.tankRotate(deltaTime);
-		//m_tank.tankForward(deltaTime, -0);
 	}
 		
 	if (input->isKeyDown(aie::INPUT_KEY_D)) {
 		m_tank.tankRotate(-deltaTime);
-		//m_tank.tankForward(deltaTime, -0);
 	}
-
-	// Movement
-	//if (input->isKeyDown(aie::INPUT_KEY_W)) {
-	//	m_tank.tankForward(1, deltaTime);
-	//}
-	//if (input->isKeyDown(aie::INPUT_KEY_S)) {
-	//	m_tank.tankForward(-1, deltaTime);
-	//}
 
 	// Rotation of turret
 	if (input->isKeyDown(aie::INPUT_KEY_LEFT))
