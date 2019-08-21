@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Entity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <nType>Character</nType>
+  <nSubType>Enemy</nSubType>
+  <sName>Goblin</sName>
+  <nHealth>50</nHealth>
+  <nSpeed>20</nSpeed>
+  <nStrength>15</nStrength>
+  <nRange>10</nRange>
+  <nMagic>5</nMagic>
+  <nAgility>40</nAgility>
+  <nPrice>0</nPrice>
+  <nLevelReq>0</nLevelReq>
+  <sSprite>C:\Users\s191076\Desktop\AIE 2019\trunk\Introduction to C#\Assignments\goblin.png</sSprite>
+</Entity>
