@@ -15,6 +15,8 @@ namespace MMO_Editor_Tool
 			pictureBoxSprite.DragEnter += new DragEventHandler(pictureBoxSprite_DragEnter);
 			pictureBoxSprite.AllowDrop = true;
 			Entity[] pointlessArray = new Entity[10];
+			int[] intArray = { 55, 32, 54, 57, 12, 6, 99 };
+
 			for (int i = 0; i < 10; i++)
 			{
 				pointlessArray[i] = en;
@@ -22,8 +24,36 @@ namespace MMO_Editor_Tool
 		}
 
 		Entity en = new Entity();
+/* ====================================================================================*/
+		// Search and Sort
+		public int LinearSearch(int[] data, int value)
+		{
+			int n = data.Length;
+			for (int i = 0; i < n; i++)
+			{
+				if (data[i] == value)
+					return i;
+			}
+			return -1;
+		}
 
-		
+		public void BubbleSort(int[] data)
+		{
+			int temp;
+			for (int i = 0; i < data.Length - 1; i++)
+			{
+				for (int j = 0; j < data.Length - i - 1; j++)
+				{
+					if (data[j] > data[j + 1])
+					{
+						temp = data[j];
+						data[j] = data[j + 1];
+						data[j + 1] = temp;
+					}
+				}
+			}
+		}
+
 
 /* ====================================================================================*/
 		// Help
