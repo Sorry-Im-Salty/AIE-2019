@@ -15,7 +15,6 @@ namespace MMO_Editor_Tool
 			pictureBoxSprite.DragEnter += new DragEventHandler(pictureBoxSprite_DragEnter);
 			pictureBoxSprite.AllowDrop = true;
 			Entity[] pointlessArray = new Entity[10];
-			int[] intArray = { 55, 32, 54, 57, 12, 6, 99 };
 
 			for (int i = 0; i < 10; i++)
 			{
@@ -53,9 +52,22 @@ namespace MMO_Editor_Tool
 				}
 			}
 		}
+		private void buttonSearchAndSort_Click(object sender, EventArgs e)
+		{
+			int[] intArray = { 55, 32, 54, 57, 12, 6, 99 };
+			Console.WriteLine("This is the current data in the array : ");
+			Console.WriteLine(intArray[0]); Console.WriteLine(intArray[1]); Console.WriteLine(intArray[2]);
+			Console.WriteLine(intArray[3]); Console.WriteLine(intArray[4]); Console.WriteLine(intArray[5]);
+			Console.WriteLine(intArray[6]);
 
+			Console.WriteLine("Search Algorithm shows that the value of 54 is located within the array : "); Console.WriteLine(LinearSearch(intArray, 54));
+			Console.WriteLine("The Sorting Algorithm : "); BubbleSort(intArray);
+			Console.WriteLine(intArray[0]); Console.WriteLine(intArray[1]); Console.WriteLine(intArray[2]);
+			Console.WriteLine(intArray[3]); Console.WriteLine(intArray[4]); Console.WriteLine(intArray[5]);
+			Console.WriteLine(intArray[6]);
+		}
 
-/* ====================================================================================*/
+		/* ====================================================================================*/
 		// Help
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{

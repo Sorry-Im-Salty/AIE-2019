@@ -70,6 +70,7 @@
 			this.buttonOpen = new System.Windows.Forms.Button();
 			this.saveFileDialogMain = new System.Windows.Forms.SaveFileDialog();
 			this.openFileDialogMain = new System.Windows.Forms.OpenFileDialog();
+			this.buttonSearchAndSort = new System.Windows.Forms.Button();
 			this.menuStripMain.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBoxSprite)).BeginInit();
 			this.panelStats.SuspendLayout();
@@ -499,11 +500,22 @@
 			// 
 			this.saveFileDialogMain.DefaultExt = "xml";
 			// 
+			// buttonSearchAndSort
+			// 
+			this.buttonSearchAndSort.Location = new System.Drawing.Point(893, 27);
+			this.buttonSearchAndSort.Name = "buttonSearchAndSort";
+			this.buttonSearchAndSort.Size = new System.Drawing.Size(80, 37);
+			this.buttonSearchAndSort.TabIndex = 25;
+			this.buttonSearchAndSort.Text = "Array Sorting and Linear Search";
+			this.buttonSearchAndSort.UseVisualStyleBackColor = true;
+			this.buttonSearchAndSort.Click += new System.EventHandler(this.buttonSearchAndSort_Click);
+			// 
 			// formMain
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(985, 531);
+			this.Controls.Add(this.buttonSearchAndSort);
 			this.Controls.Add(this.buttonOpen);
 			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.panelDetails);
@@ -578,6 +590,7 @@
 		private System.Windows.Forms.NumericUpDown numericUpDownRange;
 		private System.Windows.Forms.NumericUpDown numericUpDownStrength;
 		private System.Windows.Forms.NumericUpDown numericUpDownSpeed;
+		private System.Windows.Forms.Button buttonSearchAndSort;
 	}
 }
 
