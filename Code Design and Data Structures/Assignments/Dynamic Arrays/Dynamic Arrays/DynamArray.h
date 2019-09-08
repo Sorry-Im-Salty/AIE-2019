@@ -39,7 +39,7 @@ public:
 				pArray[i] = pArray[i + 1];
 			}
 				
-			nLength--;
+			nNextIndex--;
 
 			//	pArray[i] = pArray[i + 1];
 			//nNextIndex--;
@@ -50,7 +50,7 @@ public:
 	}
 	
 	void print() {
-		for (int i = 0; i < nLength; i++) {
+		for (int i = 0; i < nNextIndex; i++) {
 			std::cout << pArray[i] << std::endl;
 		}
 	}
