@@ -23,6 +23,15 @@ namespace MMO_Editor_Tool
 		}
 
 		Entity en = new Entity();
+
+		public static string MakeRelative(string filePath, string referencePath)
+		{
+			var fileUri = new Uri(filePath);
+			var referenceUri = new Uri(referencePath);
+			return referenceUri.MakeRelativeUri(fileUri).ToString();
+		}
+
+
 /* ====================================================================================*/
 		// Search and Sort
 		public int LinearSearch(int[] data, int value)
@@ -67,7 +76,7 @@ namespace MMO_Editor_Tool
 			Console.WriteLine(intArray[6]);
 		}
 
-		/* ====================================================================================*/
+/* ====================================================================================*/
 		// Help
 		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
 		{
@@ -92,7 +101,7 @@ namespace MMO_Editor_Tool
 			en.nAgility = (int)numericUpDownAgility.Value;
 			en.nPrice = (int)numericUpDownPrice.Value;
 			en.nLevelReq = (int)numericUpDownLevelReq.Value;
-			en.sSprite = pictureBoxSprite.ImageLocation;
+			en.sSprite = Path.GetFileName(pictureBoxSprite.ImageLocation);
 
 			SaveFileDialog saveFileDialogMain = new SaveFileDialog();
 			saveFileDialogMain.Filter = "XML Document (*.xml)|*.xml";
@@ -120,7 +129,7 @@ namespace MMO_Editor_Tool
 			en.nAgility = (int)numericUpDownAgility.Value;
 			en.nPrice = (int)numericUpDownPrice.Value;
 			en.nLevelReq = (int)numericUpDownLevelReq.Value;
-			en.sSprite = pictureBoxSprite.ImageLocation;
+			en.sSprite = Path.GetFileName(pictureBoxSprite.ImageLocation);
 
 			SaveFileDialog saveFileDialogMain = new SaveFileDialog();
 			saveFileDialogMain.Filter = "XML Document (*.xml)|*.xml";
@@ -214,7 +223,9 @@ namespace MMO_Editor_Tool
 				}
 				else
 					numericUpDownLevelReq.Value = en.nLevelReq;
-				pictureBoxSprite.ImageLocation = en.sSprite;
+
+				string k = Path.GetDirectoryName(openFileDialogMain.FileName);
+				pictureBoxSprite.ImageLocation = Path.Combine(k, en.sSprite);
 			}
 		}
 
@@ -288,7 +299,9 @@ namespace MMO_Editor_Tool
 				}
 				else
 					numericUpDownLevelReq.Value = en.nLevelReq;
-				pictureBoxSprite.ImageLocation = en.sSprite;
+
+				string k = Path.GetDirectoryName(openFileDialogMain.FileName);
+				pictureBoxSprite.ImageLocation = Path.Combine(k, en.sSprite);
 			}
 		}
 
@@ -328,8 +341,15 @@ namespace MMO_Editor_Tool
 			string[] s = (string[])e.Data.GetData(DataFormats.FileDrop, false);
 			for (int i = 0; i < s.Length; i++)
 			{
-				pictureBoxSprite.ImageLocation = s[i];
-				pictureBoxSprite.Image = Image.FromFile(pictureBoxSprite.ImageLocation);
+				try
+				{
+					pictureBoxSprite.ImageLocation = s[i];
+					pictureBoxSprite.Image = Image.FromFile(pictureBoxSprite.ImageLocation);
+				}
+				catch
+				{
+					MessageBox.Show("Error, not an image file.");
+				}
 			}
 		}
 /* ====================================================================================*/
